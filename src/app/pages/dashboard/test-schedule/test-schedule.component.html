@@ -1,0 +1,57 @@
+<div class="body__bg">
+  <org-dashboard-header title="" subTitle="" [showLogout]="true">
+  </org-dashboard-header>
+  <div class="dashboard__card question px-3 py-3">
+    <h4 class="text-center text-grey">Test Scheduled</h4>
+
+    <div class="mt-2 p-2">
+      <div class="card p-2 mt-4">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Subject</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Physics</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>Chemistdy</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td *ngIf="!isStreamJee">Biology</td>
+              <td *ngIf="isStreamJee">Maths</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>Physics</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>Chemistdy</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td *ngIf="!isStreamJee">Biology</td>
+              <td *ngIf="isStreamJee">Maths</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="py-4">
+        <button
+          type="button"
+          class="ibtn ibtn__primary w-100 mb-3"
+          (click)="redirectToDashboard()"
+        >
+          Back to Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

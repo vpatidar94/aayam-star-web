@@ -1,0 +1,116 @@
+<div class="body__bg">
+  <org-dashboard-header
+    [title]="questionDetails.title"
+    [subTitle]="questionDetails.subTitle"
+  >
+  </org-dashboard-header>
+  <div class="dashboard__card question px-3 py-3">
+    <!-- timer -->
+    <org-timer-progress
+      class="timer"
+      [totalDuration]="questionDetails?.testDuration"
+      *ngIf="questionDetails && !!questionDetails.testDuration"
+      (endTimer)="onTimeout()"
+    ></org-timer-progress>
+    <!-- heading -->
+    <h4 *ngIf="!!question" class="text-center text-grey mt-4">
+      Question {{ questionIndex + 1 }}
+    </h4>
+    <!-- loader -->
+    <div class="d-flex justify-content-center mt-4" *ngIf="loading">
+      <span class="spinner-border" role="status" aria-hidden="true"></span>
+    </div>
+    <!-- question -->
+    <ng-container *ngIf="!!question">
+      <img
+        class="question__img"
+        [alt]="'question' + questionIndex"
+        [src]="question.image"
+        loading="lazy"
+      />
+      <form class="row g-3">
+        <div class="w-50" *ngFor="let option of options">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="answer"
+              [id]="'radio-' + option"
+              [(ngModel)]="answer"
+              required
+              [value]="option"
+            />
+            <label class="form-check-label" [for]="'radio-' + option">
+              {{ option }}
+            </label>
+          </div>
+        </div>
+        <div class="col-12 mt-2">
+          <button
+            type="button"
+            class="ibtn ibtn__primary w-100 mb-3"
+            [disabled]="loading || !answer"
+            (click)="onSubmit()"
+          >
+            <span *ngIf="!loading; else spinner">
+              {{ questions.length - 1 > questionIndex ? 'Next' : 'Submit' }}
+            </span>
+          </button>
+          <ng-template #spinner>
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          </ng-template>
+        </div>
+      </form>
+      <div
+        class="col-12 mt-1 text__grey text-center"
+        *ngIf="questions.length - 1 > questionIndex"
+      >
+        <a
+          href="javascript:void()"
+          class="text__action__primary"
+          (click)="questionIndex = +questionIndex + 1"
+          >Skip</a
+        >
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- <div
+  class="offcanvas offcanvas-end"
+  style="width: 250px"
+  [class.show]="isPanelShow"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Questions</h5>
+    <button
+      type="button"
+      (click)="isPanelShow = !isPanelShow"
+      class="btn btn-outline-secondary btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    >
+      X
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mt-3" *ngFor="let question of questions; let i = index">
+      <button
+        class="btn w-100"
+        [class]="
+          question.studentAnswer ? 'btn-secondary' : 'btn-outline-secondary'
+        "
+        type="button"
+      >
+        Question {{ i + 1 }}
+      </button>
+    </div>
+  </div>
+</div> -->

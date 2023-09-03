@@ -1,0 +1,30 @@
+.header__login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // height: 100px;
+    height: 150px;
+}
+.btn__action {
+position: absolute;
+    color: var(--i-body-text);
+    top: 4px;
+    background-color: #ffffff20 !important;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    padding: 1px 6px;
+}
+.btn__action-back{
+    // padding: 0px 1px 1px 8px;
+    color: #ffffff;
+}
+.btn__action-panel{
+    color: #ffffff;
+    right: 6px;
+}
+
+.app__logo{
+    position: absolute;
+    top: 12px;
+    left: -30px;
+}

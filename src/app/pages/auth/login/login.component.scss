@@ -1,0 +1,16 @@
+.mobile__field__prefix{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.25rem !important;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 52px;
+    padding: 0.65rem 0.75rem;
+    color: var(--bs-gray-700);
+}
+.mobile__field{
+    padding-left: 4.7rem;
+}

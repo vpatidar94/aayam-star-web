@@ -1,0 +1,54 @@
+<div class="body__bg">
+  <org-dashboard-header title="" subTitle="" [showLogout]="true">
+  </org-dashboard-header>
+  <div class="dashboard__card question px-3 py-3">
+    <h4 class="text-center text-grey">Instructions</h4>
+
+    <div class="mt-2">
+      <div class="p-4">
+        <ul>
+          <li>
+            All the questions are objective type questions and each has four
+            options. You have to select only one options out of each.
+          </li>
+          <li>
+            Each question will have 1 mark each, and there is no negative
+            marking.
+          </li>
+          <li>
+            You cannot go to the previous questions, and if you'll skip the
+            question, you can't be able to attempt it again.
+          </li>
+          <li>
+            Test will have certain duration, you can check the timer on test
+            page. On click of start button the test will get started. And if the
+            time ends, the test will automatically will be submitted.
+          </li>
+          <li>
+            If you leave the test or close the browser window. You'll now be
+            able to attempt the test again.
+          </li>
+          <li>
+            Please make sure that you've active internet connections during the
+            test.
+          </li>
+        </ul>
+      </div>
+      <div class="p-4">
+        <button
+          *ngIf="testId"
+          type="button"
+          class="ibtn ibtn__primary w-100 mb-3"
+          (click)="redirectToStartTest(testId)"
+        >
+          Start Test
+        </button>
+        <div class="col-12 mt-4 text__grey text-center">
+          <a class="text__action__primary" [routerLink]="['/dashboard']"
+            >Back to Dashboard</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

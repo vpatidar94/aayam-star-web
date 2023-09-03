@@ -1,0 +1,10 @@
+<button [type]="type" class="ibtn ibtn__primary w-100 mb-3" [disabled]="disabled || loading"
+    (click)="onClick()"
+>
+    <span *ngIf="!loading; else spinner">
+        <ng-content></ng-content>
+    </span>
+</button>
+<ng-template #spinner>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</ng-template>

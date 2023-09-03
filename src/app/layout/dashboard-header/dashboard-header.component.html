@@ -1,0 +1,76 @@
+<!-- <button
+  *ngIf="path"
+  type="button"
+  class="btn btn-light btn__action btn__action-back ms-2 mt-2"
+  [routerLink]="[path]"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="24px"
+    viewBox="0 0 24 24"
+    width="28px"
+    fill="#ffffff"
+  >
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z" />
+  </svg>
+</button> -->
+
+<!-- <button
+  *ngIf="showPanel"
+  type="button"
+  class="btn btn-light btn__action btn__action-panel ms-2 mt-2"
+  (click)="emitTogglePanel(true)"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="24px"
+    viewBox="0 0 24 24"
+    width="24px"
+    fill="#ffffff"
+  >
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"
+    />
+  </svg>
+</button> -->
+
+<!-- LOGOUT -->
+<button
+  *ngIf="showLogout"
+  type="button"
+  class="btn btn-light btn__action btn__action-panel ms-2 mt-2"
+  (click)="triggerLogout()"
+>
+  <svg
+    class="pb-1"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#ffffff"
+    height="24"
+    viewBox="0 -960 960 960"
+    width="24"
+  >
+    <path
+      d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"
+    />
+  </svg>
+</button>
+
+<div class="py-4 header__login">
+  <div class="app__logo">
+    <img src="assets/images/logo3.webp" alt="aayam-star-logo" width="220px" />
+  </div>
+
+  <div style="margin-top: 34px">
+    <div
+      class="d-flex flex-column align-items-center mt-4 px-4 py-2"
+      *ngIf="!title && !subTitle"
+    >
+      <p class="text-center pt-1 mb-1 text__body">Powered by</p>
+      <img src="assets/images/logo.png" alt="aayam-logo" width="130px" />
+    </div>
+    <h4 *ngIf="title" class="text-center mt-4 pt-4 text__body">{{ title }}</h4>
+    <h5 *ngIf="subTitle" class="text-center pt-1 text__body">{{ subTitle }}</h5>
+  </div>
+</div>

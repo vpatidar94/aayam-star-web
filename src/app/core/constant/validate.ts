@@ -1,0 +1,3 @@
+export enum VALIDATE {
+    MOBILE_NO_MAX_LENGTH= 10
+}

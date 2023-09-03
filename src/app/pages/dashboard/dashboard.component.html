@@ -1,0 +1,64 @@
+<div class="body__bg">
+  <org-dashboard-header title="" subTitle="" [showLogout]="true">
+  </org-dashboard-header>
+  <div class="dashboard__card question px-3 py-3">
+    <h4 class="text-center text-grey">Dashboard</h4>
+    <div class="d-flex justify-content-center mt-4" *ngIf="loading">
+      <span class="spinner-border" role="status" aria-hidden="true"></span>
+    </div>
+    <div class="mt-2" *ngIf="!loading && data">
+      <div class="p-4" *ngIf="data?.lastTestResult">
+        <div class="card text-center">
+          <div class="card-header">
+            <h5 class="card-title">Last Test Result</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-title card__content__title">Score</p>
+            <h3 class="card-text">
+              {{ data?.lastTestResult.score }}/{{
+                data?.lastTestResult?.testId.questions.length
+              }}
+            </h3>
+            <hr />
+            <p class="card-title card__content__title">Rank</p>
+            <h3 class="card-text" *ngIf="data?.lastTestResult?.rank">
+              data?.lastTestResult?.rank
+            </h3>
+            <h6 class="card-text" *ngIf="!data?.lastTestResult?.rank">
+              Rank will be disclosed tomorrow.
+            </h6>
+          </div>
+          <div class="card-footer text-muted">
+            {{ data?.lastTestResult?.testId?.testDate | date }}
+          </div>
+        </div>
+      </div>
+      <div class="p-4">
+        <button
+          *ngIf="!data?.todaysTestIsAttempted && data?.todaysTest?.id"
+          type="button"
+          class="ibtn ibtn__primary w-100 mb-3"
+          (click)="redirectToInstruction(data.todaysTest.id)"
+        >
+          Start Today's Test
+        </button>
+        <p class="text-center" *ngIf="data?.todaysTestIsAttempted">
+          You've already attempted for today's test.
+        </p>
+        <p
+          class="text-center"
+          *ngIf="!data?.todaysTestIsAttempted && !data?.todaysTest?.id"
+        >
+          No test in a queue for today. We will back tomorrow with next test.
+        </p>
+        <button
+          type="button"
+          class="ibtn ibtn__secondary w-100 mb-3"
+          (click)="redirectToScheduled()"
+        >
+          Test Scheduled
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

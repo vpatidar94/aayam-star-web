@@ -1,0 +1,18 @@
+<div class="ay__alert" *ngIf="showAlert">
+  <!-- <alert
+    class="mb-0"
+    *ngIf="showAlert && type === 'danger'"
+    [type]="type"
+    [dismissible]="true"
+    (onClosed)="onClosed()"
+    >{{ message }}</alert
+  > -->
+  <alert
+    class="mb-0"
+    [type]="type"
+    [dismissOnTimeout]="alertTimeout"
+    [dismissible]="true"
+    (onClosed)="onClosed()"
+    >{{ message }}</alert
+  >
+</div>

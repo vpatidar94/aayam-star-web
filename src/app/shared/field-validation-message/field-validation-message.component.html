@@ -1,0 +1,6 @@
+<div
+  *ngIf="control.invalid && (control.dirty || control.touched)"
+  class="form-text text__danger"
+>
+  {{ getValidationMessages() }}
+</div>

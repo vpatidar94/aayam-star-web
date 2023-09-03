@@ -1,0 +1,34 @@
+.question {
+    .form-check {
+        min-height: 2.5rem;
+        padding-left: 2.5em;
+        // margin-bottom: 1rem;
+        .form-check-input{
+            width: 1.5em;
+            height: 1.5em;
+            border: 2.5px solid #aeb4b9;
+            &:checked {
+                background-color: var(--i-primary-action);
+                border-color: var(--i-primary-action);
+            }
+        }
+        label{
+            padding: 0.15rem 0.25rem;
+            margin-left: 1rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--i-body-text-dark);
+        }
+    }
+
+    img{
+        width: 100%;
+    // padding: 0 40px;
+    }
+}
+
+.timer{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}

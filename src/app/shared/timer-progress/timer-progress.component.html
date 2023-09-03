@@ -1,0 +1,30 @@
+<svg width="80px" height="80px" viewBox="0 0 42 42" class="donut">
+  <circle
+    id="c1"
+    cx="21"
+    cy="21"
+    r="15.91549430918954"
+    [attr.stroke-dasharray]="c1StrokeDashArray"
+    [attr.stroke-dashoffset]="c1StrokeDashoffset"
+  ></circle>
+  <circle
+    id="c2"
+    cx="21"
+    cy="21"
+    r="15.91549430918954"
+    [attr.stroke-dasharray]="c2StrokeDashArray"
+    stroke-dashoffset="0"
+  ></circle>
+  <g class="chart-text">
+    <text
+      x="50%"
+      y="50%"
+      dominant-baseline="middle"
+      text-anchor="middle"
+      id="counterText"
+      font-size="0.5rem"
+    >
+      {{ displayTimer }}
+    </text>
+  </g>
+</svg>
