@@ -22,7 +22,6 @@
     </div>
     <!-- question -->
     <ng-container *ngIf="!!question">
-      {{ question.image }}
       <img
         class="question__img"
         [alt]="'question' + questionIndex"
@@ -73,7 +72,7 @@
         <a
           href="javascript:void()"
           class="text__action__primary"
-          (click)="questionIndex = +questionIndex + 1"
+          (click)="skipQuestion()"
           >Skip</a
         >
       </div>
