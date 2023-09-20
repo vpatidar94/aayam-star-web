@@ -22,6 +22,7 @@
     </div>
     <!-- question -->
     <ng-container *ngIf="!!question">
+      {{ question.image }}
       <img
         class="question__img"
         [alt]="'question' + questionIndex"
@@ -53,7 +54,7 @@
             (click)="onSubmit()"
           >
             <span *ngIf="!loading; else spinner">
-              {{ questions.length - 1 > questionIndex ? 'Next' : 'Submit' }}
+              {{ questions.length - 1 > questionIndex ? "Next" : "Submit" }}
             </span>
           </button>
           <ng-template #spinner>

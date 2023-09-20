@@ -71,7 +71,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.testId = params['testId'];
-      this.question = this.questions[this.questionIndex] ?? null;
+      // this.question = this.questions[this.questionIndex] ?? null;
     });
     this.loading = true;
     this.state$ = this.apiService.getQuestions(this.testId)
@@ -93,11 +93,22 @@ export class QuestionComponent implements OnInit, OnDestroy {
       if ((this.questions.length - 1) > this.questionIndex) {
         this.answer = '';
         this.questionIndex++;
+        this.setQuestion();
       }
       else if (this.questions.length - 1 === this.questionIndex) {
         this.submitScore(this.questions);
       }
     }
+  }
+
+  skipQuestion() {
+    this.questionIndex = +this.questionIndex + 1;
+    this.setQuestion();
+  }
+
+
+  setQuestion() {
+    this.question = this.questions[this.questionIndex] ?? null;
   }
 
   async submitScore(questions: any) {
