@@ -57,23 +57,53 @@ export class ApiService {
     }
   }
 
-  sendOtp(number: string, message: string): Observable<{ token: string }> {
-    const url = CONSTANTS.WHATSAPP_URL;
-    const params = {
-      number: number,
-      type: "text",
-      message: message,
-      instance_id: "647B3C9AA8D0A",
-      access_token: "0a3e27126c2c239bdf7f9128943ef9c0"
-    }
+  sendOtp(number: string, otp: string): Observable<{ messaging_product: string, contacts: any, messages: any }> {
+    const url = environment.WHATSAPP_URL;
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('API-KEY', atob(environment.W_API_KEY));
+
+    const payload = {
+      "to": number,
+      "recipient_type": "individual",
+      "type": "template",
+      "template": {
+        "language": {
+          "policy": "deterministic",
+          "code": "en"
+        },
+        "name": "otp",
+        "components": [
+          {
+            "type": "body",
+            "parameters": [
+              {
+                "type": "text",
+                "text": "OTP"
+              },
+              {
+                "type": "text",
+                "text": "Aayam Star Application login"
+              },
+              {
+                "type": "text",
+                "text": otp
+              }
+            ]
+          }
+        ]
+      }
+    };
+
     return this.http
-      .get<{ Object: any, Message: string }>(
+      .post<{ messaging_product: string, contacts: any, messages: any }>(
         url,
-        { params: params }
+        payload,
+        { headers: headers }
       )
       .pipe(
         map((res) => {
-          return res?.Object;
+          return res;
         }),
         catchError((error) => {
           return throwError(() => error);
@@ -164,6 +194,54 @@ export class ApiService {
     return this.http
       .get<CustomHttpResponse<any>>(
         CONSTANTS.API.GET_DASHBOARD_DETAILS
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  getAllTests(): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_ALL_TEST
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  generateRank(testId: string): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GENERATE_RANK + '/' + testId
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  getResultByTest(testId: string): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_RESULT_BY_TEST + '/' + testId
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  getTestDetails(testId: string | number): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_TEST_DETAIL + '/' + testId
       )
       .pipe(
         map((res) => {

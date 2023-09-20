@@ -29,13 +29,13 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
+
     const modifiedRequest = request.clone({
-      url: environment.BASE_API_URL + request.url,
+      url: (request.url === environment.WHATSAPP_URL ? '' : environment.BASE_API_URL) + request.url,
     });
     return next.handle(modifiedRequest).pipe(
       // retry(1),
       catchError((error: HttpErrorResponse) => {
-        console.log('e>', error)
         switch (error.status) {
           case 401:
           case 403:

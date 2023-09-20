@@ -15,7 +15,7 @@ export class InstructionsComponent {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
-      this.testId = +params['testId'];
+      this.testId = params['testId'];
     });
   }
 

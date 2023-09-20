@@ -60,5 +60,22 @@ export const appRoutes: Route[] = [
       import('./pages/dashboard/test-schedule/test-schedule.component').then((x) => x.TestScheduleComponent),
     canActivate: [canActivateUser],
   },
+  {
+    path: "admin",
+    loadComponent: () =>
+      import('./pages/admin/admin.component').then((x) => x.AdminComponent),
+    children: [
+      {
+        path: "",
+        loadComponent: () =>
+          import('./pages/admin/tests/tests.component').then((x) => x.TestsComponent),
+      },
+      {
+        path: "test-result/:testId",
+        loadComponent: () =>
+          import('./pages/admin/test-result/test-result.component').then((x) => x.TestResultComponent),
+      }
+    ]
+  },
 
 ];

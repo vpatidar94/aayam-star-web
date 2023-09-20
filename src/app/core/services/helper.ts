@@ -44,7 +44,6 @@ export class HelperService {
 
   generateOtp() {
     const otp = Math.floor(1000 + Math.random() * 9000) + '';
-    console.log('ot[0]t', otp)
     sessionStorage.setItem("otp", atob(otp));
     return otp;
   }

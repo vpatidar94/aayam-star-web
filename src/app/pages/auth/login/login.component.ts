@@ -41,10 +41,13 @@ export class LoginComponent implements OnInit {
       const mobileNo = '91' + this.tForm.value.mobile_no;
       this.apiService
         .sendOtp(
-          mobileNo, CONSTANTS.MESSAGES.OTP_MESSAGE + newOtp
+          mobileNo, newOtp
         ).subscribe({
           next: () => {
+            this.helperService.setUserContactDetails(this.tForm.value.mobile_no);
             this.router.navigate(['/verify']);
+            this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT);
+            this.loading = false;
           },
           error: () => {
             this.helperService.setUserContactDetails(this.tForm.value.mobile_no);

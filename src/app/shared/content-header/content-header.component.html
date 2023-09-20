@@ -1,0 +1,24 @@
+<div class="">
+  <div class="d-flex align-items-center">
+    <h4 class="mb-0">{{ title }}</h4>
+    <ng-content></ng-content>
+  </div>
+  <nav aria-label="breadcrumb" class="mt-2" *ngIf="breadcrumbs">
+    <ol class="breadcrumb">
+      <ng-container *ngFor="let breadcrumb of breadcrumbs">
+        <li
+          *ngIf="breadcrumb.path; else current"
+          class="breadcrumb-item dac__link"
+        >
+          <a [routerLink]="[breadcrumb.path]">{{ breadcrumb.name }}</a>
+        </li>
+        <ng-template #current>
+          <li class="breadcrumb-item dac__link" aria-current="page">
+            {{ breadcrumb.name }}
+          </li>
+        </ng-template>
+      </ng-container>
+    </ol>
+  </nav>
+  <hr />
+</div>

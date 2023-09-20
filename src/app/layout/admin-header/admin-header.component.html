@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg navbar-dark header__bar">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img src="/assets/images/logo3.webp" alt="Aayam-star" height="60" />
+    </a>
+    <!-- <button
+      class="navbar-toggler ms-auto collapse__visible"
+      type="button"
+      (click)="isCollapsed = !isCollapsed"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <button
+      type="button"
+      class="btn ms-auto btn-dark btn__action btn__action-panel ms-2 mt-2 collapse__visible"
+      (click)="logout()"
+    >
+      <svg
+        class="pb-1"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#ffffff"
+        height="24"
+        viewBox="0 -960 960 960"
+        width="24"
+      >
+        <path
+          d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"
+        />
+      </svg>
+    </button>
+    <!-- [isAnimated]="true" -->
+    <div [collapse]="isCollapsed">
+      <div class="d-flex me-auto">
+        <div
+          class="d-flex header__user btn-group position-relative cursor-pointer"
+          dropdown
+          *ngIf="!!userData"
+          dropdownToggle
+        >
+          <div class="header__icon ms-2">
+            <span class="header__icon__svg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+                width="36"
+                height="34"
+                viewBox="0 -960 960 960"
+              >
+                <path
+                  d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5t127.921 44.694q31.301 14.126 50.19 40.966Q800-292 800-254v94H160Zm60-60h520v-34q0-16-9.5-30.5T707-306q-64-31-117-42.5T480-360q-57 0-111 11.5T252-306q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570-631q0-39-25.5-64.5T480-721q-39 0-64.5 25.5T390-631q0 39 25.5 64.5T480-541Zm0-90Zm0 411Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="ms-3 d-flex flex-column justify-content-center">
+            <div class="header__user__label">Admin</div>
+          </div>
+          <ul
+            id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu dropdown-menu-right"
+            role="menu"
+            aria-labelledby="button-basic"
+          >
+            <li role="menuitem">
+              <a class="dropdown-item" disabled> Admin </a>
+            </li>
+            <li class="divider dropd own-divider"></li>
+            <li role="menuitem">
+              <a
+                class="dropdown-item"
+                href="javascript:void()"
+                (click)="logout()"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- [isAnimated]="true" -->
+<!-- <nav
+  *ngIf="userData"
+  [collapse]="isCollapsed"
+  class="sub__header py-2 bg__primary__dark text-white border-bottom"
+>
+  <div class="container d-flex flex-wrap">
+    <ul class="nav text-white me-auto w-100">
+      <ng-container>
+        <li class="nav-item collapse__visible">Admin</li>
+      </ng-container>
+      <hr />
+      <li class="nav-item">
+        <a
+          [routerLink]="['/dashboard']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link link-light px-2"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light px-2">Insights</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light px-2">Settings</a>
+      </li>
+      <li class="nav-item collapse__visible">
+        <a
+          href="javascript:void()"
+          class="nav-link link-light px-2"
+          (click)="logout()"
+          >Logout</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav> -->

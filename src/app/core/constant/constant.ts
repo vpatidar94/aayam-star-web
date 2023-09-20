@@ -10,7 +10,12 @@ export const CONSTANTS = Object.freeze({
     SUBMIT_SCORE: "/test/addScore",
     SUBMIT_RESULT: "/test/submitResult",
     GET_TEST: '/test/getTest',
+    GET_TEST_DETAIL: '/test/getTestDetail',
     GET_DASHBOARD_DETAILS: '/result/getResultDashboard',
+    GET_ALL_TEST: '/test/getAllTest',
+    GENERATE_RANK: '/result/generateRank',
+    GET_RESULT_BY_TEST: '/result/getResultByTest',
+
   },
   MESSAGES: {
     LOGIN_FAILURE: "Login failed",
@@ -19,6 +24,7 @@ export const CONSTANTS = Object.freeze({
     OTP_MESSAGE: "Here is you one time OTP: ",
     INVALID_OTP: "You have entered the wrong OTP.",
     OTP_SENT: "OTP has been sent to your Whatsapp no.",
+    GENERATED_RANK_SUCCESS: 'Generated rank successfully.'
   },
   VALIDATE: {
     PASSWORD_MAX_LENGTH: 8,

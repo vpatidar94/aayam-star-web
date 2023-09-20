@@ -26,6 +26,9 @@
     --i-secondary-action-60: #22225399; //60% opacity in hex is 99 added in last
     --i-secondary-button-text: #ffffff; //[secondary button text]
   
+    --i-secondary-gradient-1: #1c3b71;
+    --i-secondary-gradient-2: #055489;
+
     // highlight colors
     --i-danger: #ba3214;
     --i-info: #2187ff;
@@ -349,7 +352,7 @@
   }
   
 .body__bg{
-    background-image: linear-gradient(#1C3B71, #055489);
+    background-image: linear-gradient(var(--i-secondary-gradient-1), var(--i-secondary-gradient-2));
     width: 100vw;
     height: 100vh;
 }

@@ -104,14 +104,16 @@ export class VerifyOtpComponent implements OnInit {
     const newOtp = this.helperService.generateOtp()
 
     if (userDetail?.mobileNo) {
-      this.apiService.sendOtp(userDetail.mobileNo, CONSTANTS.MESSAGES.OTP_MESSAGE + newOtp)
+      this.apiService.sendOtp(userDetail.mobileNo, newOtp)
         .subscribe(() => {
+          this.helperService.setUserContactDetails(userDetail.mobileNo)
+          this.router.navigate(['/verify'])
+          this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         }, err => {
           this.helperService.setUserContactDetails(userDetail.mobileNo)
           this.router.navigate(['/verify'])
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
-          console.log('ee', err);
           this.loading = false;
         })
     }

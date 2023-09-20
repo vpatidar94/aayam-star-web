@@ -56,7 +56,6 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   // on page change
   async canDeactivate(): Promise<boolean> {
-    console.log('is deactivate', this.isSubmit)
     if (!this.isSubmit) {
       if (confirm('You have not submit the test paper. Are you sure you want to leave?')) {
         await this.submitScore(this.questions)
@@ -71,7 +70,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.testId = +params['testId'];
+      this.testId = params['testId'];
       this.question = this.questions[this.questionIndex] ?? null;
     });
     this.loading = true;
@@ -102,7 +101,6 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async submitScore(questions: any) {
-    console.log('is submit call')
     const data: { id: number, answer: string }[] = [];
     questions.forEach((element: any) => {
       data.push({
@@ -121,8 +119,6 @@ export class QuestionComponent implements OnInit, OnDestroy {
       ).subscribe({
         next: (res) => {
           if (res.status_code === 'success') {
-            console.log('is submit call success')
-
             this.result = res.data;
             this.isSubmit = true;
             this.router.navigate(['/dashboard']);

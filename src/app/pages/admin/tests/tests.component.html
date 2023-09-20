@@ -1,0 +1,57 @@
+<div class="">
+  <org-content-header
+    title="Tests"
+    [breadcrumbs]="breadcrumbs"
+  ></org-content-header>
+  <div class="row mt-4">
+    <div class="col col-12">
+      <div class="card p-2">
+        <table class="table">
+          <thead class="table-light">
+            <tr>
+              <th>Test ID</th>
+              <th>Name</th>
+              <th>Stream</th>
+              <th>Subject</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data">
+              <td>{{ item.id }}</td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.stream }}</td>
+              <td>{{ item.subjectName }}</td>
+              <td>{{ item.testDate | date }}</td>
+              <td>
+                <button
+                  class="btn btn-sm btn-primary me-2"
+                  (click)="generateRank(item._id)"
+                >
+                  <span *ngIf="!btnLoading; else spinner"> Generate Rank </span>
+                </button>
+                <ng-template #spinner>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                </ng-template>
+                <button
+                  class="btn btn-sm btn-primary"
+                  [routerLink]="['/admin/test-result/' + item._id]"
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-4" *ngIf="loading">
+          <span class="spinner-border" role="status" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
