@@ -22,7 +22,7 @@
             <hr />
             <p class="card-title card__content__title">Rank</p>
             <h3 class="card-text" *ngIf="data?.lastTestResult?.rank">
-              data?.lastTestResult?.rank
+              {{ data?.lastTestResult?.rank }}
             </h3>
             <h6 class="card-text" *ngIf="!data?.lastTestResult?.rank">
               Rank will be disclosed tomorrow.

@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
             this.loading = false;
           },
           error: () => {
-            this.helperService.setUserContactDetails(this.tForm.value.mobile_no);
-            this.router.navigate(['/verify']);
-            this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT);
+            // this.helperService.setUserContactDetails(this.tForm.value.mobile_no);
+            // this.router.navigate(['/verify']);
+            this.alertService.error(CONSTANTS.MESSAGES.ERROR_SENDING_MESSAGE);
             this.loading = false;
           }
         });

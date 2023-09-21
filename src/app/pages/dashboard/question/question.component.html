@@ -11,6 +11,7 @@
       [totalDuration]="questionDetails?.testDuration"
       *ngIf="questionDetails && !!questionDetails.testDuration"
       (endTimer)="onTimeout()"
+      (currentDuration)="updateSubmitDuration($event)"
     ></org-timer-progress>
     <!-- heading -->
     <h4 *ngIf="!!question" class="text-center text-grey mt-4">
@@ -28,8 +29,8 @@
         [src]="question.image"
         loading="lazy"
       />
-      <form class="row g-3">
-        <div class="w-50" *ngFor="let option of options">
+      <form class="row g-3 mt-1">
+        <div class="w-25" *ngFor="let option of options">
           <div class="form-check">
             <input
               class="form-check-input"
@@ -48,12 +49,16 @@
         <div class="col-12 mt-2">
           <button
             type="button"
-            class="ibtn ibtn__primary w-100 mb-3"
+            class="ibtn ibtn__primary w-100 mb-1"
             [disabled]="loading || !answer"
             (click)="onSubmit()"
           >
             <span *ngIf="!loading; else spinner">
-              {{ questions.length - 1 > questionIndex ? "Next" : "Submit" }}
+              {{
+                questions.length - 1 > questionIndex
+                  ? "Submit Answer and Next"
+                  : "Submit Test"
+              }}
             </span>
           </button>
           <ng-template #spinner>
@@ -73,7 +78,7 @@
           href="javascript:void()"
           class="text__action__primary"
           (click)="skipQuestion()"
-          >Skip</a
+          >Pass Question</a
         >
       </div>
     </ng-container>

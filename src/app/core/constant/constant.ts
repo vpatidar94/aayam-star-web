@@ -24,7 +24,8 @@ export const CONSTANTS = Object.freeze({
     OTP_MESSAGE: "Here is you one time OTP: ",
     INVALID_OTP: "You have entered the wrong OTP.",
     OTP_SENT: "OTP has been sent to your Whatsapp no.",
-    GENERATED_RANK_SUCCESS: 'Generated rank successfully.'
+    GENERATED_RANK_SUCCESS: 'Generated rank successfully.',
+    ERROR_SENDING_MESSAGE: 'Error in sending otp. Please try again.'
   },
   VALIDATE: {
     PASSWORD_MAX_LENGTH: 8,

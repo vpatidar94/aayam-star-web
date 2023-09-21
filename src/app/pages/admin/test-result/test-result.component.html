@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                   <td>Test Duration:</td>
-                  <td>{{ testDetail.testDuration / 60 }} Sec</td>
+                  <td>{{ testDetail.testDuration / 60 }} Min</td>
                 </tr>
                 <tr>
                   <td>Test Date:</td>
@@ -61,7 +61,7 @@
               <th>Mobile No.</th>
               <th>Score</th>
               <th>Rank</th>
-              <th>Duration</th>
+              <th>Duration (MM:SS)</th>
               <th>Date Submitted</th>
             </tr>
           </thead>
@@ -72,9 +72,7 @@
               <td>{{ item.score }} / {{ testDetail?.questions?.length }}</td>
               <td>{{ item.rank }}</td>
               <td>
-                {{
-                  item.duration ? (item.duration / 60).toFixed(2) + " Sec" : "-"
-                }}
+                {{ item.duration ? showTimeInMMSS(item.duration) : "-" }}
               </td>
               <td>{{ item?.submitDate | date }}</td>
             </tr>

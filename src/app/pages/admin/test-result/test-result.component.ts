@@ -68,4 +68,8 @@ export class TestResultComponent {
         }
       });
   }
+
+  showTimeInMMSS(sec: number) {
+    return new Date(sec * 1000).toISOString().slice(14, 19);
+  }
 }

@@ -32,7 +32,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   loading = false;
   testId = '' as string | number;
   isSubmit = false;
-
+  submitDuration = 0;
   // show dialog on visibility change
   visibilityChange() {
     if (document.visibilityState === "hidden") {
@@ -106,7 +106,6 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.setQuestion();
   }
 
-
   setQuestion() {
     this.question = this.questions[this.questionIndex] ?? null;
   }
@@ -116,12 +115,13 @@ export class QuestionComponent implements OnInit, OnDestroy {
     questions.forEach((element: any) => {
       data.push({
         id: element.id,
-        answer: element.studentAnswer ?? ''
+        answer: element.studentAnswer ?? '',
       })
     });
     const payload = {
       testId: this.testId,
-      questions: data
+      questions: data,
+      duration: this.submitDuration
     }
     this.loading = true;
     await this.apiService
@@ -149,6 +149,10 @@ export class QuestionComponent implements OnInit, OnDestroy {
   onTimeout() {
     this.alertService.warning('Timeout!. Test will be submitted now.');
     this.submitScore(this.questions);
+  }
+
+  updateSubmitDuration(duration: number) {
+    this.submitDuration = duration;
   }
 
   ngOnDestroy() {

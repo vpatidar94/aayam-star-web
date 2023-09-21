@@ -13,6 +13,8 @@ export class TimerProgressComponent implements OnDestroy, OnChanges {
 
   // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() endTimer = new EventEmitter<void>();
+  @Output() currentDuration = new EventEmitter<number>();
+
 
   duration = 0;
   c1StrokeDashArray = [100, 0] as any;
@@ -32,10 +34,12 @@ export class TimerProgressComponent implements OnDestroy, OnChanges {
   }
   mmhhFormat() {
     this.displayTimer = new Date(this.duration * 1000).toISOString().substring(14, 19)
+    this.currentDuration.emit(this.totalDuration - this.duration);
   }
 
   startTimer(duration: number) {
     this.timeout = setTimeout(() => {
+
       const time = duration;
       let i = 1;
       let k = ((i / duration) * 100);
