@@ -1,3 +1,37 @@
 .card__content__title{
     font-size: 1.125rem;
 }
+
+.card__test {
+    box-shadow: 1px 1px 20px 0px #ddd;
+    border: none;
+
+    .card-header{
+        color: #ffffff;
+        background: linear-gradient(45deg, var(--i-secondary-action), var(--i-secondary-action-80));
+    }
+}
+
+.w-40{
+    width: 40%;
+}
+.w-60{
+    width: 60%;
+}
+.expand__collapse__icon{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #ffffff30;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dashboard__result{
+    position: absolute;
+    .close__icon{
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+}

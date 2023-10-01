@@ -61,6 +61,7 @@
               <th>Mobile No.</th>
               <th>Score</th>
               <th>Rank</th>
+              <th>Points</th>
               <th>Duration (MM:SS)</th>
               <th>Date Submitted</th>
             </tr>
@@ -71,6 +72,7 @@
               <td>{{ item.userId.mobileNo }}</td>
               <td>{{ item.score }} / {{ testDetail?.questions?.length }}</td>
               <td>{{ item.rank }}</td>
+              <td>{{ item?.points }}</td>
               <td>
                 {{ item.duration ? showTimeInMMSS(item.duration) : "-" }}
               </td>

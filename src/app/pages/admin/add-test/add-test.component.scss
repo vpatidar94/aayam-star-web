@@ -1,0 +1,19 @@
+.radio__outline {
+    &.form-check{
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding-left: 2rem;
+    }
+
+    input {
+        margin-top: 0.65rem;
+    }
+
+    label {
+        padding: 0.4rem 2rem 0.4rem 0.4rem;
+    }
+}
+
+.questions__path{
+    height: 40px;
+}

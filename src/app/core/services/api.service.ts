@@ -130,10 +130,12 @@ export class ApiService {
   // main api calling -----------------
   // ----------------------------------
   loginSignup(
-    mobileNo: string
+    mobileNo: string,
+    referredBy: string
   ): Observable<{ token: string, user: any, isNew: boolean }> {
     const payload = {
       mobileNo: mobileNo,
+      referredBy: referredBy ?? ''
     };
     return this.http
       .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean }>>(
@@ -202,6 +204,18 @@ export class ApiService {
       );
   }
 
+  getAllScoreAndPoints(): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_ALL_SCORE_POINTS
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
   getAllTests(): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(
@@ -242,6 +256,19 @@ export class ApiService {
     return this.http
       .get<CustomHttpResponse<any>>(
         CONSTANTS.API.GET_TEST_DETAIL + '/' + testId
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  addTestDetails(payload: any): Observable<any> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        CONSTANTS.API.ADD_TEST_DETAIL,
+        payload
       )
       .pipe(
         map((res) => {

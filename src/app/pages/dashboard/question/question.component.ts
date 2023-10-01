@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CONSTANTS } from 'src/app/core/constant/constant';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { TimerProgressComponent } from 'src/app/shared/timer-progress/timer-progress.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'org-question',
@@ -20,7 +21,9 @@ import { TimerProgressComponent } from 'src/app/shared/timer-progress/timer-prog
 export class QuestionComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService) {
     document.addEventListener("visibilitychange", this.visibilityChange);
+    this.bucketUrl = environment.BUCKET_URL;
   }
+  bucketUrl = '';
   state$!: Observable<any>;
   questionDetails = { title: '', subTitle: '', testDuration: 0 } as any;
   options = CONSTANTS.QUESTION_OPTIONS;

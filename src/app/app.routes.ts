@@ -74,6 +74,16 @@ export const appRoutes: Route[] = [
         path: "test-result/:testId",
         loadComponent: () =>
           import('./pages/admin/test-result/test-result.component').then((x) => x.TestResultComponent),
+      },
+      {
+        path: "add-test",
+        loadComponent: () =>
+          import('./pages/admin/add-test/add-test.component').then((x) => x.AddTestComponent),
+      },
+      {
+        path: "edit-test/:testId",
+        loadComponent: () =>
+          import('./pages/admin/add-test/add-test.component').then((x) => x.AddTestComponent),
       }
     ]
   },

@@ -12,9 +12,11 @@ export const CONSTANTS = Object.freeze({
     GET_TEST: '/test/getTest',
     GET_TEST_DETAIL: '/test/getTestDetail',
     GET_DASHBOARD_DETAILS: '/result/getResultDashboard',
+    GET_ALL_SCORE_POINTS: '/result/getAllScorePoints',
     GET_ALL_TEST: '/test/getAllTest',
     GENERATE_RANK: '/result/generateRank',
     GET_RESULT_BY_TEST: '/result/getResultByTest',
+    ADD_TEST_DETAIL: '/test/addTest',
 
   },
   MESSAGES: {
@@ -37,3 +39,5 @@ export type ButtonType = 'button' | 'submit';
 export type AlertType = 'success' | 'info' | 'danger' | 'warning' | '';
 
 export type StreamType = 'NEET' | 'JEE';
+
+export type SubjectNameType = 'Physics' | 'Chemistry' | 'Maths' | 'Biology';
