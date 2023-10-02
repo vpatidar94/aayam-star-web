@@ -17,16 +17,19 @@
               <div class="w-50">
                 <p class="card-title card__content__title">Score</p>
                 <h3 class="card-text">
-                  {{ data?.lastTestResult.points }}/{{
+                  {{ data?.lastTestResult.score }}/{{
                     data?.lastTestResult?.testId.questions.length
                   }}
                 </h3>
               </div>
               <div class="w-50">
                 <p class="card-title card__content__title">Points</p>
-                <h3 class="card-text">
-                  {{ data?.lastTestResult.points ?? 0 }}
+                <h3 class="card-text" *ngIf="data?.lastTestResult.points">
+                  {{ data?.lastTestResult.points ?? "-" }}
                 </h3>
+                <p class="card-text mb-0" *ngIf="!data?.lastTestResult.points">
+                  Points will be disclosed after result declaration.
+                </p>
               </div>
             </div>
             <hr />
@@ -45,7 +48,14 @@
         </div>
       </div>
 
-      <div class="px-2 py-1 mb-1" *ngIf="!scoreLoading && scoreReferral">
+      <div
+        class="px-2 py-1 mb-1"
+        *ngIf="
+          !scoreLoading &&
+          scoreReferral &&
+          scoreReferral.userReferralPoints + scoreReferral.testsPoints > 0
+        "
+      >
         <div class="card text-center card__test">
           <div class="card-header position-relative">
             <h5 class="card-title mb-1">Points</h5>
@@ -72,8 +82,7 @@
             <h3 class="card-text" *ngIf="data?.lastTestResult?.rank">
               {{
                 (
-                  scoreReferral.userReferralPoints +
-                  this.scoreReferral.testsPoints
+                  scoreReferral.userReferralPoints + scoreReferral.testsPoints
                 ).toFixed(2)
               }}
             </h3>
@@ -138,7 +147,7 @@
                   d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"
                 />
               </svg>
-              <span class="ms-1">Test Scheduled</span>
+              <span class="ms-1">Test Schedule</span>
             </button>
           </div>
           <div class="w-60 ps-1">
