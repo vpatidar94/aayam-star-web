@@ -1,8 +1,12 @@
 <div class="">
-  <org-content-header
-    title="Tests"
-    [breadcrumbs]="breadcrumbs"
-  ></org-content-header>
+  <org-content-header title="Tests" [breadcrumbs]="breadcrumbs">
+    <button
+      class="btn btn-primary me-2 ms-auto"
+      [routerLink]="['/admin/add-test']"
+    >
+      Add Test
+    </button>
+  </org-content-header>
   <div class="row mt-4">
     <div class="col col-12">
       <div class="card p-2">
@@ -26,7 +30,7 @@
               <td>{{ item.testDate | date }}</td>
               <td>
                 <button
-                  class="btn btn-sm btn-primary me-2"
+                  class="btn btn-sm btn-secondary me-2"
                   (click)="generateRank(item._id)"
                 >
                   <span *ngIf="!btnLoading; else spinner"> Generate Rank </span>
@@ -39,7 +43,7 @@
                   ></span>
                 </ng-template>
                 <button
-                  class="btn btn-sm btn-primary"
+                  class="btn btn-sm btn-secondary"
                   [routerLink]="['/admin/test-result/' + item._id]"
                 >
                   View
