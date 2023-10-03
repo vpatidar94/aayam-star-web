@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<CustomHttpResponse<any>>> {
     const token = this.apiService.getAccessToken();
 
-    if (token) {
+    if (token && request.url !== environment.WHATSAPP_URL) {
       request = request.clone({
         setHeaders: {
           Authorization: `${token}`,
@@ -39,8 +39,10 @@ export class AuthInterceptor implements HttpInterceptor {
         switch (error.status) {
           case 401:
           case 403:
-            this.alertService.error(error.error.error);
-            this.apiService.logout();
+            if (request.url !== environment.WHATSAPP_URL) {
+              this.alertService.error(error.error.error);
+              this.apiService.logout();
+            }
             break;
           case 400:
             this.alertService.error(error.error.error);

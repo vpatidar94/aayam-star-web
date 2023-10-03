@@ -47,7 +47,7 @@ export class AddTestComponent implements OnInit {
   ];
   tForm!: FormGroup;
   streamOptions = ["NEET", "JEE"] as Array<StreamType>;
-  subjectOptions = ["Physics", "Chemistry", "Maths"] as Array<SubjectNameType>;
+  subjectOptions = ["Physics", "Chemistry", "Biology"] as Array<SubjectNameType>;
   questionOptions = CONSTANTS.QUESTION_OPTIONS;
 
 
@@ -75,6 +75,7 @@ export class AddTestComponent implements OnInit {
     });
     this.addDefaultQuestions();
     this.getTestDetails();
+    this.changeStream();
   }
 
   changeStream() {
@@ -128,7 +129,6 @@ export class AddTestComponent implements OnInit {
         x.image = x.image.replace('{test-id}', folderName);
         x.image = x.image.replace('{i}', index + 1);
       });
-      // https://aayam-star-bucket.blr1.digitaloceanspaces.com/phy-test-1/Q1.jpg
 
       const newTestDate = new Date(
         this.tForm.value.testDate.getUTCFullYear(),

@@ -9,6 +9,7 @@ import { CONSTANTS } from 'src/app/core/constant/constant';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { TimerProgressComponent } from 'src/app/shared/timer-progress/timer-progress.component';
 import { environment } from 'src/environments/environment';
+import { HelperService } from 'src/app/core/services/helper';
 
 @Component({
   selector: 'org-question',
@@ -19,7 +20,9 @@ import { environment } from 'src/environments/environment';
 
 })
 export class QuestionComponent implements OnInit, OnDestroy {
-  constructor(private router: Router, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService) {
+  constructor(private router: Router, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService,
+    private helperService: HelperService
+  ) {
     document.addEventListener("visibilitychange", this.visibilityChange);
     this.bucketUrl = environment.BUCKET_URL;
   }
@@ -109,6 +112,20 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.setQuestion();
   }
 
+  sendWPMessage(title: string, score: string, outOf: string) {
+    const userDetail = this.helperService.getUserDetails();
+    this.apiService.sendScore('91' + userDetail.mobileNo, title, score, outOf).subscribe({
+      next: () => {
+        this.router.navigate(['/dashboard']);
+        this.loading = false;
+      },
+      error: () => {
+        this.router.navigate(['/dashboard']);
+        this.loading = false;
+      }
+    });
+  }
+
   setQuestion() {
     this.question = this.questions[this.questionIndex] ?? null;
   }
@@ -135,12 +152,12 @@ export class QuestionComponent implements OnInit, OnDestroy {
           if (res.status_code === 'success') {
             this.result = res.data;
             this.isSubmit = true;
-            this.router.navigate(['/dashboard']);
+            this.sendWPMessage(this.questionDetails.title, this.result.score + '', this.questions.length + '');
           }
           else {
             this.alertService.error('Error in submit response. Please try again!');
+            this.loading = false;
           }
-          this.loading = false;
         },
         error: (err) => {
           this.alertService.error(err)

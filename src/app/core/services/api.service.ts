@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { CONSTANTS, StreamType } from "../constant/constant";
-import { Observable, catchError, map, throwError } from "rxjs";
+import { Observable, catchError, map, retry, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { AlertService } from "./alert.service";
 import { CustomHttpResponse } from "src/app/models/custom-http-response";
@@ -102,6 +102,7 @@ export class ApiService {
         { headers: headers }
       )
       .pipe(
+        retry(1),
         map((res) => {
           return res;
         }),
@@ -273,6 +274,73 @@ export class ApiService {
       .pipe(
         map((res) => {
           return res?.data;
+        })
+      );
+  }
+
+  sendScore(number: string, title: string, score: string, outOf: string): Observable<{ messaging_product: string, contacts: any, messages: any }> {
+    const payload = {
+      "to": number,
+      "recipient_type": "individual",
+      "type": "template",
+      "template": {
+        "language": {
+          "policy": "deterministic",
+          "code": "en"
+        },
+        "name": "aayam_start_makrs",
+        "components": [
+          {
+            "type": "body",
+            "parameters": [
+              {
+                "type": "text",
+                "text": title + " test"
+              },
+              {
+                "type": "text",
+                "text": score + ''
+              },
+              {
+                "type": "text",
+                "text": outOf + ''
+              },
+              {
+                "type": "text",
+                "text": score + ''
+              },
+              {
+                "type": "text",
+                "text": outOf + ''
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    return this.WPMessageTemplate(payload);
+  }
+
+  WPMessageTemplate(payload: any) {
+    const url = environment.WHATSAPP_URL;
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('API-KEY', atob(environment.W_API_KEY));
+
+    return this.http
+      .post<{ messaging_product: string, contacts: any, messages: any }>(
+        url,
+        payload,
+        { headers: headers }
+      )
+      .pipe(
+        retry(1),
+        map((res) => {
+          return res;
+        }),
+        catchError((error) => {
+          return throwError(() => error);
         })
       );
   }
