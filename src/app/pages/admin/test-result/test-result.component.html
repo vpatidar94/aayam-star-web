@@ -53,6 +53,21 @@
       </accordion>
     </div>
     <div class="col col-12 mt-2">
+      <button
+        class="btn btn-sm btn-secondary me-2"
+        (click)="sendWpMessages()"
+      >
+        <span *ngIf="!btnLoading; else spinner"> Send Whatsapp Message </span>
+      </button>
+      <ng-template #spinner>
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+      </ng-template>
+    </div>
+    <div class="col col-12 mt-2">
       <div class="card p-2">
         <table class="table">
           <thead class="table-light">

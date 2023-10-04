@@ -5,6 +5,7 @@ import { AlertService } from "src/app/core/services/alert.service";
 import { ContentHeaderComponent } from "src/app/shared/content-header/content-header.component";
 import { ActivatedRoute } from "@angular/router";
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CONSTANTS } from "src/app/core/constant/constant";
 
 @Component({
   selector: "org-test-result",
@@ -30,6 +31,7 @@ export class TestResultComponent {
       path: '/admin'
     }
   ];
+  btnLoading=false as boolean;
   isAccordianOpen = true;
   ngOnInit(): void {
     this.getTestDetail();
@@ -71,5 +73,21 @@ export class TestResultComponent {
 
   showTimeInMMSS(sec: number) {
     return new Date(sec * 1000).toISOString().slice(14, 19);
+  }
+
+  sendWpMessages() {
+    this.btnLoading = true;
+    this.apiService
+      .sendWpMessage(this.testId)
+      .subscribe({
+        next: (res) => {
+          this.alertService.success("Message send succesfully.");
+          this.btnLoading = false;
+        },
+        error: (err) => {
+          this.alertService.error(err.message);
+          this.btnLoading = false;
+        }
+      });
   }
 }
