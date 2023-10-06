@@ -77,12 +77,19 @@ export class TestResultComponent {
 
   sendWpMessages() {
     this.btnLoading = true;
+    const payload = {
+      title: this.testDetail.title,
+      testId: this.testId,
+    }
+
     this.apiService
-      .sendWpMessage(this.testId)
+      .sendWpMessage(payload)
       .subscribe({
         next: (res) => {
           this.alertService.success("Message send succesfully.");
           this.btnLoading = false;
+          console.log(">>>>>>>>>>>",payload.title);
+          console.log("....",res)
         },
         error: (err) => {
           this.alertService.error(err.message);

@@ -241,16 +241,18 @@ export class ApiService {
       );
   }
 
-  sendWpMessage(testId: string): Observable<any> {
+  sendWpMessage(payload:any): Observable<any> {
     return this.http
-      .get<CustomHttpResponse<any>>(
-        CONSTANTS.API.SEND_WP_MESSAGES + '/' + testId
+      .post<CustomHttpResponse<any>>(
+        CONSTANTS.API.SEND_WP_MESSAGES,
+        payload
       )
       .pipe(
         map((res) => {
           return res?.data;
         })
       );
+      
   }
 
   getResultByTest(testId: string): Observable<any> {
