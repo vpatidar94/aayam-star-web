@@ -29,12 +29,12 @@
               <td>{{ item.subjectName }}</td>
               <td>{{ item.testDate | date }}</td>
               <td>
-                <button
+                <!-- <button
                   class="btn btn-sm btn-secondary me-2"
                   (click)="generateRank(item._id)"
                 >
                   <span *ngIf="!btnLoading; else spinner"> Generate Rank </span>
-                </button>
+                </button> -->
                 <ng-template #spinner>
                   <span
                     class="spinner-border spinner-border-sm"

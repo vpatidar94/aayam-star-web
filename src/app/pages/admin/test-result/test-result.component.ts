@@ -24,6 +24,7 @@ export class TestResultComponent {
   loading = false;
   data = [] as any;
   testId = '';
+  isRankGenerated = false as boolean;
   testDetail = null as any;
   breadcrumbs = [
     {
@@ -88,8 +89,23 @@ export class TestResultComponent {
         next: (res) => {
           this.alertService.success("Message send succesfully.");
           this.btnLoading = false;
-          console.log(">>>>>>>>>>>",payload.title);
-          console.log("....",res)
+        },
+        error: (err) => {
+          this.alertService.error(err.message);
+          this.btnLoading = false;
+        }
+      });
+  }
+
+  generateRank() {
+    this.btnLoading = true;
+    this.apiService
+      .generateRank(this.testId)
+      .subscribe({
+        next: (res) => {
+          this.alertService.success(CONSTANTS.MESSAGES.GENERATED_RANK_SUCCESS);
+          this.btnLoading = false;
+          this.isRankGenerated = true;
         },
         error: (err) => {
           this.alertService.error(err.message);

@@ -60,7 +60,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  // on page change
+  // // on page change
   async canDeactivate(): Promise<boolean> {
     if (!this.isSubmit) {
       if (confirm('You have not submit the test paper. Are you sure you want to leave?')) {
@@ -87,6 +87,12 @@ export class QuestionComponent implements OnInit, OnDestroy {
       this.question = x.questions[0] ?? null;
       this.loading = false;
     }, (err) => {
+      console.log(err.status)
+      if(err.status == 452){
+        this.isSubmit = true;
+        this.router.navigate(["/dashboard"]);
+        
+      }
       this.alertService.error(err.error.error);
       this.loading = false;
     })
