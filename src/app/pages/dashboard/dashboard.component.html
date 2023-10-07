@@ -61,23 +61,26 @@
         <div class="card text-center card__test">
           <div class="card-header position-relative">
             <h5 class="card-title mb-1">Points</h5>
-            <span
-              class="expand__collapse__icon"
-              (click)="isExpandedPoints = !isExpandedPoints"
-            >
-              <svg
-                *ngIf="!isExpandedPoints"
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 -960 960 960"
-                width="24"
-                fill="#ffffff"
+            <span class="expand__collapse__btn"  (click)="isExpandedPoints = !isExpandedPoints">
+              <span>View All</span>
+              <span
+                class="expand__collapse__btn-icon"
+               
               >
-                <path
-                  d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180ZM358-598l-58-58 180-180 180 180-58 58-122-122-122 122Z"
-                />
-              </svg>
-            </span>
+                <svg
+                  *ngIf="!isExpandedPoints"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                  fill="#ffffff"
+                >
+                  <path
+                    d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180ZM358-598l-58-58 180-180 180 180-58 58-122-122-122 122Z"
+                  />
+                </svg>
+              </span>
+          </span>
           </div>
           <div class="card-body py-1">
             <p class="card-title card__content__title">Total Points</p>
@@ -105,7 +108,7 @@
                   <td>
                     <p class="text-center mb-0">
                       Tests Earn Points :
-                      <strong>{{ scoreReferral.testsPoints }}</strong>
+                      <strong>{{ scoreReferral.testsPoints.toFixed(2) }}</strong>
                     </p>
                   </td>
                 </tr>

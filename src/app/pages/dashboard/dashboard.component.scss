@@ -18,13 +18,14 @@
 .w-60{
     width: 60%;
 }
-.expand__collapse__icon{
+.expand__collapse__btn {
     position: absolute;
-    right: 10px;
-    top: 10px;
-    background: #ffffff30;
-    border-radius: 50%;
+    right: 5px;
+    top: 5px;
+    background: rgba(255, 255, 255, 0.1882352941);
+    border-radius: 6px;
     cursor: pointer;
+    padding: 4px 4px 4px 8px;
 }
 
 .dashboard__result{
