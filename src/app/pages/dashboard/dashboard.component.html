@@ -52,8 +52,9 @@
         class="px-2 py-1 mb-1"
         *ngIf="
           !scoreLoading &&
-          scoreReferral &&
-          scoreReferral.userReferralPoints + scoreReferral.testsPoints > 0
+          scoreReferral 
+          &&
+          scoreReferral.userReferralPoints + scoreReferral.testsPoints >= 0
         "
       >
         <div class="card text-center card__test">
