@@ -57,9 +57,18 @@ export class DashboardComponent implements OnInit {
         next: (res) => {
           if (res?.tests.length > 0) {
             this.scoreReferral.tests = res?.tests as any;
-            this.scoreReferral.testsPoints = res.tests.reduce((previousVal: any, currentVal: any) => {
+            const noOfTests= this.scoreReferral.tests.length
+            if(this.scoreReferral.tests[noOfTests-1].points===undefined){
+              const prevTests= res.tests.slice(0,noOfTests-1 )
+               this.scoreReferral.testsPoints = prevTests.reduce((previousVal: any, currentVal: any) => {
               return previousVal.points + currentVal.points;
             });
+            }else{
+              this.scoreReferral.testsPoints = res.tests.reduce((previousVal: any, currentVal: any) => {
+                return previousVal.points + currentVal.points;
+              });
+            }
+           
           }
           this.scoreReferral.userReferralPoints = res?.userReferralPoints;
           this.scoreLoading = false;
