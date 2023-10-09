@@ -1,18 +1,22 @@
 <div class="body__bg">
-  <org-dashboard-header
-    [title]="questionDetails.title"
-    [subTitle]="questionDetails.subTitle"
-  >
+  <org-dashboard-header [title]="questionDetails.title" [subTitle]="questionDetails.subTitle">
   </org-dashboard-header>
   <div class="dashboard__card question px-3 py-3">
+    <div class="d-flex flex-column medium__group mt-2">
+      <!-- <label for="mobile-field" class="mb-2 text__body-dark">Select Subject</label> -->
+      <div class="btn-group btn-secondary" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" [(ngModel)]="isHindiMedium" id="radio-english" [value]="false"
+          autocomplete="off" />
+        <label class="btn btn-outline-secondary p-1" for="radio-english">English</label>
+        <input type="radio" class="btn-check" [(ngModel)]="isHindiMedium" id="radio-hindi" [value]="true"
+          autocomplete="off" />
+        <label class="btn btn-outline-secondary p-1" for="radio-hindi">Hindi</label>
+      </div>
+    </div>
     <!-- timer -->
-    <org-timer-progress
-      class="timer"
-      [totalDuration]="questionDetails?.testDuration"
-      *ngIf="questionDetails && !!questionDetails.testDuration"
-      (endTimer)="onTimeout()"
-      (currentDuration)="updateSubmitDuration($event)"
-    ></org-timer-progress>
+    <org-timer-progress class="timer" [totalDuration]="questionDetails?.testDuration"
+      *ngIf="questionDetails && !!questionDetails.testDuration" (endTimer)="onTimeout()"
+      (currentDuration)="updateSubmitDuration($event)"></org-timer-progress>
     <!-- heading -->
     <h4 *ngIf="!!question" class="text-center text-grey mt-4">
       Question {{ questionIndex + 1 }}
@@ -23,63 +27,42 @@
     </div>
     <!-- question -->
     <ng-container *ngIf="!!question">
-      <img
+      <img class="question__img" [alt]="'question' + questionIndex"
+        [src]="bucketUrl + '/' + (isHindiMedium ? question.imageHindi : question.image)" />
+      <!-- <img *ngIf="selectedValue==='hindi'"
         class="question__img"
-        [alt]="'question' + questionIndex"
-        [src]="bucketUrl + '/' + question.image"
+        [alt]="'hindi-question' + questionIndex"
+        [src]="bucketUrl + '/' + question.imageHindi"
         loading="lazy"
-      />
+      /> -->
       <form class="row g-3 mt-1">
         <div class="w-25" *ngFor="let option of options">
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="answer"
-              [id]="'radio-' + option"
-              [(ngModel)]="answer"
-              required
-              [value]="option"
-            />
+            <input class="form-check-input" type="radio" name="answer" [id]="'radio-' + option" [(ngModel)]="answer"
+              required [value]="option" />
             <label class="form-check-label" [for]="'radio-' + option">
               {{ option }}
             </label>
           </div>
         </div>
         <div class="col-12 mt-2">
-          <button
-            type="button"
-            class="ibtn ibtn__primary w-100 mb-1"
-            [disabled]="loading || !answer"
-            (click)="onSubmit()"
-          >
+          <button type="button" class="ibtn ibtn__primary w-100 mb-1" [disabled]="loading || !answer"
+            (click)="onSubmit()">
             <span *ngIf="!loading; else spinner">
               {{
-                questions.length - 1 > questionIndex
-                  ? "Submit Answer and Next"
-                  : "Submit Test"
+              questions.length - 1 > questionIndex
+              ? "Submit Answer and Next"
+              : "Submit Test"
               }}
             </span>
           </button>
           <ng-template #spinner>
-            <span
-              class="spinner-border spinner-border-sm"
-              role="status"
-              aria-hidden="true"
-            ></span>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           </ng-template>
         </div>
       </form>
-      <div
-        class="col-12 mt-1 text__grey text-center"
-        *ngIf="questions.length - 1 > questionIndex"
-      >
-        <a
-          href="javascript:void()"
-          class="text__action__primary"
-          (click)="skipQuestion()"
-          >Pass Question</a
-        >
+      <div class="col-12 mt-1 text__grey text-center" *ngIf="questions.length - 1 > questionIndex">
+        <a href="javascript:void()" class="text__action__primary" (click)="skipQuestion()">Pass Question</a>
       </div>
     </ng-container>
   </div>

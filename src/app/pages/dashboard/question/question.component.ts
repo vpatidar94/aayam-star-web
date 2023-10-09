@@ -20,6 +20,7 @@ import { HelperService } from 'src/app/core/services/helper';
 
 })
 export class QuestionComponent implements OnInit, OnDestroy {
+  selectedValue: string = '';
   constructor(private router: Router, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService,
     private helperService: HelperService
   ) {
@@ -39,6 +40,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   testId = '' as string | number;
   isSubmit = false;
   submitDuration = 0;
+  isHindiMedium = false as boolean;
   // show dialog on visibility change
   visibilityChange() {
     if (document.visibilityState === "hidden") {
@@ -74,7 +76,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.route.params.subscribe(params => {
       this.testId = params['testId'];
       // this.question = this.questions[this.questionIndex] ?? null;

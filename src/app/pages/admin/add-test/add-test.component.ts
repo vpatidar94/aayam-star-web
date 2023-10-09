@@ -68,10 +68,10 @@ export class AddTestComponent implements OnInit {
       testDate: new FormControl(null, [
         Validators.required
       ]),
-      testDuration: new FormControl(600, [
+      testDuration: new FormControl(600, [  
         Validators.required
       ]),
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
     });
     this.addDefaultQuestions();
     this.getTestDetails();
@@ -101,7 +101,8 @@ export class AddTestComponent implements OnInit {
   addQuestion() {
     const formGroup = this.fb.group({
       id: null,
-      image: '{test-id}/Q{i}.jpg',
+      image: '{test-id}/Q{i}.webp',
+      imageHindi: '{test-id}/Q{i}-h.webp',
       correctAnswer: new FormControl('A', [
         Validators.required,
       ]),
@@ -128,8 +129,10 @@ export class AddTestComponent implements OnInit {
         x.id = index + 1;
         x.image = x.image.replace('{test-id}', folderName);
         x.image = x.image.replace('{i}', index + 1);
+        x.imageHindi = x.imageHindi.replace('{test-id}', folderName);
+        x.imageHindi = x.imageHindi.replace('{i}', index + 1);
       });
-
+      
       const newTestDate = new Date(
         this.tForm.value.testDate.getUTCFullYear(),
         this.tForm.value.testDate.getUTCMonth(),
