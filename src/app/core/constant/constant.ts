@@ -18,7 +18,6 @@ export const CONSTANTS = Object.freeze({
     SEND_WP_MESSAGES: '/result/sendWpMessage',
     GET_RESULT_BY_TEST: '/result/getResultByTest',
     ADD_TEST_DETAIL: '/test/addTest',
-
   },
   MESSAGES: {
     LOGIN_FAILURE: "Login failed",

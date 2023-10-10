@@ -228,7 +228,22 @@ export class ApiService {
         })
       );
   }
-
+  getAllUsers(): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        '/users'
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+  getAllResults():  Observable<any> {
+    return this.http.get<CustomHttpResponse<any>>(
+      '/result/getAllResultsDetails'
+    )
+  }
   generateRank(testId: string): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(
