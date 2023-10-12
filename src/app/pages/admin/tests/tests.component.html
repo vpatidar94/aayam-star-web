@@ -29,6 +29,7 @@
               <th>Subject</th>
               <th>Date</th>
               <th>Action</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +51,11 @@
                 </ng-template>
                 <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/test-result/' + item._id]">
                   View
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-secondary" (click)="deleteTest(item._id)">
+                  <span *ngIf="!item.btnLoading; else spinner">Delete</span>
                 </button>
               </td>
             </tr>

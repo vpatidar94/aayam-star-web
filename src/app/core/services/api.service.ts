@@ -228,6 +228,20 @@ export class ApiService {
         })
       );
   }
+
+  deleteTest(testId:string): Observable<any> {
+    return this.http
+      .delete<CustomHttpResponse<any>>(
+        '/test/deleteTest'
+        + '/' + testId
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
   getAllUsers(): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(

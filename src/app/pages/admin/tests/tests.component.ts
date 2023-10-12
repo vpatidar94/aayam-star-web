@@ -17,6 +17,7 @@ import { FormsModule } from "@angular/forms";
 export class TestsComponent {
   constructor(private apiService: ApiService, private alertService: AlertService) { }
   loading = false;
+  testId = '';
   btnLoading = false;
   data = [] as any;
   userData = [] as any;
@@ -31,7 +32,6 @@ export class TestsComponent {
 
   ngOnInit(): void {
     this.getAllTestDetails();
-    this.getAllUsersDetails();
     this.getAllResultDetails();
   }
 
@@ -50,7 +50,36 @@ export class TestsComponent {
         }
       });
   }
-  
+
+  deleteTest(testId: string) {
+    const item = this.data.find((d: any) => d._id === testId);
+
+    if (!item) {
+      return;
+    }
+
+    if (confirm('Are you sure to Delete the Test?')) {
+      item.btnLoading = true;
+      this.apiService
+        .deleteTest(testId)
+        .subscribe({
+          next: (res) => {
+            this.data = res;
+            item.btnLoading = false;
+            this.getAllTestDetails();
+          },
+          error: (err) => {
+            this.alertService.error(err.message);
+            item.btnLoading = false;
+          }
+        });
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   getAllResultDetails() {
     this.loading = true;
     this.apiService
@@ -58,7 +87,7 @@ export class TestsComponent {
       .subscribe({
         next: (res) => {
           this.resultData = res.data;
-          this.resultData.sort((a:any, b:any) => {
+          this.resultData.sort((a: any, b: any) => {
             const sumA = a.totalTestPoints + a.userDetails.referralPoints;
             const sumB = b.totalTestPoints + b.userDetails.referralPoints;
             // Sort in descending order
