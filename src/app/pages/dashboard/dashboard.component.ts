@@ -93,4 +93,23 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  share() {
+    const shareText = 'Register to Aayam Star,'; 
+    const referralLink = this.generateReferralLink();
+    const shareUrl = window.location.href; // Use the current URL or provide a specific URL
+
+    // Share via WhatsApp
+    window.open(`whatsapp://send?text=${encodeURIComponent(shareText + ' ' + referralLink)}`);
+
+    // Share via Facebook
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`);
+
+    // Share via Telegram
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent(shareText)}`);
+  }
+
+  generateReferralLink(): string {
+    const user = this.helperService.getUserDetails();
+    return `${window.location.origin}/login?referredBy=${user._id}`;
+  }
 }
