@@ -93,19 +93,27 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  share() {
-    const shareText = 'Register to Aayam Star,'; 
+  async share() {
+    const shareText = 'Register to Aayam Star,';
     const referralLink = this.generateReferralLink();
-    const shareUrl = window.location.href; // Use the current URL or provide a specific URL
-
-    // Share via WhatsApp
-    window.open(`whatsapp://send?text=${encodeURIComponent(shareText + ' ' + referralLink)}`);
-
-    // Share via Facebook
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`);
-
-    // Share via Telegram
-    window.open(`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent(shareText)}`);
+    const shareUrl = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'AAYAM STAR',
+          text: `${shareText}\n${referralLink}`,
+          url: shareUrl,
+          // files: [new File(['image_data'], 'sample_image.jpg', { type: 'image/jpeg' })], // Replace with your actual image data
+        });
+      } else {
+        console.error('Web Share API not supported');
+        this.alertService.error('Browser do not support Clipboard API')
+        // Share via WhatsApp
+        window.open(`whatsapp://send?text=${encodeURIComponent(shareText + ' ' + referralLink)}`);
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   }
 
   generateReferralLink(): string {
