@@ -98,35 +98,18 @@ export class DashboardComponent implements OnInit {
     const referralLink = this.generateReferralLink();
     const shareUrl = window.location.href;
     const imageUrl = 'https://aayamcareerinstitute.com/images/aayam-star/aayam-star-main.webp';
-
-    // try {
-    //   if (navigator.share) {
-    //     await navigator.share({
-    //       title: 'AAYAM STAR',
-    //       text: `${shareText}\n${referralLink}`,
-    //       // url: shareUrl,
-    //       files: [new File(['image_data'], 'sample_image.jpg', { type: 'image/jpeg' })], // Replace with your actual image data
-    //     });
-    //   } else {
-    //     console.error('Web Share API not supported');
-    //     this.alertService.error('Browser do not support Clipboard API')
-    //     // Share via WhatsApp
-    //     window.open(`whatsapp://send?text=${encodeURIComponent(shareText + ' ' + referralLink)}`);
-    //   }
-    // }
+    
     try {
-      const response = await fetch(imageUrl);
-      const imageBlob = await response.blob();
-  
+      // const response = await fetch(imageUrl);
+      // const imageBlob = await response.blob();
       if (navigator.share) {
-        const shareData: ShareData = {
+        await navigator.share({
           title: 'AAYAM STAR',
           text: `${shareText}\n${referralLink}`,
-          files: [new File([imageBlob], 'aayam-star-main.webp', { type: 'image/webp' })],
-        };
-  
-        await navigator.share(shareData);
-      }else {
+          // url: shareUrl,
+          //  files: [new File([imageBlob,], 'aayam-star-main.webp', { type: 'image/webp'})], // Replace with your actual image data
+        });
+      } else {
         console.error('Web Share API not supported');
         this.alertService.error('Browser do not support Clipboard API')
         // Share via WhatsApp
