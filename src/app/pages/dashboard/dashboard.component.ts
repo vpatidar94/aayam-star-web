@@ -117,16 +117,16 @@ export class DashboardComponent implements OnInit {
     try {
       const response = await fetch(imageUrl);
       const imageBlob = await response.blob();
-
-      const shareData: ShareData = {
-        title: 'AAYAM STAR',
-        text: `${shareText}\n${referralLink}`,
-        files: [new File([imageBlob], 'aayam-star-main.webp', { type: 'image/webp' })],
-      };
-
+  
       if (navigator.share) {
+        const shareData: ShareData = {
+          title: 'AAYAM STAR',
+          text: `${shareText}\n${referralLink}`,
+          files: [new File([imageBlob], 'aayam-star-main.webp', { type: 'image/webp' })],
+        };
+  
         await navigator.share(shareData);
-      } else {
+      }else {
         console.error('Web Share API not supported');
         this.alertService.error('Browser do not support Clipboard API')
         // Share via WhatsApp
