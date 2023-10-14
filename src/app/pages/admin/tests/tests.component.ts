@@ -94,7 +94,7 @@ export class TestsComponent {
             return sumB - sumA;
           });
           this.loading = false;
-          console.log(this.resultData)
+         
         },
         error: (err) => {
           this.alertService.error(err.message);

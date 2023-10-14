@@ -55,8 +55,8 @@ export class DashboardComponent implements OnInit {
       .getAllScoreAndPoints()
       .subscribe({
         next: (res) => {
-          if (res?.tests.length > 0) {
-            this.scoreReferral.tests = res?.tests as any;
+          if (res?.tests.length > 0) {    
+            this.scoreReferral.tests = res?.tests as any; 
             this.scoreReferral.testsPoints = res.tests.reduce((previousVal: any, currentVal: any) => {
               return (isNaN(previousVal) ? (previousVal?.points ?? 0) : (previousVal ?? 0)) + (currentVal.points ?? 0);
             });
@@ -124,5 +124,9 @@ export class DashboardComponent implements OnInit {
   generateReferralLink(): string {
     const user = this.helperService.getUserDetails();
     return `${window.location.origin}/login?referredBy=${user._id}`;
+  }
+
+  OnReview(testId:any){
+    this.router.navigate(["/test/"+ testId +"/review"]);
   }
 }

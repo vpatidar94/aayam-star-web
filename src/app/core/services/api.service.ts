@@ -180,6 +180,18 @@ export class ApiService {
       );
   }
 
+  getTestResultByUser(testId: string | number): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        '/result/getTestResultByUser' + '/' + testId 
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
   submitResult(payload: any): Observable<any> {
     return this.http
       .post<CustomHttpResponse<any>>(
