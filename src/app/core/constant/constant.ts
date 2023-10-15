@@ -38,6 +38,8 @@ export const CONSTANTS = Object.freeze({
 export type ButtonType = 'button' | 'submit';
 export type AlertType = 'success' | 'info' | 'danger' | 'warning' | '';
 
+export type ClassType = "9" | "10" | "11" | "12" | "DROPPER";
+export type SubjectGroupType = "PCM" | "PCB";
 export type StreamType = 'NEET' | 'JEE';
 
-export type SubjectNameType = 'Physics' | 'Chemistry' | 'Maths' | 'Biology';
+export type SubjectNameType = "PHYSICS" | "CHEMISTRY" | "BIOLOGY" | "MATHS" | "SCIENCE" | "SOCIAL-SCIENCE";

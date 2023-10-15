@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "src/app/core/services/api.service";
 import { AlertService } from "src/app/core/services/alert.service";
 import { FieldValidationMessageComponent } from "src/app/shared/field-validation-message/field-validation-message.component";
-import { CONSTANTS, StreamType, SubjectNameType } from "src/app/core/constant/constant";
+import { CONSTANTS, ClassType, StreamType, SubjectNameType } from "src/app/core/constant/constant";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @Component({
@@ -46,12 +46,19 @@ export class AddTestComponent implements OnInit {
     }
   ];
   tForm!: FormGroup;
-  streamOptions = ["NEET", "JEE"] as Array<StreamType>;
-  subjectOptions = ["Physics", "Chemistry", "Biology"] as Array<SubjectNameType>;
+  // streamOptions = ["NEET", "JEE"] as Array<StreamType>;
+  streamOptions = ["9", "10", "11", "12", "DROPPER"] as Array<ClassType>;
+
+  subjectOptions = ["PHYSICS", "CHEMISTRY", "BIOLOGY", "MATHS"] as Array<SubjectNameType>;
   questionOptions = CONSTANTS.QUESTION_OPTIONS;
 
 
   ngOnInit(): void {
+    const initialCheckboxValues = {} as any;
+    for (const option of this.streamOptions) {
+      initialCheckboxValues[option] = false;
+    }
+
     this.tForm = new FormGroup({
       id: new FormControl(null),
       title: new FormControl('', [
@@ -59,31 +66,42 @@ export class AddTestComponent implements OnInit {
       ]),
       subTitle: new FormControl('', [
       ]),
-      stream: new FormControl('NEET', [
+      stream: new FormControl('11', [
         Validators.required
       ]),
-      subjectName: new FormControl('Physics', [
+      // stream: this.fb.array([]),
+      // stream: new FormArray([
+      //   new FormControl(true),
+      //   new FormControl(false),
+      //   new FormControl(false),
+      //   new FormControl(false),
+      //   new FormControl(false),
+      // ]),
+      subjectName: new FormControl('PHYSICS', [
         Validators.required
       ]),
       testDate: new FormControl(null, [
         Validators.required
       ]),
-      testDuration: new FormControl(600, [  
+      testDuration: new FormControl(600, [
         Validators.required
       ]),
       questions: this.fb.array([]),
     });
     this.addDefaultQuestions();
     this.getTestDetails();
-    this.changeStream();
+    // this.changeStream();
   }
 
   changeStream() {
     const stream = this.tForm.get('stream')?.value;
-    if (stream === 'NEET') {
-      this.subjectOptions = ["Physics", "Chemistry", "Biology"]
+    this.tForm.patchValue({
+      subjectName: null
+    });
+    if (stream === '11' || stream === '12' || stream === 'DROPPER') {
+      this.subjectOptions = ["PHYSICS", "CHEMISTRY", "BIOLOGY", "MATHS"]
     } else {
-      this.subjectOptions = ["Physics", "Chemistry", "Maths"]
+      this.subjectOptions = ["MATHS", "SCIENCE", "SOCIAL-SCIENCE"];
     }
   }
 
@@ -122,29 +140,42 @@ export class AddTestComponent implements OnInit {
       this.tForm.markAllAsTouched();
     } else {
       this.loading = true;
-      const testDate = this.tForm.value.testDate.getDate() + '-' + (this.tForm.value.testDate.getMonth() + 1) + '-' + this.tForm.value.testDate.getFullYear();
-      const folderName = this.tForm.value.id ?? (this.tForm.value.subjectName + '-' + testDate);
+      const fromVal = this.tForm.value;
+      const testDate = fromVal.testDate.getDate() + '-' + (fromVal.testDate.getMonth() + 1) + '-' + fromVal.testDate.getFullYear();
+      const folderName = fromVal.id ?? (fromVal.stream + '-' + fromVal.subjectName + '-' + testDate);
 
-      this.tForm.value.questions.map((x: any, index: number) => {
+      fromVal.questions.map((x: any, index: number) => {
         x.id = index + 1;
         x.image = x.image.replace('{test-id}', folderName);
         x.image = x.image.replace('{i}', index + 1);
         x.imageHindi = x.imageHindi.replace('{test-id}', folderName);
         x.imageHindi = x.imageHindi.replace('{i}', index + 1);
       });
-      
+
       const newTestDate = new Date(
-        this.tForm.value.testDate.getUTCFullYear(),
-        this.tForm.value.testDate.getUTCMonth(),
-        this.tForm.value.testDate.getUTCDate(),
-        5,
-        30,
+        fromVal.testDate.getUTCFullYear(),
+        fromVal.testDate.getUTCMonth(),
+        fromVal.testDate.getUTCDate(),
+        0,
+        0,
         0
       );
+      newTestDate.setMinutes(newTestDate.getMinutes() - newTestDate.getTimezoneOffset());
 
       const resultDate = new Date(newTestDate.toString());
       resultDate.setDate(resultDate.getDate() + 1).toLocaleString();
 
+      let streamDb = []
+      if (fromVal.stream === '9' || fromVal.stream === '10')
+        streamDb = [fromVal.stream]
+      if (fromVal.subjectName === 'PHYSICS' || fromVal.subjectName === 'CHEMISTRY')
+        streamDb = [fromVal.stream + "-PCB", fromVal.stream + "-PCM"];
+      else if (fromVal.subjectName === 'BIOLOGY')
+        streamDb = [fromVal.stream + "-PCB"];
+      else if (fromVal.subjectName === 'MATHS')
+        streamDb = [fromVal.stream + "-PCM"]
+      else
+        streamDb = [fromVal.stream]
       const payload = {
         ...this.tForm.value,
         id: folderName,
@@ -152,8 +183,10 @@ export class AddTestComponent implements OnInit {
         testDate: newTestDate.toString(),
         resultDate: resultDate.toString(),
         passingScore: this.tForm.value.questions.length / 2,
+        stream: streamDb
       }
 
+      this.loading = false;
       this.apiService
         .addTestDetails(payload).subscribe({
           next: () => {

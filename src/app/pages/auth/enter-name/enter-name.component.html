@@ -1,9 +1,9 @@
 <div class="body__bg">
   <org-auth-header path="/login"></org-auth-header>
-  <div class="main__card px-4 py-4">
-    <h4 class="text-center py-3 mb-4">Enter Your Details</h4>
+  <div class="main__card px-4 py-2">
+    <h4 class="text-center py-3 mb-1">Enter Your Details</h4>
     <form class="row g-3" [formGroup]="tForm" (ngSubmit)="onSubmit()">
-      <div class="col-12 mt-2 mb-2">
+      <div class="col-12 mt-1 mb-2">
         <label for="mobile-field" class="mb-2 text__body-dark"
           >Enter Full Name</label
         >
@@ -21,7 +21,7 @@
       </div>
       <div class="col-12 mt-4 mb-2">
         <label for="mobile-field" class="mb-2 text__body-dark"
-          >Select Stream</label
+          >Select Class</label
         >
         <div class="d-flex">
           <div class="me-4" *ngFor="let option of streamOptions">
@@ -33,6 +33,7 @@
                 [id]="'radio-' + option"
                 formControlName="stream"
                 [value]="option"
+                (change)="changeStream()"
               />
               <label class="form-check-label" [for]="'radio-' + option">
                 {{ option }}
@@ -42,6 +43,37 @@
         </div>
         <org-field-validation-message
           [control]="tForm.controls['stream']"
+        ></org-field-validation-message>
+      </div>
+      <div
+        class="col-12 mt-4 mb-2"
+        *ngIf="
+          tForm.value.stream === '11' ||
+          tForm.value.stream === '12' ||
+          tForm.value.stream === 'DROPPER'
+        "
+      >
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >Select Subject</label
+        >
+        <div class="d-flex">
+          <div class="me-4" *ngFor="let option of subjectOptions">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                [id]="'radio-' + option"
+                formControlName="subject"
+                [value]="option"
+              />
+              <label class="form-check-label" [for]="'radio-' + option">
+                {{ option }}
+              </label>
+            </div>
+          </div>
+        </div>
+        <org-field-validation-message
+          [control]="tForm.controls['subject']"
         ></org-field-validation-message>
       </div>
       <div class="col-12 mt-4">

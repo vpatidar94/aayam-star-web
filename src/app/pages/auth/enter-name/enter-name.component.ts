@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { FieldValidationMessageComponent } from 'src/app/shared/field-validation-message/field-validation-message.component';
 import { ValidationService } from 'src/app/core/services/validation.service';
-import { StreamType } from 'src/app/core/constant/constant';
+import { ClassType, StreamType, SubjectGroupType } from 'src/app/core/constant/constant';
 import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class EnterNameComponent implements OnInit {
 
   tForm!: FormGroup;
   loading = false;
-  streamOptions = ["NEET", "JEE"] as Array<StreamType>
+  streamOptions = ["9", "10", "11", "12", "DROPPER"] as Array<ClassType>;
+  subjectOptions = ["PCB", "PCM"] as Array<SubjectGroupType>;
 
   ngOnInit(): void {
     this.tForm = new FormGroup({
@@ -33,7 +34,18 @@ export class EnterNameComponent implements OnInit {
       stream: new FormControl(null, [
         Validators.required,
       ]),
+      subject: new FormControl(null),
     });
+  }
+
+  changeStream() {
+    const stream = this.tForm.get('stream')?.value;
+    if (stream === '11' || stream === '12' || stream === 'DROPPER') {
+      this.tForm.get('subject')?.addValidators(Validators.required);
+    } else {
+      this.tForm.get('subject')?.clearValidators();
+    }
+    this.tForm.get('subject')?.updateValueAndValidity();
   }
 
   onSubmit() {
@@ -41,10 +53,14 @@ export class EnterNameComponent implements OnInit {
       this.tForm.markAllAsTouched();
     } else {
       this.loading = true;
+      const tVal = this.tForm.value;
+      let streamVal = tVal.stream;
+      if (tVal.stream === '11' || tVal.stream === '12' || tVal.stream === 'DROPPER')
+        streamVal = tVal.stream + '-' + tVal.subject;
 
       this.apiService
         .updateName(
-          { name: this.tForm.value.name, stream: this.tForm.value.stream }
+          { name: this.tForm.value.name, stream: streamVal }
         ).subscribe({
           next: (res) => {
             if (res.status_code === 'success') {
