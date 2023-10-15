@@ -41,10 +41,13 @@ export class QuestionComponent implements OnInit, OnDestroy {
   isSubmit = false;
   submitDuration = 0;
   isHindiMedium = false as boolean;
+  isReview = false as boolean;
   // show dialog on visibility change
   visibilityChange() {
-    if (document.visibilityState === "hidden") {
-      confirm('You have not submit the test paper. Are you sure you want to leave?')
+    if (!this.isSubmit && this.isReview) {
+      if (document.visibilityState === "hidden") {
+        confirm('You have not submit the test paper. Are you sure you want to leave? jjjjj')      
+      }
     }
   }
 
@@ -76,32 +79,51 @@ export class QuestionComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.testId = params['testId'];
+      this.isReview = (params['mode'] === 'review')
       // this.question = this.questions[this.questionIndex] ?? null;
     });
     this.loading = true;
-    this.state$ = this.apiService.getQuestions(this.testId)
-    this.state$.subscribe((x) => {
-      this.questionDetails = x;
-      this.questions = x.questions
-      this.question = x.questions[0] ?? null;
-      this.loading = false;
-    }, (err) => {
-      if(err.status == 452){
-        this.isSubmit = true;
-        this.router.navigate(["/dashboard"]);        
-      }
-      this.alertService.error(err.error.error);
-      this.loading = false;
-    })
+    if (this.isReview) {
+      this.isSubmit = true;
+      this.state$ = this.apiService.getTestResultByUser(this.testId)
+      this.state$.subscribe((x) => {
+        this.questionDetails = x;
+        if(this.questionDetails[0].rank === null){
+          this.router.navigate(["/dashboard"]);
+        }
+        this.questions = x[0].studentResponse;
+        this.question = x[0].studentResponse[0] ?? null;
+        this.loading = false;
+      }, (err) => {
+        this.alertService.error(err.error.error);
+        this.loading = false;
+      })
+    }
+    else {
+      this.state$ = this.apiService.getQuestions(this.testId)
+      this.state$.subscribe((x) => {
+        this.questionDetails = x;
+        this.questions = x.questions
+        this.question = x.questions[0] ?? null;
+        this.loading = false;
+      }, (err) => {
+        if (err.status == 452) {
+          this.isSubmit = true;
+          this.router.navigate(["/dashboard"]);
+        }
+        this.alertService.error(err.error.error);
+        this.loading = false;
+      })
+    }
   }
 
   onSubmit() {
     if (this.answer) {
-      this.question['studentAnswer'] = this.answer
-      this.questions[this.questionIndex] = this.question
+      this.question['studentAnswer'] = this.answer;
+      this.questions[this.questionIndex] = this.question;
       if ((this.questions.length - 1) > this.questionIndex) {
         this.answer = '';
         this.questionIndex++;
@@ -115,6 +137,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   skipQuestion() {
     this.questionIndex = +this.questionIndex + 1;
+    this.setQuestion();
+  }
+
+  prevQuestion() {
+    this.questionIndex = +this.questionIndex - 1;
     this.setQuestion();
   }
 
@@ -137,16 +164,16 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async submitScore(questions: any) {
-    const data: { id: number, answer: string }[] = [];
-    questions.forEach((element: any) => {
-      data.push({
-        id: element.id,
-        answer: element.studentAnswer ?? '',
-      })
-    });
+    // const data: { id: number, answer: string }[] = [];
+    // questions.forEach((element: any) => {
+    //   data.push({
+    //     id: element.id,
+    //     answer: element.studentAnswer ?? '',
+    //   })
+    // });
     const payload = {
       testId: this.testId,
-      questions: data,
+      questions: questions,
       duration: this.submitDuration
     }
     this.loading = true;

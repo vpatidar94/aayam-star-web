@@ -55,6 +55,13 @@ export const appRoutes: Route[] = [
     canDeactivate: [(component: QuestionComponent) => component.canDeactivate()],
   },
   {
+    path: "test/:testId/:mode",
+    loadComponent: () =>
+      import('./pages/dashboard/question/question.component').then((x) => x.QuestionComponent),
+    canActivate: [canActivateUser],
+    canDeactivate: [(component: QuestionComponent) => component.canDeactivate()],
+  },
+  {
     path: "test-schedule",
     loadComponent: () =>
       import('./pages/dashboard/test-schedule/test-schedule.component').then((x) => x.TestScheduleComponent),
