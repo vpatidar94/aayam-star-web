@@ -185,8 +185,8 @@
           <td>{{ item?.rank }}</td>
           <td>{{ item?.points }}</td>
           <td class="text-center">
-            <div (click)="OnReview(item.testId)"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" fill="#222253">
+            <div (click)="OnReview(item.testId)" *ngIf="item.studentResponse && item.studentResponse.length > 0">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#222253">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
@@ -195,7 +195,8 @@
                   </path>
                   <path fill="none" d="M0 0h24v24H0z"></path>
                 </g>
-              </svg></div>
+              </svg>
+            </div>
           </td>
         </tr>
       </tbody>

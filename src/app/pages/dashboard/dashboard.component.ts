@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (res) => {
           if (res?.tests.length > 0) {    
-            this.scoreReferral.tests = res?.tests as any; 
+            this.scoreReferral.tests = res?.tests.reverse() as any; 
             this.scoreReferral.testsPoints = res.tests.reduce((previousVal: any, currentVal: any) => {
               return (isNaN(previousVal) ? (previousVal?.points ?? 0) : (previousVal ?? 0)) + (currentVal.points ?? 0);
             });
