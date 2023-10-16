@@ -5,7 +5,7 @@
     <h4 class="text-center text-grey">Test Scheduled</h4>
 
     <div class="mt-2 p-2">
-      <div class="card p-2 mt-4 tt-container">
+      <div class="card p-2 mt-4 tt-container table-responsive">
         <!-- <table class="table table-striped">
           <thead>
             <tr>
@@ -42,7 +42,7 @@
             </tr>
           </tbody>
         </table> -->
-        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="!isStreamJee">
+        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="userStream ==='DROPPER-PCB'">
           <thead>
             <tr>
               <th colspan="5">AAYAM STAR</th>
@@ -951,7 +951,8 @@
             </tr>
           </tbody>
         </table>
-        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="isStreamJee">
+
+        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="userStream ==='DROPPER-PCM'">
           <thead>
             <tr>
               <th colspan="5">AAYAM STAR</th>
@@ -1856,6 +1857,3362 @@
               <td>Wednesday</td>
               <td>Physics</td>
               <td>Wave Optics</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="userStream ==='11-PCB'">
+          <thead>
+            <tr>
+              <th colspan="5">AAYAM STAR</th>
+            </tr>
+            <tr>
+              <th colspan="5">Test Schedule - XI (PCB) </th>
+            </tr>
+            <tr>
+              <th>Test No.</th>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Subject</th>
+              <th>Chapter name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Test 01</td>
+              <td>18-10-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> The Living World</td>
+            </tr>
+            <tr>
+              <td>Test 02</td>
+              <td>19-10-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 03</td>
+              <td>20-10-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>UNITS AND MEASUREMENTS</td>
+            </tr>
+            <tr>
+              <td>Test 04</td>
+              <td>21-10-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> The Living World</td>
+            </tr>
+            <tr>
+              <td>Test 05</td>
+              <td>23-10-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 06</td>
+              <td>24-10-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>UNITS AND MEASUREMENTS</td>
+            </tr>
+            <tr>
+              <td>Test 07</td>
+              <td>25-10-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Biological Classification</td>
+            </tr>
+            <tr>
+              <td>Test 08</td>
+              <td>26-10-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 09</td>
+              <td>27-10-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>MOTION IN A STRAIGHT LINE</td>
+            </tr>
+            <tr>
+              <td>Test 10</td>
+              <td>28-10-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Biological Classification</td>
+            </tr>
+            <tr>
+              <td>Test 11</td>
+              <td>30-10-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 12</td>
+              <td>31-10-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>MOTION IN A STRAIGHT LINE</td>
+            </tr>
+            <tr>
+              <td>Test 13</td>
+              <td>01-11-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Plant Kingdom</td>
+            </tr>
+            <tr>
+              <td>Test 14</td>
+              <td>02-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 15</td>
+              <td>03-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>MOTION IN A STRAIGHT LINE</td>
+            </tr>
+            <tr>
+              <td>Test 16</td>
+              <td>04-11-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Plant Kingdom</td>
+            </tr>
+            <tr>
+              <td>Test 17</td>
+              <td>06-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 18</td>
+              <td>07-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>MOTION IN A PLANE</td>
+            </tr>
+            <tr>
+              <td>Test 19</td>
+              <td>08-11-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Animal Kingdom</td>
+            </tr>
+            <tr>
+              <td>Test 20</td>
+              <td>09-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 21</td>
+              <td>10-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>MOTION IN A PLANE</td>
+            </tr>
+            <tr>
+              <td>Test 22</td>
+              <td>11-11-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Animal Kingdom</td>
+            </tr>
+            <tr>
+              <td>Test 23</td>
+              <td>13-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 24</td>
+              <td>14-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>MOTION IN A PLANE</td>
+            </tr>
+            <tr>
+              <td>Test 25</td>
+              <td>15-11-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Morphology of Flowering Plants</td>
+            </tr>
+            <tr>
+              <td>Test 26</td>
+              <td>16-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 27</td>
+              <td>17-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>LAWS OF MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 28</td>
+              <td>18-11-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Morphology of Flowering Plants</td>
+            </tr>
+            <tr>
+              <td>Test 29</td>
+              <td>20-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 30</td>
+              <td>21-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>LAWS OF MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 31</td>
+              <td>22-11-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Anatomy of Flowering Plants</td>
+            </tr>
+            <tr>
+              <td>Test 32</td>
+              <td>23-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 33</td>
+              <td>24-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>LAWS OF MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 34</td>
+              <td>25-11-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Anatomy of Flowering Plants</td>
+            </tr>
+            <tr>
+              <td>Test 35</td>
+              <td>27-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 36</td>
+              <td>28-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>WORK, ENERGY AND POWER</td>
+            </tr>
+            <tr>
+              <td>Test 37</td>
+              <td>29-11-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Structural Organisation in Animals</td>
+            </tr>
+            <tr>
+              <td>Test 38</td>
+              <td>30-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 39</td>
+              <td>01-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>WORK, ENERGY AND POWER</td>
+            </tr>
+            <tr>
+              <td>Test 40</td>
+              <td>02-12-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Structural Organisation in Animals</td>
+            </tr>
+            <tr>
+              <td>Test 41</td>
+              <td>04-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 42</td>
+              <td>05-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>WORK, ENERGY AND POWER</td>
+            </tr>
+            <tr>
+              <td>Test 43</td>
+              <td>06-12-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Cell : The unit of Life</td>
+            </tr>
+            <tr>
+              <td>Test 44</td>
+              <td>07-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 45</td>
+              <td>08-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>SYSTEM OF PARTICLES AND ROTATIONAL MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 46</td>
+              <td>09-12-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Cell : The unit of Life</td>
+            </tr>
+            <tr>
+              <td>Test 47</td>
+              <td>11-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 48</td>
+              <td>12-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>SYSTEM OF PARTICLES AND ROTATIONAL MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 49</td>
+              <td>13-12-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Biomolecules</td>
+            </tr>
+            <tr>
+              <td>Test 50</td>
+              <td>14-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 51</td>
+              <td>15-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>SYSTEM OF PARTICLES AND ROTATIONAL MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 52</td>
+              <td>16-12-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Biomolecules</td>
+            </tr>
+            <tr>
+              <td>Test 53</td>
+              <td>18-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 54</td>
+              <td>19-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>GRAVITATION</td>
+            </tr>
+            <tr>
+              <td>Test 55</td>
+              <td>20-12-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Cell Cycle and Cell Division</td>
+            </tr>
+            <tr>
+              <td>Test 56</td>
+              <td>21-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 57</td>
+              <td>22-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>GRAVITATION</td>
+            </tr>
+            <tr>
+              <td>Test 58</td>
+              <td>23-12-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Cell Cycle and Cell Division</td>
+            </tr>
+            <tr>
+              <td>Test 59</td>
+              <td>25-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 60</td>
+              <td>26-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>GRAVITATION</td>
+            </tr>
+            <tr>
+              <td>Test 61</td>
+              <td>27-12-2023</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Photosynthesis in Higher Plants</td>
+            </tr>
+            <tr>
+              <td>Test 62</td>
+              <td>28-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 63</td>
+              <td>29-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Solids</td>
+            </tr>
+            <tr>
+              <td>Test 64</td>
+              <td>30-12-2023</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Photosynthesis in Higher Plants</td>
+            </tr>
+            <tr>
+              <td>Test 65</td>
+              <td>01-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 66</td>
+              <td>02-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Solids</td>
+            </tr>
+            <tr>
+              <td>Test 67</td>
+              <td>03-01-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Respiration in Plants</td>
+            </tr>
+            <tr>
+              <td>Test 68</td>
+              <td>04-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 69</td>
+              <td>05-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Solids</td>
+            </tr>
+            <tr>
+              <td>Test 70</td>
+              <td>06-01-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Respiration in Plants</td>
+            </tr>
+            <tr>
+              <td>Test 71</td>
+              <td>08-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 72</td>
+              <td>09-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Fluids</td>
+            </tr>
+            <tr>
+              <td>Test 73</td>
+              <td>10-01-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Plant Growth and Development</td>
+            </tr>
+            <tr>
+              <td>Test 74</td>
+              <td>11-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 75</td>
+              <td>12-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Fluids</td>
+            </tr>
+            <tr>
+              <td>Test 76</td>
+              <td>13-01-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Plant Growth and Development</td>
+            </tr>
+            <tr>
+              <td>Test 77</td>
+              <td>15-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 78</td>
+              <td>16-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Fluids</td>
+            </tr>
+            <tr>
+              <td>Test 79</td>
+              <td>17-01-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Breathing and Exchange of Gases</td>
+            </tr>
+            <tr>
+              <td>Test 80</td>
+              <td>18-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 81</td>
+              <td>19-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Thermal Properties of Matter</td>
+            </tr>
+            <tr>
+              <td>Test 82</td>
+              <td>20-01-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Breathing and Exchange of Gases</td>
+            </tr>
+            <tr>
+              <td>Test 83</td>
+              <td>22-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 84</td>
+              <td>23-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Thermal Properties of Matter</td>
+            </tr>
+            <tr>
+              <td>Test 85</td>
+              <td>24-01-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Body Fluids and Circulation</td>
+            </tr>
+            <tr>
+              <td>Test 86</td>
+              <td>25-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 87</td>
+              <td>26-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Thermal Properties of Matter</td>
+            </tr>
+            <tr>
+              <td>Test 88</td>
+              <td>27-01-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Body Fluids and Circulation</td>
+            </tr>
+            <tr>
+              <td>Test 89</td>
+              <td>29-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 90</td>
+              <td>30-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 91</td>
+              <td>31-01-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Excretory Products and their Elimination</td>
+            </tr>
+            <tr>
+              <td>Test 92</td>
+              <td>01-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 93</td>
+              <td>02-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 94</td>
+              <td>03-02-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Excretory Products and their Elimination</td>
+            </tr>
+            <tr>
+              <td>Test 95</td>
+              <td>05-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 96</td>
+              <td>06-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 97</td>
+              <td>07-02-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Locomotion and Movement</td>
+            </tr>
+            <tr>
+              <td>Test 98</td>
+              <td>08-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 99</td>
+              <td>09-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Kinetic Theory</td>
+            </tr>
+            <tr>
+              <td>Test 100</td>
+              <td>10-02-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Locomotion and Movement</td>
+            </tr>
+            <tr>
+              <td>Test 101</td>
+              <td>12-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 102</td>
+              <td>13-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Kinetic Theory</td>
+            </tr>
+            <tr>
+              <td>Test 103</td>
+              <td>14-02-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Neural Control and Coordination</td>
+            </tr>
+            <tr>
+              <td>Test 104</td>
+              <td>15-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 105</td>
+              <td>16-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Kinetic Theory</td>
+            </tr>
+            <tr>
+              <td>Test 106</td>
+              <td>17-02-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Neural Control and Coordination</td>
+            </tr>
+            <tr>
+              <td>Test 107</td>
+              <td>19-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 108</td>
+              <td>20-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Oscillations</td>
+            </tr>
+            <tr>
+              <td>Test 109</td>
+              <td>21-02-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Chemical Coordination and Integration</td>
+            </tr>
+            <tr>
+              <td>Test 110</td>
+              <td>22-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 111</td>
+              <td>23-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Oscillations</td>
+            </tr>
+            <tr>
+              <td>Test 112</td>
+              <td>24-02-2024</td>
+              <td>Saturday</td>
+              <td>Biology</td>
+              <td> Chemical Coordination and Integration</td>
+            </tr>
+            <tr>
+              <td>Test 113</td>
+              <td>26-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 114</td>
+              <td>27-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Waves</td>
+            </tr>
+            <tr>
+              <td>Test 115</td>
+              <td>28-02-2024</td>
+              <td>Wednesday</td>
+              <td>Biology</td>
+              <td> Chemical Coordination and Integration</td>
+            </tr>
+            <tr>
+              <td>Test 116</td>
+              <td>29-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 117</td>
+              <td>01-03-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Waves</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="userStream ==='11-PCM'">
+          <thead>
+            <tr>
+              <th colspan="5">AAYAM STAR</th>
+            </tr>
+            <tr>
+              <th colspan="5">Test Schedule - XI (PCM) </th>
+            </tr>
+            <tr>
+              <th>Test No.</th>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Subject</th>
+              <th>Chapter name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Test 01</td>
+              <td>18-10-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Sets</td>
+            </tr>
+            <tr>
+              <td>Test 02</td>
+              <td>19-10-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 03</td>
+              <td>20-10-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>UNITS AND MEASUREMENTS</td>
+            </tr>
+            <tr>
+              <td>Test 04</td>
+              <td>21-10-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Sets</td>
+            </tr>
+            <tr>
+              <td>Test 05</td>
+              <td>23-10-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 06</td>
+              <td>24-10-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>UNITS AND MEASUREMENTS</td>
+            </tr>
+            <tr>
+              <td>Test 07</td>
+              <td>25-10-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Sets</td>
+            </tr>
+            <tr>
+              <td>Test 08</td>
+              <td>26-10-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 09</td>
+              <td>27-10-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>MOTION IN A STRAIGHT LINE</td>
+            </tr>
+            <tr>
+              <td>Test 10</td>
+              <td>28-10-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Relations and Functions</td>
+            </tr>
+            <tr>
+              <td>Test 11</td>
+              <td>30-10-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Some Basic Concepts of Chemistry</td>
+            </tr>
+            <tr>
+              <td>Test 12</td>
+              <td>31-10-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>MOTION IN A STRAIGHT LINE</td>
+            </tr>
+            <tr>
+              <td>Test 13</td>
+              <td>01-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Relations and Functions</td>
+            </tr>
+            <tr>
+              <td>Test 14</td>
+              <td>02-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 15</td>
+              <td>03-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>MOTION IN A STRAIGHT LINE</td>
+            </tr>
+            <tr>
+              <td>Test 16</td>
+              <td>04-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Relations and Functions</td>
+            </tr>
+            <tr>
+              <td>Test 17</td>
+              <td>06-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 18</td>
+              <td>07-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>MOTION IN A PLANE</td>
+            </tr>
+            <tr>
+              <td>Test 19</td>
+              <td>08-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Trigonometric Functions</td>
+            </tr>
+            <tr>
+              <td>Test 20</td>
+              <td>09-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 21</td>
+              <td>10-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>MOTION IN A PLANE</td>
+            </tr>
+            <tr>
+              <td>Test 22</td>
+              <td>11-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Trigonometric Functions</td>
+            </tr>
+            <tr>
+              <td>Test 23</td>
+              <td>13-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Structure of Atom</td>
+            </tr>
+            <tr>
+              <td>Test 24</td>
+              <td>14-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>MOTION IN A PLANE</td>
+            </tr>
+            <tr>
+              <td>Test 25</td>
+              <td>15-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Trigonometric Functions</td>
+            </tr>
+            <tr>
+              <td>Test 26</td>
+              <td>16-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 27</td>
+              <td>17-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>LAWS OF MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 28</td>
+              <td>18-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Complex Numbers and Quadratic Equations</td>
+            </tr>
+            <tr>
+              <td>Test 29</td>
+              <td>20-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 30</td>
+              <td>21-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>LAWS OF MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 31</td>
+              <td>22-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Complex Numbers and Quadratic Equations</td>
+            </tr>
+            <tr>
+              <td>Test 32</td>
+              <td>23-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 33</td>
+              <td>24-11-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>LAWS OF MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 34</td>
+              <td>25-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Complex Numbers and Quadratic Equations</td>
+            </tr>
+            <tr>
+              <td>Test 35</td>
+              <td>27-11-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 36</td>
+              <td>28-11-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>WORK, ENERGY AND POWER</td>
+            </tr>
+            <tr>
+              <td>Test 37</td>
+              <td>29-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Linear Inequalities</td>
+            </tr>
+            <tr>
+              <td>Test 38</td>
+              <td>30-11-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Classification of Elements and Periodicity in Properties</td>
+            </tr>
+            <tr>
+              <td>Test 39</td>
+              <td>01-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>WORK, ENERGY AND POWER</td>
+            </tr>
+            <tr>
+              <td>Test 40</td>
+              <td>02-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Linear Inequalities</td>
+            </tr>
+            <tr>
+              <td>Test 41</td>
+              <td>04-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 42</td>
+              <td>05-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>WORK, ENERGY AND POWER</td>
+            </tr>
+            <tr>
+              <td>Test 43</td>
+              <td>06-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Linear Inequalities</td>
+            </tr>
+            <tr>
+              <td>Test 44</td>
+              <td>07-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 45</td>
+              <td>08-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>SYSTEM OF PARTICLES AND ROTATIONAL MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 46</td>
+              <td>09-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Permutations and Combinations</td>
+            </tr>
+            <tr>
+              <td>Test 47</td>
+              <td>11-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 48</td>
+              <td>12-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>SYSTEM OF PARTICLES AND ROTATIONAL MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 49</td>
+              <td>13-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Permutations and Combinations</td>
+            </tr>
+            <tr>
+              <td>Test 50</td>
+              <td>14-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 51</td>
+              <td>15-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>SYSTEM OF PARTICLES AND ROTATIONAL MOTION</td>
+            </tr>
+            <tr>
+              <td>Test 52</td>
+              <td>16-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Permutations and Combinations</td>
+            </tr>
+            <tr>
+              <td>Test 53</td>
+              <td>18-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Chemical Bonding and Molecular Structure</td>
+            </tr>
+            <tr>
+              <td>Test 54</td>
+              <td>19-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>GRAVITATION</td>
+            </tr>
+            <tr>
+              <td>Test 55</td>
+              <td>20-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Binomial Theorem</td>
+            </tr>
+            <tr>
+              <td>Test 56</td>
+              <td>21-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 57</td>
+              <td>22-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>GRAVITATION</td>
+            </tr>
+            <tr>
+              <td>Test 58</td>
+              <td>23-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Binomial Theorem</td>
+            </tr>
+            <tr>
+              <td>Test 59</td>
+              <td>25-12-2023</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 60</td>
+              <td>26-12-2023</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>GRAVITATION</td>
+            </tr>
+            <tr>
+              <td>Test 61</td>
+              <td>27-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Binomial Theorem</td>
+            </tr>
+            <tr>
+              <td>Test 62</td>
+              <td>28-12-2023</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 63</td>
+              <td>29-12-2023</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Solids</td>
+            </tr>
+            <tr>
+              <td>Test 64</td>
+              <td>30-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Sequences and Series</td>
+            </tr>
+            <tr>
+              <td>Test 65</td>
+              <td>01-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 66</td>
+              <td>02-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Solids</td>
+            </tr>
+            <tr>
+              <td>Test 67</td>
+              <td>03-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Sequences and Series</td>
+            </tr>
+            <tr>
+              <td>Test 68</td>
+              <td>04-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 69</td>
+              <td>05-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Solids</td>
+            </tr>
+            <tr>
+              <td>Test 70</td>
+              <td>06-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Sequences and Series</td>
+            </tr>
+            <tr>
+              <td>Test 71</td>
+              <td>08-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 72</td>
+              <td>09-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Fluids</td>
+            </tr>
+            <tr>
+              <td>Test 73</td>
+              <td>10-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Straight Lines</td>
+            </tr>
+            <tr>
+              <td>Test 74</td>
+              <td>11-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 75</td>
+              <td>12-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Fluids</td>
+            </tr>
+            <tr>
+              <td>Test 76</td>
+              <td>13-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Straight Lines</td>
+            </tr>
+            <tr>
+              <td>Test 77</td>
+              <td>15-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Equilibrium</td>
+            </tr>
+            <tr>
+              <td>Test 78</td>
+              <td>16-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Mechanical Properties of Fluids</td>
+            </tr>
+            <tr>
+              <td>Test 79</td>
+              <td>17-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Straight Lines</td>
+            </tr>
+            <tr>
+              <td>Test 80</td>
+              <td>18-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 81</td>
+              <td>19-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Thermal Properties of Matter</td>
+            </tr>
+            <tr>
+              <td>Test 82</td>
+              <td>20-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Conic Sections</td>
+            </tr>
+            <tr>
+              <td>Test 83</td>
+              <td>22-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 84</td>
+              <td>23-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Thermal Properties of Matter</td>
+            </tr>
+            <tr>
+              <td>Test 85</td>
+              <td>24-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Conic Sections</td>
+            </tr>
+            <tr>
+              <td>Test 86</td>
+              <td>25-01-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 87</td>
+              <td>26-01-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Thermal Properties of Matter</td>
+            </tr>
+            <tr>
+              <td>Test 88</td>
+              <td>27-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Conic Sections</td>
+            </tr>
+            <tr>
+              <td>Test 89</td>
+              <td>29-01-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Redox Reactions</td>
+            </tr>
+            <tr>
+              <td>Test 90</td>
+              <td>30-01-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 91</td>
+              <td>31-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Introduction to Three Dimensional Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 92</td>
+              <td>01-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 93</td>
+              <td>02-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 94</td>
+              <td>03-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Introduction to Three Dimensional Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 95</td>
+              <td>05-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 96</td>
+              <td>06-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Thermodynamics</td>
+            </tr>
+            <tr>
+              <td>Test 97</td>
+              <td>07-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Introduction to Three Dimensional Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 98</td>
+              <td>08-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 99</td>
+              <td>09-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Kinetic Theory</td>
+            </tr>
+            <tr>
+              <td>Test 100</td>
+              <td>10-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Limits and Derivatives</td>
+            </tr>
+            <tr>
+              <td>Test 101</td>
+              <td>12-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Organic Chemistry – Some Basic Principles and Techniques</td>
+            </tr>
+            <tr>
+              <td>Test 102</td>
+              <td>13-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Kinetic Theory</td>
+            </tr>
+            <tr>
+              <td>Test 103</td>
+              <td>14-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Limits and Derivatives</td>
+            </tr>
+            <tr>
+              <td>Test 104</td>
+              <td>15-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 105</td>
+              <td>16-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Kinetic Theory</td>
+            </tr>
+            <tr>
+              <td>Test 106</td>
+              <td>17-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Limits and Derivatives</td>
+            </tr>
+            <tr>
+              <td>Test 107</td>
+              <td>19-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 108</td>
+              <td>20-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Oscillations</td>
+            </tr>
+            <tr>
+              <td>Test 109</td>
+              <td>21-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Probability</td>
+            </tr>
+            <tr>
+              <td>Test 110</td>
+              <td>22-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 111</td>
+              <td>23-02-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Oscillations</td>
+            </tr>
+            <tr>
+              <td>Test 112</td>
+              <td>24-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Probability</td>
+            </tr>
+            <tr>
+              <td>Test 113</td>
+              <td>26-02-2024</td>
+              <td>Monday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 114</td>
+              <td>27-02-2024</td>
+              <td>Tuesday</td>
+              <td>Physics</td>
+              <td>Waves</td>
+            </tr>
+            <tr>
+              <td>Test 115</td>
+              <td>28-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Probability</td>
+            </tr>
+            <tr>
+              <td>Test 116</td>
+              <td>29-02-2024</td>
+              <td>Thursday</td>
+              <td>Chemistry</td>
+              <td>Hydrocarbons</td>
+            </tr>
+            <tr>
+              <td>Test 117</td>
+              <td>01-03-2024</td>
+              <td>Friday</td>
+              <td>Physics</td>
+              <td>Waves</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered text-center aayam-star-table-2" *ngIf="userStream ==='9'">
+          <thead>
+            <tr>
+              <th colspan="5">AAYAM STAR</th>
+            </tr>
+            <tr>
+              <th colspan="5">Test Schedule - IX</th>
+            </tr>
+            <tr>
+              <th>Test No.</th>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Subject</th>
+              <th>Chapter name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Test 1</td>
+              <td>18-10-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Number Systems</td>
+            </tr>
+            <tr>
+              <td>Test 2</td>
+              <td>19-10-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Matter In Our Surroundings</td>
+            </tr>
+            <tr>
+              <td>Test 3</td>
+              <td>20-10-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>The French Revolution</td>
+            </tr>
+            <tr>
+              <td>Test 4</td>
+              <td>21-10-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Number Systems</td>
+            </tr>
+            <tr>
+              <td>Test 5</td>
+              <td>23-10-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Matter In Our Surroundings</td>
+            </tr>
+            <tr>
+              <td>Test 6</td>
+              <td>24-10-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>The French Revolution</td>
+            </tr>
+            <tr>
+              <td>Test 7</td>
+              <td>25-10-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Number Systems</td>
+            </tr>
+            <tr>
+              <td>Test 8</td>
+              <td>26-10-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Is Matter Around Us Pure?</td>
+            </tr>
+            <tr>
+              <td>Test 9</td>
+              <td>27-10-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Socialism In Europe And The Russian Revolution</td>
+            </tr>
+            <tr>
+              <td>Test 10</td>
+              <td>28-10-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>. Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 11</td>
+              <td>30-10-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Is Matter Around Us Pure?</td>
+            </tr>
+            <tr>
+              <td>Test 12</td>
+              <td>31-10-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Socialism In Europe And The Russian Revolution</td>
+            </tr>
+            <tr>
+              <td>Test 13</td>
+              <td>01-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>. Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 14</td>
+              <td>02-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Atoms And Molecules</td>
+            </tr>
+            <tr>
+              <td>Test 15</td>
+              <td>03-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Nazism And The Rise Of Hitler</td>
+            </tr>
+            <tr>
+              <td>Test 16</td>
+              <td>04-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>. Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 17</td>
+              <td>06-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Atoms And Molecules</td>
+            </tr>
+            <tr>
+              <td>Test 18</td>
+              <td>07-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Nazism And The Rise Of Hitler</td>
+            </tr>
+            <tr>
+              <td>Test 19</td>
+              <td>08-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>. Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 20</td>
+              <td>09-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Atoms And Molecules</td>
+            </tr>
+            <tr>
+              <td>Test 21</td>
+              <td>10-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Forest Society And Colonialism</td>
+            </tr>
+            <tr>
+              <td>Test 22</td>
+              <td>11-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 23</td>
+              <td>13-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Atoms And Molecules</td>
+            </tr>
+            <tr>
+              <td>Test 24</td>
+              <td>14-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Forest Society And Colonialism</td>
+            </tr>
+            <tr>
+              <td>Test 25</td>
+              <td>15-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 26</td>
+              <td>16-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Structure Of The Atom</td>
+            </tr>
+            <tr>
+              <td>Test 27</td>
+              <td>17-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Pastoralists In The Modern World</td>
+            </tr>
+            <tr>
+              <td>Test 28</td>
+              <td>18-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 29</td>
+              <td>20-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Structure Of The Atom</td>
+            </tr>
+            <tr>
+              <td>Test 30</td>
+              <td>21-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Pastoralists In The Modern World</td>
+            </tr>
+            <tr>
+              <td>Test 31</td>
+              <td>22-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 32</td>
+              <td>23-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Structure Of The Atom</td>
+            </tr>
+            <tr>
+              <td>Test 33</td>
+              <td>24-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>What Is Democracy? Why Democracy?</td>
+            </tr>
+            <tr>
+              <td>Test 34</td>
+              <td>25-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Linear Equations In Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 35</td>
+              <td>27-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Structure Of The Atom</td>
+            </tr>
+            <tr>
+              <td>Test 36</td>
+              <td>28-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>What Is Democracy? Why Democracy?</td>
+            </tr>
+            <tr>
+              <td>Test 37</td>
+              <td>29-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Linear Equations In Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 38</td>
+              <td>30-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>The Fundamental Unit Of Life</td>
+            </tr>
+            <tr>
+              <td>Test 39</td>
+              <td>01-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Constitutional Design</td>
+            </tr>
+            <tr>
+              <td>Test 40</td>
+              <td>02-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Linear Equations In Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 41</td>
+              <td>04-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>The Fundamental Unit Of Life</td>
+            </tr>
+            <tr>
+              <td>Test 42</td>
+              <td>05-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Constitutional Design</td>
+            </tr>
+            <tr>
+              <td>Test 43</td>
+              <td>06-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Linear Equations In Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 44</td>
+              <td>07-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>The Fundamental Unit Of Life</td>
+            </tr>
+            <tr>
+              <td>Test 45</td>
+              <td>08-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Electoral Politics</td>
+            </tr>
+            <tr>
+              <td>Test 46</td>
+              <td>09-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Introduction To Euclid’s Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 47</td>
+              <td>11-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>The Fundamental Unit Of Life</td>
+            </tr>
+            <tr>
+              <td>Test 48</td>
+              <td>12-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Electoral Politics</td>
+            </tr>
+            <tr>
+              <td>Test 49</td>
+              <td>13-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Introduction To Euclid’s Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 50</td>
+              <td>14-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Tissues</td>
+            </tr>
+            <tr>
+              <td>Test 51</td>
+              <td>15-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Working Of Institutions</td>
+            </tr>
+            <tr>
+              <td>Test 52</td>
+              <td>16-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Introduction To Euclid’s Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 53</td>
+              <td>18-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Tissues</td>
+            </tr>
+            <tr>
+              <td>Test 54</td>
+              <td>19-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Working Of Institutions</td>
+            </tr>
+            <tr>
+              <td>Test 55</td>
+              <td>20-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Introduction To Euclid’s Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 56</td>
+              <td>21-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Tissues</td>
+            </tr>
+            <tr>
+              <td>Test 57</td>
+              <td>22-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Democratic Rights</td>
+            </tr>
+            <tr>
+              <td>Test 58</td>
+              <td>23-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Lines And Angles</td>
+            </tr>
+            <tr>
+              <td>Test 59</td>
+              <td>25-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Tissues</td>
+            </tr>
+            <tr>
+              <td>Test 60</td>
+              <td>26-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Democratic Rights</td>
+            </tr>
+            <tr>
+              <td>Test 61</td>
+              <td>27-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Lines And Angles</td>
+            </tr>
+            <tr>
+              <td>Test 62</td>
+              <td>28-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Motion</td>
+            </tr>
+            <tr>
+              <td>Test 63</td>
+              <td>29-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>People As Resource</td>
+            </tr>
+            <tr>
+              <td>Test 64</td>
+              <td>30-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Lines And Angles</td>
+            </tr>
+            <tr>
+              <td>Test 65</td>
+              <td>01-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Motion</td>
+            </tr>
+            <tr>
+              <td>Test 66</td>
+              <td>02-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>People As Resource</td>
+            </tr>
+            <tr>
+              <td>Test 67</td>
+              <td>03-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Lines And Angles</td>
+            </tr>
+            <tr>
+              <td>Test 68</td>
+              <td>04-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Motion</td>
+            </tr>
+            <tr>
+              <td>Test 69</td>
+              <td>05-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Poverty As A Challenge</td>
+            </tr>
+            <tr>
+              <td>Test 70</td>
+              <td>06-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 71</td>
+              <td>08-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Motion</td>
+            </tr>
+            <tr>
+              <td>Test 72</td>
+              <td>09-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Poverty As A Challenge</td>
+            </tr>
+            <tr>
+              <td>Test 73</td>
+              <td>10-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 74</td>
+              <td>11-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Force And Laws Of Motion</td>
+            </tr>
+            <tr>
+              <td>Test 75</td>
+              <td>12-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Food Security In India</td>
+            </tr>
+            <tr>
+              <td>Test 76</td>
+              <td>13-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 77</td>
+              <td>15-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Force And Laws Of Motion</td>
+            </tr>
+            <tr>
+              <td>Test 78</td>
+              <td>16-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Food Security In India</td>
+            </tr>
+            <tr>
+              <td>Test 79</td>
+              <td>17-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 80</td>
+              <td>18-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Force And Laws Of Motion</td>
+            </tr>
+            <tr>
+              <td>Test 81</td>
+              <td>19-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Food Security In India</td>
+            </tr>
+            <tr>
+              <td>Test 82</td>
+              <td>20-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Quadrilaterals</td>
+            </tr>
+            <tr>
+              <td>Test 83</td>
+              <td>22-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Force And Laws Of Motion</td>
+            </tr>
+            <tr>
+              <td>Test 84</td>
+              <td>23-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>India – Size And Location</td>
+            </tr>
+            <tr>
+              <td>Test 85</td>
+              <td>24-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Quadrilaterals</td>
+            </tr>
+            <tr>
+              <td>Test 86</td>
+              <td>25-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Gravitation</td>
+            </tr>
+            <tr>
+              <td>Test 87</td>
+              <td>26-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>India – Size And Location</td>
+            </tr>
+            <tr>
+              <td>Test 88</td>
+              <td>27-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Quadrilaterals</td>
+            </tr>
+            <tr>
+              <td>Test 89</td>
+              <td>29-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Gravitation</td>
+            </tr>
+            <tr>
+              <td>Test 90</td>
+              <td>30-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Physical Features Of India</td>
+            </tr>
+            <tr>
+              <td>Test 91</td>
+              <td>31-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Quadrilaterals</td>
+            </tr>
+            <tr>
+              <td>Test 92</td>
+              <td>01-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Gravitation</td>
+            </tr>
+            <tr>
+              <td>Test 93</td>
+              <td>02-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Physical Features Of India</td>
+            </tr>
+            <tr>
+              <td>Test 94</td>
+              <td>03-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 95</td>
+              <td>05-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Gravitation</td>
+            </tr>
+            <tr>
+              <td>Test 96</td>
+              <td>06-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Drainage</td>
+            </tr>
+            <tr>
+              <td>Test 97</td>
+              <td>07-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 98</td>
+              <td>08-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Work And Energy</td>
+            </tr>
+            <tr>
+              <td>Test 99</td>
+              <td>09-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Drainage</td>
+            </tr>
+            <tr>
+              <td>Test 100</td>
+              <td>10-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 101</td>
+              <td>12-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Work And Energy</td>
+            </tr>
+            <tr>
+              <td>Test 102</td>
+              <td>13-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Climate</td>
+            </tr>
+            <tr>
+              <td>Test 103</td>
+              <td>14-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 104</td>
+              <td>15-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Work And Energy</td>
+            </tr>
+            <tr>
+              <td>Test 105</td>
+              <td>16-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Climate</td>
+            </tr>
+            <tr>
+              <td>Test 106</td>
+              <td>17-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Heron’s Formula</td>
+            </tr>
+            <tr>
+              <td>Test 107</td>
+              <td>19-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Work And Energy</td>
+            </tr>
+            <tr>
+              <td>Test 108</td>
+              <td>20-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Natural Vegetation And Wildlife</td>
+            </tr>
+            <tr>
+              <td>Test 109</td>
+              <td>21-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Heron’s Formula</td>
+            </tr>
+            <tr>
+              <td>Test 110</td>
+              <td>22-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Sound</td>
+            </tr>
+            <tr>
+              <td>Test 111</td>
+              <td>23-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Natural Vegetation And Wildlife</td>
+            </tr>
+            <tr>
+              <td>Test 112</td>
+              <td>24-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Surface Areas And Volumes</td>
+            </tr>
+            <tr>
+              <td>Test 113</td>
+              <td>26-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Sound</td>
+            </tr>
+            <tr>
+              <td>Test 114</td>
+              <td>27-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Population</td>
+            </tr>
+            <tr>
+              <td>Test 115</td>
+              <td>28-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Surface Areas And Volumes</td>
+            </tr>
+            <tr>
+              <td>Test 116</td>
+              <td>29-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Sound</td>
+            </tr>
+            <tr>
+              <td>Test 117</td>
+              <td>01-03-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Population</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered text-center  aayam-star-table-2" *ngIf="userStream ==='10'">
+          <thead>
+            <tr>
+              <th colspan="5">AAYAM STAR</th>
+            </tr>
+            <tr>
+              <th colspan="5">Test Schedule - X</th>
+            </tr>
+            <tr>
+              <th>Test No.</th>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Subject</th>
+              <th>Chapter name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Test 1</td>
+              <td>18-10-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Real Numbers</td>
+            </tr>
+            <tr>
+              <td>Test 2</td>
+              <td>19-10-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Chemical Reactions and Equations</td>
+            </tr>
+            <tr>
+              <td>Test 3</td>
+              <td>20-10-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>The Rise of Nationalism in Europe</td>
+            </tr>
+            <tr>
+              <td>Test 4</td>
+              <td>21-10-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Real Numbers</td>
+            </tr>
+            <tr>
+              <td>Test 5</td>
+              <td>23-10-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Chemical Reactions and Equations</td>
+            </tr>
+            <tr>
+              <td>Test 6</td>
+              <td>24-10-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>The Rise of Nationalism in Europe</td>
+            </tr>
+            <tr>
+              <td>Test 7</td>
+              <td>25-10-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Real Numbers</td>
+            </tr>
+            <tr>
+              <td>Test 8</td>
+              <td>26-10-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Chemical Reactions and Equations</td>
+            </tr>
+            <tr>
+              <td>Test 9</td>
+              <td>27-10-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Nationalism in India</td>
+            </tr>
+            <tr>
+              <td>Test 10</td>
+              <td>28-10-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 11</td>
+              <td>30-10-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Acids, Bases and Salts</td>
+            </tr>
+            <tr>
+              <td>Test 12</td>
+              <td>31-10-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Nationalism in India</td>
+            </tr>
+            <tr>
+              <td>Test 13</td>
+              <td>01-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 14</td>
+              <td>02-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Acids, Bases and Salts</td>
+            </tr>
+            <tr>
+              <td>Test 15</td>
+              <td>03-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Livelihoods, Economies and Societies</td>
+            </tr>
+            <tr>
+              <td>Test 16</td>
+              <td>04-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Polynomials</td>
+            </tr>
+            <tr>
+              <td>Test 17</td>
+              <td>06-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Acids, Bases and Salts</td>
+            </tr>
+            <tr>
+              <td>Test 18</td>
+              <td>07-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Livelihoods, Economies and Societies</td>
+            </tr>
+            <tr>
+              <td>Test 19</td>
+              <td>08-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Pair of Linear Equations in Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 20</td>
+              <td>09-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Metals and Non-metals</td>
+            </tr>
+            <tr>
+              <td>Test 21</td>
+              <td>10-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>The Making of a Global World</td>
+            </tr>
+            <tr>
+              <td>Test 22</td>
+              <td>11-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Pair of Linear Equations in Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 23</td>
+              <td>13-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Metals and Non-metals</td>
+            </tr>
+            <tr>
+              <td>Test 24</td>
+              <td>14-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>The Making of a Global World</td>
+            </tr>
+            <tr>
+              <td>Test 25</td>
+              <td>15-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Pair of Linear Equations in Two Variables</td>
+            </tr>
+            <tr>
+              <td>Test 26</td>
+              <td>16-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Metals and Non-metals</td>
+            </tr>
+            <tr>
+              <td>Test 27</td>
+              <td>17-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>The Age of Industrialisation</td>
+            </tr>
+            <tr>
+              <td>Test 28</td>
+              <td>18-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Quadratic Equations</td>
+            </tr>
+            <tr>
+              <td>Test 29</td>
+              <td>20-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Carbon and its Compounds</td>
+            </tr>
+            <tr>
+              <td>Test 30</td>
+              <td>21-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>The Age of Industrialisation</td>
+            </tr>
+            <tr>
+              <td>Test 31</td>
+              <td>22-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Quadratic Equations</td>
+            </tr>
+            <tr>
+              <td>Test 32</td>
+              <td>23-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Carbon and its Compounds</td>
+            </tr>
+            <tr>
+              <td>Test 33</td>
+              <td>24-11-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Everyday Life, Culture and Politics</td>
+            </tr>
+            <tr>
+              <td>Test 34</td>
+              <td>25-11-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Quadratic Equations</td>
+            </tr>
+            <tr>
+              <td>Test 35</td>
+              <td>27-11-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Carbon and its Compounds</td>
+            </tr>
+            <tr>
+              <td>Test 36</td>
+              <td>28-11-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Everyday Life, Culture and Politics</td>
+            </tr>
+            <tr>
+              <td>Test 37</td>
+              <td>29-11-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Arithmetic Progressions</td>
+            </tr>
+            <tr>
+              <td>Test 38</td>
+              <td>30-11-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Life Processes</td>
+            </tr>
+            <tr>
+              <td>Test 39</td>
+              <td>01-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Print Culture and the Modern World </td>
+            </tr>
+            <tr>
+              <td>Test 40</td>
+              <td>02-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Arithmetic Progressions</td>
+            </tr>
+            <tr>
+              <td>Test 41</td>
+              <td>04-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Life Processes</td>
+            </tr>
+            <tr>
+              <td>Test 42</td>
+              <td>05-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Print Culture and the Modern World </td>
+            </tr>
+            <tr>
+              <td>Test 43</td>
+              <td>06-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Arithmetic Progressions</td>
+            </tr>
+            <tr>
+              <td>Test 44</td>
+              <td>07-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Life Processes</td>
+            </tr>
+            <tr>
+              <td>Test 45</td>
+              <td>08-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Power-sharing</td>
+            </tr>
+            <tr>
+              <td>Test 46</td>
+              <td>09-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 47</td>
+              <td>11-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Control and Coordination</td>
+            </tr>
+            <tr>
+              <td>Test 48</td>
+              <td>12-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Power-sharing</td>
+            </tr>
+            <tr>
+              <td>Test 49</td>
+              <td>13-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 50</td>
+              <td>14-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Control and Coordination</td>
+            </tr>
+            <tr>
+              <td>Test 51</td>
+              <td>15-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Federalism</td>
+            </tr>
+            <tr>
+              <td>Test 52</td>
+              <td>16-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Triangles</td>
+            </tr>
+            <tr>
+              <td>Test 53</td>
+              <td>18-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Control and Coordination</td>
+            </tr>
+            <tr>
+              <td>Test 54</td>
+              <td>19-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Federalism</td>
+            </tr>
+            <tr>
+              <td>Test 55</td>
+              <td>20-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 56</td>
+              <td>21-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>How do Organisms Reproduce?</td>
+            </tr>
+            <tr>
+              <td>Test 57</td>
+              <td>22-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Gender, Religion and Caste</td>
+            </tr>
+            <tr>
+              <td>Test 58</td>
+              <td>23-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 59</td>
+              <td>25-12-2023</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>How do Organisms Reproduce?</td>
+            </tr>
+            <tr>
+              <td>Test 60</td>
+              <td>26-12-2023</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Gender, Religion and Caste</td>
+            </tr>
+            <tr>
+              <td>Test 61</td>
+              <td>27-12-2023</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Coordinate Geometry</td>
+            </tr>
+            <tr>
+              <td>Test 62</td>
+              <td>28-12-2023</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>How do Organisms Reproduce?</td>
+            </tr>
+            <tr>
+              <td>Test 63</td>
+              <td>29-12-2023</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Political Parties</td>
+            </tr>
+            <tr>
+              <td>Test 64</td>
+              <td>30-12-2023</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Introduction to Trigonometry</td>
+            </tr>
+            <tr>
+              <td>Test 65</td>
+              <td>01-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Heredity</td>
+            </tr>
+            <tr>
+              <td>Test 66</td>
+              <td>02-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Political Parties</td>
+            </tr>
+            <tr>
+              <td>Test 67</td>
+              <td>03-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Introduction to Trigonometry</td>
+            </tr>
+            <tr>
+              <td>Test 68</td>
+              <td>04-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Heredity</td>
+            </tr>
+            <tr>
+              <td>Test 69</td>
+              <td>05-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Outcomes of Democracy</td>
+            </tr>
+            <tr>
+              <td>Test 70</td>
+              <td>06-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Introduction to Trigonometry</td>
+            </tr>
+            <tr>
+              <td>Test 71</td>
+              <td>08-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Heredity</td>
+            </tr>
+            <tr>
+              <td>Test 72</td>
+              <td>09-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Outcomes of Democracy</td>
+            </tr>
+            <tr>
+              <td>Test 73</td>
+              <td>10-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Some Applications of Trigonometry</td>
+            </tr>
+            <tr>
+              <td>Test 74</td>
+              <td>11-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Light – Reflection and Refraction</td>
+            </tr>
+            <tr>
+              <td>Test 75</td>
+              <td>12-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>SECTORS OF THE INDIAN ECONOMY</td>
+            </tr>
+            <tr>
+              <td>Test 76</td>
+              <td>13-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Some Applications of Trigonometry</td>
+            </tr>
+            <tr>
+              <td>Test 77</td>
+              <td>15-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Light – Reflection and Refraction</td>
+            </tr>
+            <tr>
+              <td>Test 78</td>
+              <td>16-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>SECTORS OF THE INDIAN ECONOMY</td>
+            </tr>
+            <tr>
+              <td>Test 79</td>
+              <td>17-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Some Applications of Trigonometry</td>
+            </tr>
+            <tr>
+              <td>Test 80</td>
+              <td>18-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Light – Reflection and Refraction</td>
+            </tr>
+            <tr>
+              <td>Test 81</td>
+              <td>19-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>MONEY AND CREDIT</td>
+            </tr>
+            <tr>
+              <td>Test 82</td>
+              <td>20-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 83</td>
+              <td>22-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>The Human Eye and the Colourful World</td>
+            </tr>
+            <tr>
+              <td>Test 84</td>
+              <td>23-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>MONEY AND CREDIT</td>
+            </tr>
+            <tr>
+              <td>Test 85</td>
+              <td>24-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 86</td>
+              <td>25-01-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>The Human Eye and the Colourful World</td>
+            </tr>
+            <tr>
+              <td>Test 87</td>
+              <td>26-01-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>GLOBALISATION AND THE INDIAN ECONOMY</td>
+            </tr>
+            <tr>
+              <td>Test 88</td>
+              <td>27-01-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Circles</td>
+            </tr>
+            <tr>
+              <td>Test 89</td>
+              <td>29-01-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>The Human Eye and the Colourful World</td>
+            </tr>
+            <tr>
+              <td>Test 90</td>
+              <td>30-01-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>GLOBALISATION AND THE INDIAN ECONOMY</td>
+            </tr>
+            <tr>
+              <td>Test 91</td>
+              <td>31-01-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Areas Related to Circles</td>
+            </tr>
+            <tr>
+              <td>Test 92</td>
+              <td>01-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Electricity</td>
+            </tr>
+            <tr>
+              <td>Test 93</td>
+              <td>02-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>CONSUMER RIGHTS</td>
+            </tr>
+            <tr>
+              <td>Test 94</td>
+              <td>03-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Areas Related to Circles</td>
+            </tr>
+            <tr>
+              <td>Test 95</td>
+              <td>05-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Electricity</td>
+            </tr>
+            <tr>
+              <td>Test 96</td>
+              <td>06-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>CONSUMER RIGHTS</td>
+            </tr>
+            <tr>
+              <td>Test 97</td>
+              <td>07-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Areas Related to Circles</td>
+            </tr>
+            <tr>
+              <td>Test 98</td>
+              <td>08-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Electricity</td>
+            </tr>
+            <tr>
+              <td>Test 99</td>
+              <td>09-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Resources and Development</td>
+            </tr>
+            <tr>
+              <td>Test 100</td>
+              <td>10-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Surface Areas and Volumes</td>
+            </tr>
+            <tr>
+              <td>Test 101</td>
+              <td>12-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Magnetic Effects of Electric Current</td>
+            </tr>
+            <tr>
+              <td>Test 102</td>
+              <td>13-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Forest and Wildlife Resources</td>
+            </tr>
+            <tr>
+              <td>Test 103</td>
+              <td>14-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Surface Areas and Volumes</td>
+            </tr>
+            <tr>
+              <td>Test 104</td>
+              <td>15-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Magnetic Effects of Electric Current</td>
+            </tr>
+            <tr>
+              <td>Test 105</td>
+              <td>16-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Water Resources</td>
+            </tr>
+            <tr>
+              <td>Test 106</td>
+              <td>17-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Surface Areas and Volumes</td>
+            </tr>
+            <tr>
+              <td>Test 107</td>
+              <td>19-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Magnetic Effects of Electric Current</td>
+            </tr>
+            <tr>
+              <td>Test 108</td>
+              <td>20-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Agriculture</td>
+            </tr>
+            <tr>
+              <td>Test 109</td>
+              <td>21-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Probability</td>
+            </tr>
+            <tr>
+              <td>Test 110</td>
+              <td>22-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Our Environment</td>
+            </tr>
+            <tr>
+              <td>Test 111</td>
+              <td>23-02-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Minerals and Energy Resources</td>
+            </tr>
+            <tr>
+              <td>Test 112</td>
+              <td>24-02-2024</td>
+              <td>Saturday</td>
+              <td>Maths</td>
+              <td>Probability</td>
+            </tr>
+            <tr>
+              <td>Test 113</td>
+              <td>26-02-2024</td>
+              <td>Monday</td>
+              <td>Science</td>
+              <td>Our Environment</td>
+            </tr>
+            <tr>
+              <td>Test 114</td>
+              <td>27-02-2024</td>
+              <td>Tuesday</td>
+              <td>Social Science</td>
+              <td>Manufacturing Industries</td>
+            </tr>
+            <tr>
+              <td>Test 115</td>
+              <td>28-02-2024</td>
+              <td>Wednesday</td>
+              <td>Maths</td>
+              <td>Probability</td>
+            </tr>
+            <tr>
+              <td>Test 116</td>
+              <td>29-02-2024</td>
+              <td>Thursday</td>
+              <td>Science</td>
+              <td>Our Environment</td>
+            </tr>
+            <tr>
+              <td>Test 117</td>
+              <td>01-03-2024</td>
+              <td>Friday</td>
+              <td>Social Science</td>
+              <td>Lifelines of National Economy</td>
             </tr>
           </tbody>
         </table>

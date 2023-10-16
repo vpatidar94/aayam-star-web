@@ -12,14 +12,14 @@ import { HelperService } from 'src/app/core/services/helper';
   styleUrls: ['./test-schedule.component.scss'],
 })
 export class TestScheduleComponent {
+
   constructor(private router: Router, private helper: HelperService) {
     const userDetail = this.helper.getUserDetails();
-    if (userDetail && userDetail.stream) {
-      this.isStreamJee = userDetail?.stream === 'JEE' ?? false;
-    }
+    this.userStream = userDetail.stream;
   }
 
-  isStreamJee = false as boolean;
+  userStream = { stream: '' } as any;
+
   redirectToDashboard() {
     this.router.navigate(['/dashboard']);
   }
