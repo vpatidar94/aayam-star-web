@@ -81,7 +81,7 @@ export class VerifyOtpComponent implements OnInit {
           ).subscribe({
             next: (res) => {
               this.helperService.updateUserDetails(res.user)
-              if (res.isNew) {
+              if (res.isNew || !res.user.stream) {
                 this.router.navigate(['/user-detail']);
                 this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
               }
