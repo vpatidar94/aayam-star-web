@@ -6,11 +6,12 @@ import { AlertService } from "src/app/core/services/alert.service";
 import { CONSTANTS } from "src/app/core/constant/constant";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { AllUserDetailsComponent } from "../all-user-details/all-user-details.component";
 
 @Component({
   selector: "org-tests",
   standalone: true,
-  imports: [CommonModule, ContentHeaderComponent, RouterModule, FormsModule],
+  imports: [CommonModule, ContentHeaderComponent, RouterModule, FormsModule, AllUserDetailsComponent],
   templateUrl: "./tests.component.html",
   styleUrls: ["./tests.component.scss"],
 })
@@ -32,7 +33,6 @@ export class TestsComponent {
 
   ngOnInit(): void {
     this.getAllTestDetails();
-    this.getAllResultDetails();
   }
 
   getAllTestDetails() {
@@ -78,28 +78,6 @@ export class TestsComponent {
     else {
       return false;
     }
-  }
-
-  getAllResultDetails() {
-    this.loading = true;
-    this.apiService
-      .getAllResults()
-      .subscribe({
-        next: (res) => {
-          this.resultData = res.data;
-          this.resultData.sort((a: any, b: any) => {
-            const sumA = a.totalTestPoints + a.userDetails.referralPoints;
-            const sumB = b.totalTestPoints + b.userDetails.referralPoints;
-            // Sort in descending order
-            return sumB - sumA;
-          });
-          this.loading = false;
-        },
-        error: (err) => {
-          this.alertService.error(err.message);
-          this.loading = false
-        }
-      });
   }
 
   getAllUsersDetails() {

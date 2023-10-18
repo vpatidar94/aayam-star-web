@@ -78,6 +78,11 @@ export const appRoutes: Route[] = [
           import('./pages/admin/tests/tests.component').then((x) => x.TestsComponent),
       },
       {
+        path: "all-user-details",
+        loadComponent: () =>
+          import('./pages/admin/all-user-details/all-user-details.component').then((x)=>x.AllUserDetailsComponent),
+      },
+      {
         path: "test-result/:testId",
         loadComponent: () =>
           import('./pages/admin/test-result/test-result.component').then((x) => x.TestResultComponent),
