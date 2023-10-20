@@ -37,7 +37,7 @@ export const CONSTANTS = Object.freeze({
 
 export type ButtonType = 'button' | 'submit';
 export type AlertType = 'success' | 'info' | 'danger' | 'warning' | '';
-
+export type ToggleType = 'Yes' | 'No' ;
 export type ClassType = "9" | "10" | "11" | "12" | "DROPPER";
 export type SubjectGroupType = "PCM" | "PCB";
 export type StreamType = 'NEET' | 'JEE';

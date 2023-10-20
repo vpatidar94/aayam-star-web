@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "src/app/core/services/api.service";
 import { AlertService } from "src/app/core/services/alert.service";
 import { FieldValidationMessageComponent } from "src/app/shared/field-validation-message/field-validation-message.component";
-import { CONSTANTS, ClassType, StreamType, SubjectNameType } from "src/app/core/constant/constant";
+import { ButtonType, CONSTANTS, ClassType, StreamType, SubjectNameType, ToggleType } from "src/app/core/constant/constant";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @Component({
@@ -31,7 +31,6 @@ export class AddTestComponent implements OnInit {
       this.testId = params['testId'];
     });
   }
-
   loading = false;
   data = [] as any;
   testId = '';
@@ -48,7 +47,7 @@ export class AddTestComponent implements OnInit {
   tForm!: FormGroup;
   // streamOptions = ["NEET", "JEE"] as Array<StreamType>;
   streamOptions = ["9", "10", "11", "12", "DROPPER"] as Array<ClassType>;
-
+  toggleOptions = ['Yes', 'No'] as Array<ToggleType>;
   subjectOptions = ["PHYSICS", "CHEMISTRY", "BIOLOGY", "MATHS"] as Array<SubjectNameType>;
   questionOptions = CONSTANTS.QUESTION_OPTIONS;
 
@@ -58,7 +57,9 @@ export class AddTestComponent implements OnInit {
     for (const option of this.streamOptions) {
       initialCheckboxValues[option] = false;
     }
-
+    for (const option of this.toggleOptions) {
+      initialCheckboxValues[option] = false;
+    }
     this.tForm = new FormGroup({
       id: new FormControl(null),
       title: new FormControl('', [
@@ -86,13 +87,19 @@ export class AddTestComponent implements OnInit {
       testDuration: new FormControl(600, [
         Validators.required
       ]),
+      is12DropperSame: new FormControl('No', [
+        Validators.required
+      ]),
       questions: this.fb.array([]),
     });
     this.addDefaultQuestions();
     this.getTestDetails();
     // this.changeStream();
   }
-
+  changeToggle() {
+    const is12DropperSame = this.tForm.get('is12DropperSame')?.value;
+    console.log(is12DropperSame)
+  }
   changeStream() {
     const stream = this.tForm.get('stream')?.value;
     this.tForm.patchValue({
@@ -165,17 +172,41 @@ export class AddTestComponent implements OnInit {
       const resultDate = new Date(newTestDate.toString());
       resultDate.setDate(resultDate.getDate() + 1).toLocaleString();
 
-      let streamDb = []
-      if (fromVal.stream === '9' || fromVal.stream === '10')
-        streamDb = [fromVal.stream]
-      if (fromVal.subjectName === 'PHYSICS' || fromVal.subjectName === 'CHEMISTRY')
-        streamDb = [fromVal.stream + "-PCB", fromVal.stream + "-PCM"];
-      else if (fromVal.subjectName === 'BIOLOGY')
-        streamDb = [fromVal.stream + "-PCB"];
-      else if (fromVal.subjectName === 'MATHS')
-        streamDb = [fromVal.stream + "-PCM"]
-      else
-        streamDb = [fromVal.stream]
+      // let streamDb = []
+      // if (fromVal.stream === '9' || fromVal.stream === '10')
+      //   streamDb = [fromVal.stream]
+      // if (fromVal.subjectName === 'PHYSICS' || fromVal.subjectName === 'CHEMISTRY')
+      //   streamDb = [fromVal.stream + "-PCB", fromVal.stream + "-PCM"];
+      // else if (fromVal.subjectName === 'BIOLOGY')
+      //   streamDb = [fromVal.stream + "-PCB"];
+      // else if (fromVal.subjectName === 'MATHS')
+      //   streamDb = [fromVal.stream + "-PCM"]
+      // else
+      //   streamDb = [fromVal.stream]
+
+      let streamDb: string[] = [];
+      if (fromVal.is12DropperSame === 'Yes') {
+        // Include both 'DROPPER' and '12' in the streamDb array
+        streamDb = ['DROPPER', '12'];
+      } else {
+        if (fromVal.stream === '9' || fromVal.stream === '10') {
+          streamDb = [fromVal.stream];
+        }
+        else if (fromVal.stream === 'DROPPER' || fromVal.stream === '12' || fromVal.stream === '11') {
+          // Include only the selected stream in the streamDb array
+          streamDb = [fromVal.stream];
+        }
+      }
+      if (!(fromVal.stream === '9' || fromVal.stream === '10')) {
+        if (fromVal.subjectName === 'PHYSICS' || fromVal.subjectName === 'CHEMISTRY') {
+          streamDb = streamDb.map(stream => [stream + '-PCB', stream + '-PCM']).flat();
+        } else if (fromVal.subjectName === 'BIOLOGY') {
+          streamDb = streamDb.map(stream => [stream + '-PCB']).flat();
+        } else if (fromVal.subjectName === 'MATHS') {
+          streamDb = streamDb.map(stream => [stream + '-PCM']).flat();
+        }
+      }
+
       const payload = {
         ...this.tForm.value,
         id: folderName,
@@ -185,7 +216,7 @@ export class AddTestComponent implements OnInit {
         passingScore: this.tForm.value.questions.length / 2,
         stream: streamDb
       }
-
+      console.log(payload)
       this.loading = false;
       this.apiService
         .addTestDetails(payload).subscribe({

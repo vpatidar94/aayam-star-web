@@ -1,143 +1,80 @@
 <div class="">
-  <org-content-header
-    [title]="testId ? 'Edit Test' : 'Add Test'"
-    [breadcrumbs]="breadcrumbs"
-  ></org-content-header>
+  <org-content-header [title]="testId ? 'Edit Test' : 'Add Test'" [breadcrumbs]="breadcrumbs"></org-content-header>
   <form class="row g-3" [formGroup]="tForm" (ngSubmit)="onSubmit()">
     <div class="col-12 mt-2 mb-2">
       <label for="mobile-field" class="mb-2 text__body-dark">Test Title</label>
-      <input
-        type="text"
-        formControlName="title"
-        class="form-control ifield"
-        id="name-field"
-        placeholder="Enter title"
-      />
+      <input type="text" formControlName="title" class="form-control ifield" id="name-field"
+        placeholder="Enter title" />
       <!-- validation messages -->
-      <org-field-validation-message
-        [control]="tForm.controls['title']"
-      ></org-field-validation-message>
+      <org-field-validation-message [control]="tForm.controls['title']"></org-field-validation-message>
     </div>
     <div class="col-12 mt-2 mb-2">
       <label for="mobile-field" class="mb-2 text__body-dark">Sub Title</label>
-      <input
-        type="text"
-        formControlName="subTitle"
-        class="form-control ifield"
-        id="name-field"
-        placeholder="Enter sub title"
-      />
+      <input type="text" formControlName="subTitle" class="form-control ifield" id="name-field"
+        placeholder="Enter sub title" />
       <!-- validation messages -->
-      <org-field-validation-message
-        [control]="tForm.controls['subTitle']"
-      ></org-field-validation-message>
+      <org-field-validation-message [control]="tForm.controls['subTitle']"></org-field-validation-message>
     </div>
     <div class="col col-md-4 col-sm-12 mt-4 mb-2">
       <div class="d-flex flex-column">
-        <label for="mobile-field" class="mb-2 text__body-dark"
-          >Select Class</label
-        >
-        <div
-          class="btn-group btn-secondary"
-          role="group"
-          aria-label="Basic radio toggle button group"
-        >
-          <ng-container
-            class="d-flex"
-            *ngFor="let option of streamOptions; let checkboxIndex = index"
-          >
-            <input
-              type="radio"
-              class="btn-check"
-              formControlName="stream"
-              [id]="'radio-' + option"
-              [value]="option"
-              autocomplete="off"
-              (change)="changeStream()"
-            />
-            <label
-              class="btn btn-outline-secondary"
-              [for]="'radio-' + option"
-              >{{ option }}</label
-            >
+        <label for="mobile-field" class="mb-2 text__body-dark">Select Class</label>
+        <div class="btn-group btn-secondary" role="group" aria-label="Basic radio toggle button group">
+          <ng-container class="d-flex" *ngFor="let option of streamOptions; let checkboxIndex = index">
+            <input type="radio" class="btn-check" formControlName="stream" [id]="'radio-' + option" [value]="option"
+              autocomplete="off" (change)="changeStream()" />
+            <label class="btn btn-outline-secondary" [for]="'radio-' + option">{{ option }}</label>
           </ng-container>
         </div>
       </div>
-      <org-field-validation-message
-        [control]="tForm.controls['stream']"
-      ></org-field-validation-message>
+      <org-field-validation-message [control]="tForm.controls['stream']"></org-field-validation-message>
     </div>
 
     <div class="col col-md-6 col-sm-12 mt-4 mb-2">
       <div class="d-flex flex-column">
-        <label for="mobile-field" class="mb-2 text__body-dark"
-          >Select Subject</label
-        >
-        <div
-          class="btn-group btn-secondary"
-          role="group"
-          aria-label="Basic radio toggle button group"
-        >
+        <label for="mobile-field" class="mb-2 text__body-dark">Select Subject</label>
+        <div class="btn-group btn-secondary" role="group" aria-label="Basic radio toggle button group">
           <ng-container *ngFor="let option of subjectOptions">
-            <input
-              type="radio"
-              class="btn-check"
-              formControlName="subjectName"
-              [id]="'radio-' + option"
-              [value]="option"
-              autocomplete="off"
-            />
-            <label
-              class="btn btn-outline-secondary"
-              [for]="'radio-' + option"
-              >{{ option }}</label
-            >
+            <input type="radio" class="btn-check" formControlName="subjectName" [id]="'radio-' + option"
+              [value]="option" autocomplete="off" />
+            <label class="btn btn-outline-secondary" [for]="'radio-' + option">{{ option }}</label>
           </ng-container>
         </div>
       </div>
-      <org-field-validation-message
-        [control]="tForm.controls['subjectName']"
-      ></org-field-validation-message>
+      <org-field-validation-message [control]="tForm.controls['subjectName']"></org-field-validation-message>
     </div>
-
+   
     <div class="col col-md-6 col-sm-12 mt-2 mb-2">
       <label for="mobile-field" class="mb-2 text__body-dark">Test date</label>
-      <input
-        type="text"
-        placeholder="Select date"
-        class="form-control ifield"
-        bsDatepicker
-        formControlName="testDate"
-      />
-      <org-field-validation-message
-        [control]="tForm.controls['testDate']"
-      ></org-field-validation-message>
+      <input type="text" placeholder="Select date" class="form-control ifield" bsDatepicker
+        formControlName="testDate" />
+      <org-field-validation-message [control]="tForm.controls['testDate']"></org-field-validation-message>
     </div>
     <div class="col col-md-6 col-sm-12 mt-2 mb-2">
-      <label for="mobile-field" class="mb-2 text__body-dark"
-        >Test Duration (in sec)</label
-      >
-      <input
-        type="number"
-        formControlName="testDuration"
-        class="form-control ifield"
-        id="name-field"
-        placeholder="Enter duration (in min)"
-      />
+      <label for="mobile-field" class="mb-2 text__body-dark">Test Duration (in sec)</label>
+      <input type="number" formControlName="testDuration" class="form-control ifield" id="name-field"
+        placeholder="Enter duration (in min)" />
       <!-- validation messages -->
-      <org-field-validation-message
-        [control]="tForm.controls['testDuration']"
-      ></org-field-validation-message>
+      <org-field-validation-message [control]="tForm.controls['testDuration']"></org-field-validation-message>
+    </div>
+     <!-- Add this button wherever you want in your HTML -->
+     <div class="col col-md-4 col-sm-12 mt-4 mb-2">
+      <div class="d-flex flex-column">
+        <label for="mobile-field" class="mb-2 text__body-dark">Is 12 Dropper Same</label>
+        <div class="btn-group btn-secondary" role="group" aria-label="Basic radio toggle button group">
+          <ng-container *ngFor="let option of toggleOptions;  let checkboxIndex = index">
+            <input type="radio" class="btn-check" formControlName="is12DropperSame" [id]="'radio-' + option"
+              [value]="option" autocomplete="off" (change)="changeToggle()"/>
+            <label class="btn btn-outline-secondary" [for]="'radio-' + option">{{ option }}</label>
+          </ng-container>
+        </div>
+      </div>
+      <org-field-validation-message [control]="tForm.controls['is12DropperSame']"></org-field-validation-message>
     </div>
     <hr />
     <div class="col-12 mt-2 mb-2">
       <div class="d-flex align-items-center mb-1">
         <label class="text__body-dark">Questions</label>
-        <button
-          type="button"
-          class="ibtn ibtn__secondary sm ms-auto"
-          (click)="addQuestion()"
-        >
+        <button type="button" class="ibtn ibtn__secondary sm ms-auto" (click)="addQuestion()">
           Add Question
         </button>
       </div>
@@ -149,60 +86,29 @@
                 <span>{{ i + 1 }}.</span>
               </div>
               <div class="px-2 w-25">
-                <input
-                  type="text"
-                  class="form-control form-control-sm ifield questions__path"
-                  id="image-field"
-                  placeholder="path"
-                  formControlName="image"
-                />
+                <input type="text" class="form-control form-control-sm ifield questions__path" id="image-field"
+                  placeholder="path" formControlName="image" />
               </div>
               <div class="px-2 w-25">
-                <input
-                  type="text"
-                  class="form-control form-control-sm ifield questions__path"
-                  id="hindi-image-field"
-                  placeholder="path"
-                  formControlName="imageHindi"
-                />
+                <input type="text" class="form-control form-control-sm ifield questions__path" id="hindi-image-field"
+                  placeholder="path" formControlName="imageHindi" />
               </div>
-              <div
-                class="px-2 ml-4 w-100 d-flex justify-content-center align-item-center"
-              >
-                <div
-                  class="m-auto"
-                  *ngFor="let option of questionOptions; let rIndex = index"
-                >
+              <div class="px-2 ml-4 w-100 d-flex justify-content-center align-item-center">
+                <div class="m-auto" *ngFor="let option of questionOptions; let rIndex = index">
                   <div class="radio__outline form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      [id]="'radio-' + option + i"
-                      required
-                      [value]="option"
-                      formControlName="correctAnswer"
-                    />
-                    <label
-                      class="form-check-label"
-                      [for]="'radio-' + option + i"
-                    >
+                    <input class="form-check-input" type="radio" [id]="'radio-' + option + i" required [value]="option"
+                      formControlName="correctAnswer" />
+                    <label class="form-check-label" [for]="'radio-' + option + i">
                       {{ option }}
                     </label>
                   </div>
                 </div>
               </div>
               <div class="mt-2 cursor-pointer" (click)="removeQuestion(i)">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 0 24 24"
-                  width="24px"
-                  fill="#777777"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#777777">
                   <path d="M0 0h24v24H0z" fill="none" />
                   <path
-                    d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                  />
+                    d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                 </svg>
               </div>
             </div>
@@ -211,19 +117,11 @@
       </ng-container>
     </div>
     <div class="col-12 mt-4">
-      <button
-        type="submit"
-        class="ibtn ibtn__primary w-100 mb-3"
-        [disabled]="loading"
-      >
+      <button type="submit" class="ibtn ibtn__primary w-100 mb-3" [disabled]="loading">
         <span *ngIf="!loading; else spinner">Submit</span>
       </button>
       <ng-template #spinner>
-        <span
-          class="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-        ></span>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       </ng-template>
     </div>
   </form>

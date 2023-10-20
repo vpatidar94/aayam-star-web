@@ -64,7 +64,7 @@ export class TestsComponent {
         .deleteTest(testId)
         .subscribe({
           next: (res) => {
-            this.data = res;
+            // this.data = res;
             item.btnLoading = false;
             this.getAllTestDetails();
           },
