@@ -1,0 +1,61 @@
+<form class="row g-3" [formGroup]="tForm" (ngSubmit)="onSubmit()">
+    <div class="col-12 mt-2 mb-2">
+        <label for="mobile-field" class="mb-2 text__body-dark">Organisation Name</label>
+        <input type="text" formControlName="orgName" class="form-control ifield" id="name-field"
+            placeholder="Enter Organisation Name" />
+        <!-- validation messages -->
+        <org-field-validation-message [control]="tForm.controls['orgName']"></org-field-validation-message>
+    </div>
+
+    <!-- Organization Address -->
+    <div class="col-12 mt-2 mb-2">
+        <label for="address-field" class="mb-2 text__body-dark">Organisation Address</label>
+        <input type="text" formControlName="orgAddress" class="form-control ifield" id="address-field"
+            placeholder="Enter Organisation Address" />
+        <!-- Validation messages -->
+        <org-field-validation-message [control]="tForm.controls['orgAddress']"></org-field-validation-message>
+    </div>
+
+    <!-- Organization Admins -->
+    <div class="col-12 mt-2 mb-2" formArrayName="orgAdmins">
+        <div class="d-flex align-items-center mb-1">
+            <label class="text__body-dark">Admins</label>
+            <button type="button" class="ibtn ibtn__secondary sm ms-auto mr-2" (click)="addOrgAdmin()">Add
+                Admin</button>
+
+        </div>
+        <div *ngFor="let orgAdmin of orgAdmins.controls; let i = index" class="col-md-5 d-flex align-item-center">
+            <input type="text" formControlName="{{i}}" class="form-control ifield me-2 mb-1"
+                placeholder="Enter Organisation Admin" />
+            <!-- <button type="button" class="col-3 align-self-center ibtn ibtn__secondary sm ms-auto mr-2" (click)="addOrgAdmin()">Add Admin</button> -->
+            <div class="col-2 align-self-center cursor-pointer" type="button" (click)="removeOrgAdmin(i)"><svg
+                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#777777">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organization Code -->
+    <div class="col-12 d-flex mb-2">
+        <div class="col-md-4">
+            <label for="code-field" class="mb-2 text__body-dark">Organisation Code</label>
+            <input type="text" formControlName="orgCode" class="form-control ifield" id="code-field"
+                placeholder="Organisation Code" />
+        </div>
+        <button type="button" class="ibtn ibtn__secondary sm ms-auto mr-2" (click)="generateCode()">Genrate
+            Code</button>
+
+
+        <!-- Validation messages -->
+        <org-field-validation-message [control]="tForm.controls['orgCode']"></org-field-validation-message>
+    </div>
+
+
+
+    <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

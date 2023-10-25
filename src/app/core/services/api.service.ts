@@ -333,6 +333,55 @@ export class ApiService {
       );
   }
 
+  addOrganisation(formData: any): Observable<any> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        CONSTANTS.API.ADD_ORGANISATION,
+        formData
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+  
+  getOrganisations() : Observable<any> {
+    return this.http
+    .get<CustomHttpResponse<any>>(
+      CONSTANTS.API.GET_ORGANISATIONS
+    )
+    .pipe(
+      map((res) => {
+        return res;
+      })
+    );
+  }
+
+  getOrganisationById(orgId: string | number) : Observable<any> {
+    return this.http
+    .get<CustomHttpResponse<any>>(
+        '/organisation/getOrganisation' + '/' + orgId
+    )
+    .pipe(
+      map((res) => {
+        return res;
+      })
+    );
+  }
+  updateOrganisation(orgId: string, formData: any): Observable<any> {
+    return this.http
+      .put<CustomHttpResponse<any>>(
+        '/organisation/updateOrganisation' + '/' + orgId,
+        formData
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
   sendScore(number: string, title: string, score: string, outOf: string): Observable<{ messaging_product: string, contacts: any, messages: any }> {
     const payload = {
       "to": number,

@@ -80,7 +80,7 @@ export const appRoutes: Route[] = [
       {
         path: "all-user-details",
         loadComponent: () =>
-          import('./pages/admin/all-user-details/all-user-details.component').then((x)=>x.AllUserDetailsComponent),
+          import('./pages/admin/all-user-details/all-user-details.component').then((x) => x.AllUserDetailsComponent),
       },
       {
         path: "test-result/:testId",
@@ -96,7 +96,23 @@ export const appRoutes: Route[] = [
         path: "edit-test/:testId",
         loadComponent: () =>
           import('./pages/admin/add-test/add-test.component').then((x) => x.AddTestComponent),
-      }
+      },
+      {
+        path: "organisations",
+        loadComponent: () =>
+          import('./pages/admin/organisations/organisations.component').then((x) => x.OrganisationComponent),
+      },
+      {
+        path: "add-organisation",
+        loadComponent: () =>
+          import('./pages/admin/add-organisation/add-organisation.component').then((x) => x.AddOrganisation),
+      },
+      {
+        path: "edit-organisation/:orgId",
+        loadComponent: () =>
+          import('./pages/admin/add-organisation/add-organisation.component').then((x) => x.AddOrganisation),
+      },
+
     ]
   },
 
