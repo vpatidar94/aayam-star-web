@@ -1,0 +1,13 @@
+.main__card{
+    height: calc(100vh - 350px);
+
+}
+.form-check-input{
+    // width: 1.5em;
+    // height: 1.5em;
+    border: 2.5px solid #aeb4b9;
+    &:checked {
+        background-color: var(--i-primary-action);
+        border-color: var(--i-primary-action);
+    }
+}

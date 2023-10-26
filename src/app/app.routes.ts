@@ -115,5 +115,27 @@ export const appRoutes: Route[] = [
 
     ]
   },
+  // {
+  //   path: "admin-login",
+  //   // component:  LoginComponent,
+  //   loadComponent: () =>
+  //     import('./pages/auth-admin/admin-login/admin-login.component').then((x) => x.AdminLoginComponent),
+  // },
+
+
+  {
+    path: "admin-verify/:mobileNo/:orgCode",
+    // component:  LoginComponent,
+    loadComponent: () =>
+      import('./pages/auth-admin/admin-verify-otp/admin-verify-otp.component').then((x) => x.AdminVerifyOtpComponent),
+  },
+
+  {
+    path: "admin-details",
+    // component:  LoginComponent,
+    loadComponent: () =>
+      import('./pages/auth-admin/enter-admin-details/enter-admin-details.component').then((x) => x.EnterAdminDetailsComponent),
+  },
+
 
 ];

@@ -151,6 +151,28 @@ export class ApiService {
       );
   }
 
+
+  addOrgAdminUser(
+    mobileNo: string,
+    orgCode: string,
+  ): Observable<{ token: string, user: any, isNew: boolean }> {
+    const payload = {
+      mobileNo: mobileNo,
+      orgCode: orgCode,
+    };
+    return this.http
+      .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean }>>(
+        '/users/addOrgAdminUser',
+        payload
+      )
+      .pipe(
+        map((res) => {
+          this.setAccessToken(res.data.token);
+          return res.data;
+        })
+      );
+  }
+
   // update name api calling
   updateName(
     payload: { name: string, stream: StreamType }
@@ -167,6 +189,22 @@ export class ApiService {
       );
   }
 
+  // newly added by jitendra
+
+  updateOrgAdminDetails(
+    payload: { name: string, designation: string, orgCode: string }
+  ): Observable<CustomHttpResponse<any>> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        '/users/updateOrgAdminDetails',
+        payload
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 
   getQuestions(testId: string | number): Observable<any> {
     return this.http
