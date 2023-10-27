@@ -96,7 +96,7 @@ export class AdminVerifyOtpComponent implements OnInit {
               //   }
             },
             error: (err) => {
-              this.alertService.error(err)
+              this.alertService.error(err.error.error)
               this.loading = false;
             }
           })

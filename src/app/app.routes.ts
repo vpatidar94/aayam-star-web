@@ -68,7 +68,7 @@ export const appRoutes: Route[] = [
     canActivate: [canActivateUser],
   },
   {
-    path: "admin-verify/:mobileNo/:orgCode",
+    path: "verify-admin/:mobileNo/:orgCode",
     // component:  LoginComponent,
     loadComponent: () =>
       import('./pages/auth-admin/admin-verify-otp/admin-verify-otp.component').then((x) => x.AdminVerifyOtpComponent),
