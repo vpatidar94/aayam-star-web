@@ -18,6 +18,17 @@ export class OrganisationComponent {
     orgData = [] as any
     loading = false;
 
+    breadcrumbs = [
+        {
+            path: '/admin',
+            name: 'Admin'
+        },
+        {
+            path: '',
+            name: 'Organisation'
+        },
+    ];
+
     ngOnInit(): void {
         this.getAllOrganisations()
     }

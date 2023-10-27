@@ -18,9 +18,9 @@ import { AlertService } from 'src/app/core/services/alert.service';
 })
 export class AdminVerifyOtpComponent implements OnInit {
 
-  constructor(private alertService: AlertService, private helperService: HelperService, private apiService: ApiService, private router: Router,private route: ActivatedRoute) {
+  constructor(private alertService: AlertService, private helperService: HelperService, private apiService: ApiService, private router: Router, private route: ActivatedRoute) {
     this.helperService.isOtpAvailable(),
-    this.route.params.subscribe(params => {
+      this.route.params.subscribe(params => {
         this.mobileNo = params['mobileNo'];
         this.orgCode = params['orgCode']
       });
@@ -78,22 +78,22 @@ export class AdminVerifyOtpComponent implements OnInit {
       const user = this.helperService.getUserDetails();
       if (user && this.helperService.matchOtp(newOtpVal)) {
         // otp verified, now send perform login/signup api call
-        console.log("XXXXX",this.mobileNo);
+        console.log("XXXXX", this.mobileNo);
         this.apiService
           .addOrgAdminUser(
-            this.mobileNo,this.orgCode
+            this.mobileNo, this.orgCode
           ).subscribe({
             next: (res) => {
               this.helperService.updateUserDetails(res.user)
-            //   if (res.isNew) {
-                
-                this.router.navigate(['/admin-details']);
-                this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
-            //   }
-            //   else {
-            //     this.router.navigate(['/dashboard']);
-            //     this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
-            //   }
+              //   if (res.isNew) {
+
+              this.router.navigate(['/admin-details']);
+              this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
+              //   }
+              //   else {
+              //     this.router.navigate(['/dashboard']);
+              //     this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
+              //   }
             },
             error: (err) => {
               this.alertService.error(err)
@@ -117,12 +117,10 @@ export class AdminVerifyOtpComponent implements OnInit {
       this.apiService.sendOtp(this.mobileNo, newOtp)
         .subscribe(() => {
           this.helperService.setUserContactDetails(this.mobileNo)
-          this.router.navigate(['/admin-verify'])
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         }, err => {
           this.helperService.setUserContactDetails(this.mobileNo)
-          this.router.navigate(['/admin-verify'])
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         })

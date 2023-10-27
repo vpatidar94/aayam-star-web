@@ -35,11 +35,20 @@ export class AddOrganisation implements OnInit {
     tForm!: FormGroup;
     isEditMode = false;
     orgId: string | null = null;
-
-    setOrgAdmins(admins: string[]) {
-        const adminsArray = admins.map(admin => this.fb.control(admin));
-        this.tForm.setControl('orgAdmins', this.fb.array(adminsArray));
-    }
+    breadcrumbs = [
+        {
+            path: '/admin',
+            name: 'Admin'
+        },
+        {
+            path: '/admin/organisations',
+            name: 'Organisation'
+        },
+        {
+            path: '',
+            name: 'Add Organisation'
+        },
+    ];
 
     ngOnInit(): void {
         this.tForm = this.fb.group({
@@ -64,23 +73,32 @@ export class AddOrganisation implements OnInit {
             if (this.orgId) {
                 this.isEditMode = true;
                 // Fetch organization details for editing
-                this.apiService.getOrganisationById(this.orgId).subscribe(
-                    (org) => {
-                        this.tForm.patchValue({
-                            orgName: org.data.orgName,
-                            orgAddress: org.data.orgAddress,
-                            orgCode: org.data.orgCode,
-                        });
-                        this.setOrgAdmins(org.data.orgAdmins);
-                        this.tForm.controls['orgCode'].disable();
-                    },
-                    (error) => {
-                        console.error("Error fetching organisation details", error);
-                    }
-                );
+                this.getOrgDetail(this.orgId);
             }
         });
 
+    }
+
+    getOrgDetail(orgId: string) {
+        this.apiService.getOrganisationById(orgId).subscribe(
+            (org) => {
+                this.tForm.patchValue({
+                    orgName: org.data.orgName,
+                    orgAddress: org.data.orgAddress,
+                    orgCode: org.data.orgCode,
+                });
+                this.setOrgAdmins(org.data.orgAdmins);
+                this.tForm.controls['orgCode'].disable();
+            },
+            (error) => {
+                console.error("Error fetching organisation details", error);
+            }
+        );
+    }
+
+    setOrgAdmins(admins: string[]) {
+        const adminsArray = admins.map(admin => this.fb.control(admin));
+        this.tForm.setControl('orgAdmins', this.fb.array(adminsArray));
     }
 
     // Getter for orgAdmins form array
