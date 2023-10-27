@@ -175,7 +175,7 @@ export class ApiService {
 
   // update name api calling
   updateName(
-    payload: { name: string, stream: StreamType }
+    payload: { name: string, stream: StreamType, orgCode: string }
   ): Observable<CustomHttpResponse<any>> {
     return this.http
       .post<CustomHttpResponse<any>>(

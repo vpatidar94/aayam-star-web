@@ -35,6 +35,10 @@ export class EnterNameComponent implements OnInit {
         Validators.required,
       ]),
       subject: new FormControl(null),
+      orgCode: new FormControl(null, [
+        // Validators.required,
+        // this.validationService.noWhiteSpaceValidator as ValidatorFn
+      ]),
     });
   }
 
@@ -60,17 +64,20 @@ export class EnterNameComponent implements OnInit {
 
       this.apiService
         .updateName(
-          { name: this.tForm.value.name, stream: streamVal }
+          { name: this.tForm.value.name, stream: streamVal , orgCode: this.tForm.value.orgCode}
         ).subscribe({
           next: (res) => {
             if (res.status_code === 'success') {
-              this.helperService.setUserDetails(this.tForm.value.name, this.tForm.value.stream)
+              this.helperService.setUserDetails(this.tForm.value.name, this.tForm.value.stream )
               this.router.navigate(['/dashboard']);
             }
             this.loading = false;
           },
           error: (err) => {
-            this.alertService.error(err)
+            this.alertService.error(
+              'Organisation Not Found'
+            );
+  
             this.loading = false;
           }
         })

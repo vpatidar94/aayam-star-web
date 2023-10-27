@@ -76,6 +76,26 @@
           [control]="tForm.controls['subject']"
         ></org-field-validation-message>
       </div>
+
+      <div class="col-12 mt-1 mb-2">
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >Enter Organisation Code</label
+        >
+        <input
+          type="text"
+          formControlName="orgCode"
+          class="form-control ifield"
+          id="orgCode-field"
+          placeholder="Enter Org Code"
+        />
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >*if your institute is registered to Aayam Star</label
+        >
+        <!-- validation messages -->
+        <org-field-validation-message
+          [control]="tForm.controls['orgCode']"
+        ></org-field-validation-message>
+      </div>
       <div class="col-12 mt-4">
         <button
           type="submit"
