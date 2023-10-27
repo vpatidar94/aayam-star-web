@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 })
 export class HelperService {
   constructor(private router: Router) { }
-
+  userType: string = '';
   getAccessToken(): string {
     const token: string = sessionStorage.getItem("token") ?? "";
     return token;
@@ -40,6 +40,14 @@ export class HelperService {
     if (localStorage.getItem("userDetail"))
       return JSON.parse(localStorage.getItem("userDetail") ?? '')
     return {}
+  }
+
+  getUserType() {
+    const userDetail = this.getUserDetails();
+    if (!!userDetail?.type) {
+      return userDetail?.type;
+    }
+    return ''
   }
 
   generateOtp() {

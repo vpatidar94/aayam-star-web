@@ -43,9 +43,7 @@ export class OrganisationComponent {
             .getOrganisations()
             .subscribe({
                 next: (res) => {
-                    console.log(res)
                     this.orgData = res.data;
-                    console.log("redats", this.orgData)
                     this.loading = false
                 },
                 error: (err) => {

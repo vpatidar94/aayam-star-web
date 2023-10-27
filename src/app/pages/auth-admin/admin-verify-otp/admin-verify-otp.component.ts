@@ -78,22 +78,14 @@ export class AdminVerifyOtpComponent implements OnInit {
       const user = this.helperService.getUserDetails();
       if (user && this.helperService.matchOtp(newOtpVal)) {
         // otp verified, now send perform login/signup api call
-        console.log("XXXXX", this.mobileNo);
         this.apiService
           .addOrgAdminUser(
             this.mobileNo, this.orgCode
           ).subscribe({
             next: (res) => {
-              this.helperService.updateUserDetails(res.user)
-              //   if (res.isNew) {
-
+              this.helperService.updateUserDetails(res.user);
               this.router.navigate(['/admin-details']);
               this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
-              //   }
-              //   else {
-              //     this.router.navigate(['/dashboard']);
-              //     this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
-              //   }
             },
             error: (err) => {
               this.alertService.error(err.error.error)

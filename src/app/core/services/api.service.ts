@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { CONSTANTS, StreamType } from "../constant/constant";
+import { CONSTANTS, StreamType, UserTypeEnum } from "../constant/constant";
 import { Observable, catchError, map, retry, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { AlertService } from "./alert.service";
@@ -133,13 +133,13 @@ export class ApiService {
   loginSignup(
     mobileNo: string,
     referredBy: string
-  ): Observable<{ token: string, user: any, isNew: boolean }> {
+  ): Observable<{ token: string, user: any, isNew: boolean, userType: UserTypeEnum }> {
     const payload = {
       mobileNo: mobileNo,
       referredBy: referredBy ?? ''
     };
     return this.http
-      .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean }>>(
+      .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean, userType: UserTypeEnum }>>(
         CONSTANTS.API.LOGIN_SIGNUP,
         payload
       )
@@ -192,11 +192,11 @@ export class ApiService {
   // newly added by jitendra
 
   updateOrgAdminDetails(
-    payload: { name: string, designation: string, orgCode: string }
+    payload: { name: string, designation: string }
   ): Observable<CustomHttpResponse<any>> {
     return this.http
       .post<CustomHttpResponse<any>>(
-        '/users/updateOrgAdminDetails',
+        CONSTANTS.API.SIGNUP_ORG_USER_DETAIL,
         payload
       )
       .pipe(
@@ -221,7 +221,7 @@ export class ApiService {
   getTestResultByUser(testId: string | number): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(
-        '/result/getTestResultByUser' + '/' + testId 
+        '/result/getTestResultByUser' + '/' + testId
       )
       .pipe(
         map((res) => {
@@ -279,7 +279,7 @@ export class ApiService {
       );
   }
 
-  deleteTest(testId:string): Observable<any> {
+  deleteTest(testId: string): Observable<any> {
     return this.http
       .delete<CustomHttpResponse<any>>(
         '/test/deleteTest'
@@ -303,7 +303,7 @@ export class ApiService {
         })
       );
   }
-  getAllResults():  Observable<any> {
+  getAllResults(): Observable<any> {
     return this.http.get<CustomHttpResponse<any>>(
       '/result/getAllResultsDetails'
     )
@@ -320,7 +320,7 @@ export class ApiService {
       );
   }
 
-  sendWpMessage(payload:any): Observable<any> {
+  sendWpMessage(payload: any): Observable<any> {
     return this.http
       .post<CustomHttpResponse<any>>(
         CONSTANTS.API.SEND_WP_MESSAGES,
@@ -331,7 +331,7 @@ export class ApiService {
           return res?.data;
         })
       );
-      
+
   }
 
   getResultByTest(testId: string): Observable<any> {
@@ -383,29 +383,29 @@ export class ApiService {
         })
       );
   }
-  
-  getOrganisations() : Observable<any> {
+
+  getOrganisations(): Observable<any> {
     return this.http
-    .get<CustomHttpResponse<any>>(
-      CONSTANTS.API.GET_ORGANISATIONS
-    )
-    .pipe(
-      map((res) => {
-        return res;
-      })
-    );
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_ORGANISATIONS
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
   }
 
-  getOrganisationById(orgId: string | number) : Observable<any> {
+  getOrganisationById(orgId: string | number): Observable<any> {
     return this.http
-    .get<CustomHttpResponse<any>>(
+      .get<CustomHttpResponse<any>>(
         '/organisation/getOrganisation' + '/' + orgId
-    )
-    .pipe(
-      map((res) => {
-        return res;
-      })
-    );
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
   }
   updateOrganisation(orgId: string, formData: any): Observable<any> {
     return this.http

@@ -98,7 +98,6 @@ export class AddTestComponent implements OnInit {
   }
   changeToggle() {
     const is12DropperSame = this.tForm.get('is12DropperSame')?.value;
-    console.log(is12DropperSame)
   }
   changeStream() {
     const stream = this.tForm.get('stream')?.value;
@@ -216,7 +215,6 @@ export class AddTestComponent implements OnInit {
         passingScore: this.tForm.value.questions.length / 2,
         stream: streamDb
       }
-      console.log(payload)
       this.loading = false;
       this.apiService
         .addTestDetails(payload).subscribe({

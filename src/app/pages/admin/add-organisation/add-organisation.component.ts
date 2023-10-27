@@ -144,9 +144,6 @@ export class AddOrganisation implements OnInit {
 
         const orgCode = this.tForm.get('orgCode')?.value;
         let mobileNo = '91' + this.orgAdmins.at(index)?.value;
-        console.log(mobileNo)
-        // mobileNo = '918871688429';
-        // console.log("=========",mobileNo)
         if (orgCode) {
             // login link
             const loginLink = `https://star.aayamcareerinstitute.com/admin-verify/${mobileNo}/${orgCode}`;
@@ -170,7 +167,6 @@ export class AddOrganisation implements OnInit {
     onSubmit() {
         if (this.tForm.valid) {
             const formData = this.tForm.value;
-            console.log(formData);
             if (this.isEditMode && this.orgId !== null) {
                 // If in edit mode, call update API
                 this.apiService.updateOrganisation(this.orgId, formData).subscribe(

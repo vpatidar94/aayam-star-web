@@ -30,35 +30,29 @@ export class EnterAdminDetailsComponent implements OnInit {
         Validators.required,
         this.validationService.noWhiteSpaceValidator as ValidatorFn
       ]),
-      stream: new FormControl(null, [
+      designation: new FormControl(null, [
         Validators.required,
       ]),
     });
   }
 
   onSubmit() {
-    console.log("XXXXXXXXXX",)
-    // if (this.tForm.invalid) {
-    //   this.tForm.markAllAsTouched();
-    // } else {
-    //   this.loading = true;
-
-      this.apiService
-        .updateOrgAdminDetails(
-          { name: this.tForm.value.name, designation: 'teacher', orgCode:'542154' }
-        ).subscribe({
-          next: (res) => {
-            if (res.status_code === 'success') {
-              this.helperService.setUserDetails(this.tForm.value.name, this.tForm.value.name)
-              this.router.navigate(['/admin']);
-            }
-            this.loading = false;
-          },
-          error: (err) => {
-            this.alertService.error(err)
-            this.loading = false;
+    this.apiService
+      .updateOrgAdminDetails(
+        { name: this.tForm.value.name, designation: this.tForm.value.designation }
+      ).subscribe({
+        next: (res) => {
+          if (res.status_code === 'success') {
+            this.helperService.setUserDetails(this.tForm.value.name, this.tForm.value.designation)
+            this.router.navigate(['/admin']);
           }
-        })
-    }
+          this.loading = false;
+        },
+        error: (err) => {
+          this.alertService.error(err)
+          this.loading = false;
+        }
+      })
   }
+}
 // }

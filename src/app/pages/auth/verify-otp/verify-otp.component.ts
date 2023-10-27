@@ -4,7 +4,7 @@ import { AuthHeaderComponent } from 'src/app/layout/auth-header/auth-header.comp
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HelperService } from 'src/app/core/services/helper';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CONSTANTS } from 'src/app/core/constant/constant';
+import { CONSTANTS, UserTypeEnum } from 'src/app/core/constant/constant';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 
@@ -81,7 +81,11 @@ export class VerifyOtpComponent implements OnInit {
           ).subscribe({
             next: (res) => {
               this.helperService.updateUserDetails(res.user)
-              if (res.isNew || !res.user.stream) {
+              if (res.userType === UserTypeEnum.ADMIN || res.userType === UserTypeEnum.ORG_ADMIN) {
+                this.router.navigate(['/admin']);
+                this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
+              }
+              else if (res.isNew || !res.user.stream) {
                 this.router.navigate(['/user-detail']);
                 this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
               }

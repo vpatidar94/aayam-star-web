@@ -7,6 +7,7 @@ import { CONSTANTS } from "src/app/core/constant/constant";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { AllUserDetailsComponent } from "../all-user-details/all-user-details.component";
+import { HelperService } from "src/app/core/services/helper";
 
 @Component({
   selector: "org-tests",
@@ -16,7 +17,9 @@ import { AllUserDetailsComponent } from "../all-user-details/all-user-details.co
   styleUrls: ["./tests.component.scss"],
 })
 export class TestsComponent {
-  constructor(private apiService: ApiService, private alertService: AlertService) { }
+  constructor(private apiService: ApiService, private alertService: AlertService, private helper: HelperService) {
+    this.userType = this.helper.getUserType();
+  }
   loading = false;
   testId = '';
   btnLoading = false;
@@ -24,6 +27,7 @@ export class TestsComponent {
   userData = [] as any;
   resultData = [] as any;
   isAllTests = false as boolean;
+  userType: string = '';
   breadcrumbs = [
     // {
     //   name: 'Tests',
@@ -88,7 +92,6 @@ export class TestsComponent {
         next: (res) => {
           this.userData = res;
           this.loading = false;
-          console.log(this.data)
         },
         error: (err) => {
           this.alertService.error(err.message);

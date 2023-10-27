@@ -6,6 +6,7 @@ import { ContentHeaderComponent } from "src/app/shared/content-header/content-he
 import { ActivatedRoute } from "@angular/router";
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CONSTANTS } from "src/app/core/constant/constant";
+import { HelperService } from "src/app/core/services/helper";
 
 @Component({
   selector: "org-test-result",
@@ -15,10 +16,12 @@ import { CONSTANTS } from "src/app/core/constant/constant";
   styleUrls: ["./test-result.component.scss"],
 })
 export class TestResultComponent {
-  constructor(private route: ActivatedRoute, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private alertService: AlertService, private helper: HelperService) {
     this.route.params.subscribe(params => {
       this.testId = params['testId'];
     });
+
+    this.userType = this.helper.getUserType();
   }
 
   loading = false;
@@ -32,8 +35,9 @@ export class TestResultComponent {
       path: '/admin'
     }
   ];
-  btnLoading=false as boolean;
+  btnLoading = false as boolean;
   isAccordianOpen = true;
+  userType: string = '';
   ngOnInit(): void {
     this.getTestDetail();
     this.getAllResults();

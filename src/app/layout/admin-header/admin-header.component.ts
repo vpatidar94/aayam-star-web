@@ -21,9 +21,14 @@ export class AdminHeaderComponent {
   isCollapsed = false;
   userData = null;
   isLoggedIn = false;
-
+  userType: string = '';
+  userName: string = '';
+  userDesignation: string = '';
   constructor(private helper: HelperService, private apiService: ApiService) {
     this.userData = this.helper.getUserDetails();
+    this.userType = this.userData!['type'] ?? '';
+    this.userName = this.userData!['name'] ?? ''
+    this.userDesignation = this.userData!['designation'] ?? ''
   }
 
   logout() {
