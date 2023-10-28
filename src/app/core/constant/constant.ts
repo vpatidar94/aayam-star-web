@@ -21,6 +21,7 @@ export const CONSTANTS = Object.freeze({
     ADD_ORGANISATION: '/organisation/addOrganisation',
     GET_ORGANISATIONS: '/organisation/',
     SIGNUP_ORG_USER_DETAIL: '/users/updateOrgAdminDetails',
+    GET_ALL_USERS: '/result/getAllResultsDetails',
   },
   MESSAGES: {
     LOGIN_FAILURE: "Login failed",

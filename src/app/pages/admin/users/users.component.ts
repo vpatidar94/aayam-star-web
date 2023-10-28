@@ -11,18 +11,19 @@ import { TableHeader } from "src/app/models/table.model";
 import { AyDataTableComponent } from "src/app/shared/ay-data-table/ay-data-table.component";
 
 @Component({
-  selector: "org-tests",
+  selector: "org-users",
   standalone: true,
   imports: [CommonModule, ContentHeaderComponent, RouterModule, FormsModule, AyDataTableComponent],
-  templateUrl: "./tests.component.html",
-  styleUrls: ["./tests.component.scss"],
+  templateUrl: "./users.component.html",
+  styleUrls: ["./users.component.scss"],
 })
-export class TestsComponent {
+export class UsersComponent {
   constructor(private apiService: ApiService, private alertService: AlertService, private helper: HelperService) {
     this.userType = this.helper.getUserType();
     if (this.userType === UserTypeEnum.ORG_ADMIN) {
-      this.searchPlaceHolder = "Search by name, stream, subject "
-      this.thead = this.thead.filter((x) => x.key !== 'id');
+      this.searchFilterKeys = ['name', 'stream'];
+      this.searchPlaceHolder = "Search by name, stream";
+      this.thead = this.thead.filter((x) => x.key !== 'mobileNo');
     }
   }
   loading = false;
@@ -33,8 +34,8 @@ export class TestsComponent {
   userData = [] as any;
   resultData = [] as any;
   userType: string = '';
-  searchFilterKeys = ['id', 'name', 'stream', 'subjectName'];
-  searchPlaceHolder = "Search by id, name, stream, subject "
+  searchFilterKeys = ['name', 'mobileNo', 'stream'];
+  searchPlaceHolder = "Search by name, mobile no., stream"
   breadcrumbs = [
     {
       path: '/admin',
@@ -42,20 +43,26 @@ export class TestsComponent {
     },
     {
       path: '',
-      name: 'Tests'
+      name: 'Users'
     },
   ];
   thead = [
     {
-      name: 'Test ID',
+      name: 'S.No.',
       sorting: true,
-      key: 'id',
+      key: 'index',
       sortBy: '',
     },
     {
       name: 'Name',
       sorting: true,
-      key: 'title',
+      key: 'name',
+      sortBy: '',
+    },
+    {
+      name: 'Mobile No',
+      sorting: true,
+      key: 'mobileNo',
       sortBy: '',
     },
     {
@@ -65,37 +72,43 @@ export class TestsComponent {
       sortBy: '',
     },
     {
-      name: 'Subject',
+      name: 'Ref. Points',
       sorting: true,
-      key: 'subjectName',
+      key: 'referralPoints',
       sortBy: '',
     },
     {
-      name: 'Date',
-      sorting: true,
-      key: 'testDate',
-      sortBy: '',
-    },
-    {
-      name: 'Action',
+      name: 'Test Attempted',
       sorting: true,
       key: 'totalTests',
+      sortBy: '',
+    },
+    {
+      name: 'Tests Points',
+      sorting: true,
+      key: 'totalTestPoints',
+      sortBy: '',
+    },
+    {
+      name: 'Total Points',
+      sorting: true,
+      key: 'totalPoints',
       sortBy: '',
     },
   ] as TableHeader<any>[];
 
   ngOnInit(): void {
-    this.getAllTestDetails();
+    this.getAllUsers();
   }
 
   changeData(e: any[]) {
     this.filteredData = e;
   }
 
-  getAllTestDetails() {
+  getAllUsers() {
     this.loading = true;
     this.apiService
-      .getAllTests()
+      .getAllUsersResult()
       .subscribe({
         next: (res) => {
           this.data = res;
@@ -105,51 +118,6 @@ export class TestsComponent {
         error: (err) => {
           this.alertService.error(err.message);
           this.loading = false;
-        }
-      });
-  }
-
-  deleteTest(testId: string) {
-    const item = this.data.find((d: any) => d._id === testId);
-
-    if (!item) {
-      return;
-    }
-
-    if (confirm('Are you sure to Delete the Test?')) {
-      item.btnLoading = true;
-      this.apiService
-        .deleteTest(testId)
-        .subscribe({
-          next: (res) => {
-            // this.data = res;
-            item.btnLoading = false;
-            this.getAllTestDetails();
-          },
-          error: (err) => {
-            this.alertService.error(err.message);
-            item.btnLoading = false;
-          }
-        });
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  generateRank(testId: string) {
-    this.btnLoading = true;
-    this.apiService
-      .generateRank(testId)
-      .subscribe({
-        next: (res) => {
-          this.alertService.success(CONSTANTS.MESSAGES.GENERATED_RANK_SUCCESS);
-          this.btnLoading = false;
-        },
-        error: (err) => {
-          this.alertService.error(err.message);
-          this.btnLoading = false;
         }
       });
   }

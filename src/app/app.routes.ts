@@ -86,13 +86,18 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: "",
+        redirectTo: "tests",
+        pathMatch: "full",
+      },
+      {
+        path: "tests",
         loadComponent: () =>
           import('./pages/admin/tests/tests.component').then((x) => x.TestsComponent),
       },
       {
-        path: "all-user-details",
+        path: "users",
         loadComponent: () =>
-          import('./pages/admin/all-user-details/all-user-details.component').then((x) => x.AllUserDetailsComponent),
+          import('./pages/admin/users/users.component').then((x) => x.UsersComponent),
       },
       {
         path: "test-result/:testId",

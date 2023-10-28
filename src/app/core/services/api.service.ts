@@ -314,11 +314,19 @@ export class ApiService {
         })
       );
   }
-  getAllResults(): Observable<any> {
-    return this.http.get<CustomHttpResponse<any>>(
-      '/result/getAllResultsDetails'
-    )
+
+  getAllUsersResult(): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_ALL_USERS
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
   }
+
   generateRank(testId: string): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(

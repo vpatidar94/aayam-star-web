@@ -25,11 +25,23 @@
           *ngIf="userType === 'org-admin' || userType === 'admin'"
         >
           <a
-            class="nav-link active"
+            class="nav-link"
             aria-current="page"
-            [routerLink]="['/admin']"
+            [routerLink]="['/admin/tests']"
             routerLinkActive="active"
-            >Test</a
+            >Tests</a
+          >
+        </li>
+        <li
+          class="nav-item"
+          *ngIf="userType === 'org-admin' || userType === 'admin'"
+        >
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/admin/users']"
+            routerLinkActive="active"
+            >Users</a
           >
         </li>
         <li class="nav-item" *ngIf="userType === 'admin'">
