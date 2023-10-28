@@ -138,32 +138,40 @@ export class AddOrganisation implements OnInit {
         this.tForm.get('orgCode')?.setValue(generatedCode);
     }
 
+
     sendWpLink(index: number) {
         this.btnLoading = true;
         this.loading = true;
 
         const orgCode = this.tForm.get('orgCode')?.value;
-        let mobileNo = '91' + this.orgAdmins.at(index)?.value;
+        let mobileNo = this.orgAdmins.at(index)?.value;
         if (orgCode) {
             // login link
-            const loginLink = `https://star.aayamcareerinstitute.com/admin-verify/${mobileNo}/${orgCode}`;
+            const loginLink = `${mobileNo}/${orgCode}`;
             // Now you can send the login link to the specific admin
-            this.apiService.sendOtp('91' + mobileNo, loginLink).subscribe({
-                next: () => {
-                    this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT);
-                    this.loading = false;
-                },
-                error: () => {
-                    this.alertService.error(CONSTANTS.MESSAGES.ERROR_SENDING_MESSAGE);
-                    this.loading = false;
-                }
-            });
+            const payload = {
+                mobileNo, orgCode, loginLink
+            }
+
+            this.apiService
+                .sendLoginMessage(payload)
+                .subscribe({
+                    next: (res) => {
+                        this.alertService.success("Message send succesfully.");
+                        this.btnLoading = false;
+                    },
+                    error: (err) => {
+                        this.alertService.error(err.message);
+                        this.btnLoading = false;
+                    }
+                });
         } else {
             this.alertService.error("Organization Code is required.");
             this.btnLoading = false;
             this.loading = false;
         }
     }
+
     onSubmit() {
         if (this.tForm.valid) {
             const formData = this.tForm.value;

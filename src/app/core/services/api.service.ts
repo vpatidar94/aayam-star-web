@@ -112,7 +112,18 @@ export class ApiService {
       );
   }
 
-
+  sendLoginMessage(payload: any): Observable<any> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        '/organisation/sendLoginMessage',
+        payload
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
   // Handle storage change events
   handleStorageChange(event: StorageEvent) {
     if (event.storageArea === localStorage) {

@@ -6,7 +6,7 @@
           <tr>
             <th>SNo</th>
             <th class="text-start">Name</th>
-            <th>Mobile No</th>
+            <th *ngIf="userType === 'admin'">Mobile No</th>
             <th>Stream</th>
             <th>Ref Points</th>
             <th>Test Attempted</th>
@@ -18,7 +18,7 @@
           <tr *ngFor="let userItem of userResultData, let i=index">
             <td>{{ i+1 }}</td>
             <td class="text-start">{{ userItem.name }}</td>
-            <td>{{ userItem.mobileNo }}</td>
+            <td *ngIf="userType === 'admin'">{{ userItem.mobileNo }}</td>
             <td>{{ userItem.stream }}</td>
             <td>{{ userItem.referralPoints || 0}}</td>
             <td>{{ userItem.totalTests }}</td>
