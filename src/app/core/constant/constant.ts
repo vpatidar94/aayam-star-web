@@ -18,6 +18,10 @@ export const CONSTANTS = Object.freeze({
     SEND_WP_MESSAGES: '/result/sendWpMessage',
     GET_RESULT_BY_TEST: '/result/getResultByTest',
     ADD_TEST_DETAIL: '/test/addTest',
+    ADD_ORGANISATION: '/organisation/addOrganisation',
+    GET_ORGANISATIONS: '/organisation/',
+    SIGNUP_ORG_USER_DETAIL: '/users/updateOrgAdminDetails',
+    GET_ALL_USERS: '/result/getAllResultsDetails',
   },
   MESSAGES: {
     LOGIN_FAILURE: "Login failed",
@@ -37,9 +41,14 @@ export const CONSTANTS = Object.freeze({
 
 export type ButtonType = 'button' | 'submit';
 export type AlertType = 'success' | 'info' | 'danger' | 'warning' | '';
-export type ToggleType = 'Yes' | 'No' ;
+export type ToggleType = 'Yes' | 'No';
 export type ClassType = "9" | "10" | "11" | "12" | "DROPPER";
 export type SubjectGroupType = "PCM" | "PCB";
 export type StreamType = 'NEET' | 'JEE';
 
 export type SubjectNameType = "PHYSICS" | "CHEMISTRY" | "BIOLOGY" | "MATHS" | "SCIENCE" | "SOCIAL-SCIENCE";
+export enum UserTypeEnum {
+  ADMIN = 'admin',
+  ORG_ADMIN = 'org-admin',
+  USER = 'user'
+}

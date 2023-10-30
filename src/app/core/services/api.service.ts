@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { CONSTANTS, StreamType } from "../constant/constant";
+import { CONSTANTS, StreamType, UserTypeEnum } from "../constant/constant";
 import { Observable, catchError, map, retry, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { AlertService } from "./alert.service";
@@ -112,7 +112,18 @@ export class ApiService {
       );
   }
 
-
+  sendLoginMessage(payload: any): Observable<any> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        '/organisation/sendLoginMessage',
+        payload
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
   // Handle storage change events
   handleStorageChange(event: StorageEvent) {
     if (event.storageArea === localStorage) {
@@ -133,14 +144,36 @@ export class ApiService {
   loginSignup(
     mobileNo: string,
     referredBy: string
-  ): Observable<{ token: string, user: any, isNew: boolean }> {
+  ): Observable<{ token: string, user: any, isNew: boolean, userType: UserTypeEnum }> {
     const payload = {
       mobileNo: mobileNo,
       referredBy: referredBy ?? ''
     };
     return this.http
-      .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean }>>(
+      .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean, userType: UserTypeEnum }>>(
         CONSTANTS.API.LOGIN_SIGNUP,
+        payload
+      )
+      .pipe(
+        map((res) => {
+          this.setAccessToken(res.data.token);
+          return res.data;
+        })
+      );
+  }
+
+
+  addOrgAdminUser(
+    mobileNo: string,
+    orgCode: string,
+  ): Observable<{ token: string, user: any, isNew: boolean }> {
+    const payload = {
+      mobileNo: mobileNo,
+      orgCode: orgCode,
+    };
+    return this.http
+      .put<CustomHttpResponse<{ token: string, user: any, isNew: boolean }>>(
+        '/users/addOrgAdminUser',
         payload
       )
       .pipe(
@@ -153,7 +186,7 @@ export class ApiService {
 
   // update name api calling
   updateName(
-    payload: { name: string, stream: StreamType }
+    payload: { name: string, stream: StreamType, orgCode: string }
   ): Observable<CustomHttpResponse<any>> {
     return this.http
       .post<CustomHttpResponse<any>>(
@@ -167,6 +200,22 @@ export class ApiService {
       );
   }
 
+  // newly added by jitendra
+
+  updateOrgAdminDetails(
+    payload: { name: string, designation: string }
+  ): Observable<CustomHttpResponse<any>> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        CONSTANTS.API.SIGNUP_ORG_USER_DETAIL,
+        payload
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 
   getQuestions(testId: string | number): Observable<any> {
     return this.http
@@ -183,7 +232,7 @@ export class ApiService {
   getTestResultByUser(testId: string | number): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(
-        '/result/getTestResultByUser' + '/' + testId 
+        '/result/getTestResultByUser' + '/' + testId
       )
       .pipe(
         map((res) => {
@@ -241,7 +290,7 @@ export class ApiService {
       );
   }
 
-  deleteTest(testId:string): Observable<any> {
+  deleteTest(testId: string): Observable<any> {
     return this.http
       .delete<CustomHttpResponse<any>>(
         '/test/deleteTest'
@@ -265,11 +314,19 @@ export class ApiService {
         })
       );
   }
-  getAllResults():  Observable<any> {
-    return this.http.get<CustomHttpResponse<any>>(
-      '/result/getAllResultsDetails'
-    )
+
+  getAllUsersResult(): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_ALL_USERS
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
   }
+
   generateRank(testId: string): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(
@@ -282,7 +339,7 @@ export class ApiService {
       );
   }
 
-  sendWpMessage(payload:any): Observable<any> {
+  sendWpMessage(payload: any): Observable<any> {
     return this.http
       .post<CustomHttpResponse<any>>(
         CONSTANTS.API.SEND_WP_MESSAGES,
@@ -293,7 +350,7 @@ export class ApiService {
           return res?.data;
         })
       );
-      
+
   }
 
   getResultByTest(testId: string): Observable<any> {
@@ -325,6 +382,55 @@ export class ApiService {
       .post<CustomHttpResponse<any>>(
         CONSTANTS.API.ADD_TEST_DETAIL,
         payload
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  addOrganisation(formData: any): Observable<any> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        CONSTANTS.API.ADD_ORGANISATION,
+        formData
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
+        })
+      );
+  }
+
+  getOrganisations(): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        CONSTANTS.API.GET_ORGANISATIONS
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  getOrganisationById(orgId: string | number): Observable<any> {
+    return this.http
+      .get<CustomHttpResponse<any>>(
+        '/organisation/getOrganisation' + '/' + orgId
+      )
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+  updateOrganisation(orgId: string, formData: any): Observable<any> {
+    return this.http
+      .put<CustomHttpResponse<any>>(
+        '/organisation/updateOrganisation' + '/' + orgId,
+        formData
       )
       .pipe(
         map((res) => {

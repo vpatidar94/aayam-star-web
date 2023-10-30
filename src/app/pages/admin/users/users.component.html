@@ -1,0 +1,50 @@
+<div class="">
+  <org-content-header title="Users" [breadcrumbs]="breadcrumbs">
+  </org-content-header>
+  <div class="row">
+    <div class="col col-12">
+      <div class="pb-4">
+        <ng-container *ngIf="loading; else ifNoData">
+          <ng-container *ngTemplateOutlet="spinner"></ng-container>
+        </ng-container>
+        <ng-template #ifNoData>
+          <ng-container *ngIf="data.length === 0; else showTableList">
+            <div class="p-4 text-center">
+              <h5>No data present.</h5>
+            </div>
+          </ng-container>
+          <ng-template #showTableList>
+            <org-ay-data-table
+              [list]="data"
+              [tableHeader]="thead"
+              (updateData)="changeData($event)"
+              [searchFilterKeys]="searchFilterKeys"
+              [searchPlaceHolder]="searchPlaceHolder"
+            >
+              <tr *ngFor="let userItem of filteredData; let i = index" tBody>
+                <td>{{ i + 1 }}</td>
+                <td class="text-start">{{ userItem.name }}</td>
+                <td *ngIf="userType === 'admin'">{{ userItem.mobileNo }}</td>
+                <td>{{ userItem.stream }}</td>
+                <td>{{ userItem.referralPoints || 0 }}</td>
+                <td>{{ userItem.totalTests }}</td>
+                <td>{{ userItem.totalTestPoints.toFixed(2) || 0 }}</td>
+                <td>{{ userItem.totalPoints.toFixed(2) || 0 }}</td>
+              </tr>
+            </org-ay-data-table>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <div class="d-flex justify-content-center py-4">
+    <span
+      class="spinner-border spinner-border-lg"
+      role="status"
+      aria-hidden="true"
+    ></span>
+  </div>
+</ng-template>

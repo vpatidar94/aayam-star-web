@@ -1,0 +1,54 @@
+<org-content-header title="Organisation" [breadcrumbs]="breadcrumbs">
+  <button
+    class="btn btn-primary me-2 ms-auto"
+    [routerLink]="['/admin/add-organisation']"
+  >
+    Add Organisation
+  </button>
+</org-content-header>
+<div class="col col-12">
+  <!-- <h6>Total Organisations: {{orgData.length || 0}}</h6> -->
+  <div class="card p-2 table-responsive">
+    <table class="table text-center">
+      <thead class="table-light">
+        <tr>
+          <th>SNo</th>
+          <th class="text-start">Name</th>
+          <th>Org Code</th>
+          <th>Address</th>
+          <th>Admins</th>
+          <th>Total Admins</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orgData; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="text-start">{{ item.orgName }}</td>
+          <td>{{ item.orgCode }}</td>
+          <td>{{ item.orgAddress }}</td>
+          <td>{{ item.orgAdmins[0] }}</td>
+          <td>{{ item.orgAdmins.length }}</td>
+          <td>
+            <ng-template #spinner>
+              <span
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            </ng-template>
+            <button
+              class="btn btn-sm btn-secondary"
+              (click)="updateOrganization(item._id)"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center mt-4" *ngIf="loading">
+      <span class="spinner-border" role="status" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>

@@ -1,33 +1,35 @@
+// NEWLY ADDED BY JITENDRA
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthHeaderComponent } from 'src/app/layout/auth-header/auth-header.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HelperService } from 'src/app/core/services/helper';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CONSTANTS, UserTypeEnum } from 'src/app/core/constant/constant';
+import { CONSTANTS } from 'src/app/core/constant/constant';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
-  selector: 'org-verify-otp',
+  selector: 'org-admin-verify-otp',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, AuthHeaderComponent],
-  templateUrl: './verify-otp.component.html',
-  styleUrls: ['./verify-otp.component.scss'],
+  templateUrl: './admin-verify-otp.component.html',
+  styleUrls: ['./admin-verify-otp.component.scss'],
 })
-export class VerifyOtpComponent implements OnInit {
+export class AdminVerifyOtpComponent implements OnInit {
 
   constructor(private alertService: AlertService, private helperService: HelperService, private apiService: ApiService, private router: Router, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
-      this.referredBy = params['referredBy'];
-    });
-    this.helperService.isOtpAvailable()
+    this.helperService.isOtpAvailable(),
+      this.route.params.subscribe(params => {
+        this.mobileNo = params['mobileNo'];
+        this.orgCode = params['orgCode']
+      });
   }
   tForm!: FormGroup;
   errorMessage = "";
   loading = false;
-  referredBy = '' as string;
-
+  mobileNo = '' as string;
+  orgCode = '' as string;
   ngOnInit(): void {
     this.tForm = new FormGroup({
       otp_1: new FormControl(null, [
@@ -47,6 +49,8 @@ export class VerifyOtpComponent implements OnInit {
         Validators.pattern('[0-9]{1}'),
       ]),
     });
+
+    this.resendOtp();
   }
 
   onDigitInput(event: any) {
@@ -75,28 +79,19 @@ export class VerifyOtpComponent implements OnInit {
       if (user && this.helperService.matchOtp(newOtpVal)) {
         // otp verified, now send perform login/signup api call
         this.apiService
-          .loginSignup(
-            user.mobileNo,
-            this.referredBy
+          .addOrgAdminUser(
+            this.mobileNo, this.orgCode
           ).subscribe({
             next: (res) => {
-              this.helperService.updateUserDetails(res.user)
-              if (res.userType === UserTypeEnum.ADMIN || res.userType === UserTypeEnum.ORG_ADMIN) {
-                this.router.navigate(['/admin']);
-                this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
-              }
-              else if (res.isNew || !res.user.stream) {
-                this.router.navigate(['/user-detail']);
-                this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
-              }
-              else {
-                this.router.navigate(['/dashboard']);
-                this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
-              }
+              this.helperService.updateUserDetails(res.user);
+              this.router.navigate(['/admin-details']);
+              this.alertService.success(CONSTANTS.MESSAGES.SIGNUP_SUCCESS);
             },
             error: (err) => {
-              this.alertService.error(err)
+              this.alertService.error(err.error.error)
               this.loading = false;
+              if (err.error.code === 403)
+                this.router.navigate(['/login']);
             }
           })
       }
@@ -110,19 +105,16 @@ export class VerifyOtpComponent implements OnInit {
 
   //Resend OTP
   resendOtp() {
-    const userDetail = this.helperService.getUserDetails()
     const newOtp = this.helperService.generateOtp()
 
-    if (userDetail?.mobileNo) {
-      this.apiService.sendOtp(userDetail.mobileNo, newOtp)
+    if (this.mobileNo) {
+      this.apiService.sendOtp(this.mobileNo, newOtp)
         .subscribe(() => {
-          this.helperService.setUserContactDetails(userDetail.mobileNo)
-          this.router.navigate(['/verify'])
+          this.helperService.setUserContactDetails(this.mobileNo)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         }, err => {
-          this.helperService.setUserContactDetails(userDetail.mobileNo)
-          this.router.navigate(['/verify'])
+          this.helperService.setUserContactDetails(this.mobileNo)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         })

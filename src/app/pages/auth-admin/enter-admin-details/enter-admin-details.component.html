@@ -1,0 +1,36 @@
+<div class="body__bg">
+  <org-auth-header path="/admin-login"></org-auth-header>
+  <div class="main__card px-4 py-4">
+    <h4 class="text-center py-3 mb-4">Enter Your Details</h4>
+    <form class="row g-3" [formGroup]="tForm" (ngSubmit)="onSubmit()">
+      <div class="col-12 mt-2 mb-2">
+        <label for="mobile-field" class="mb-2 text__body-dark">Enter Full Name</label>
+        <input type="text" formControlName="name" class="form-control ifield" id="name-field"
+          placeholder="Enter name" />
+        <!-- validation messages -->
+        <org-field-validation-message [control]="tForm.controls['name']"></org-field-validation-message>
+      </div>
+
+      <!-- Designation -->
+      <div class="col-12 mt-2 mb-2">
+        <label for="mobile-field" class="mb-2 text__body-dark">Designation</label>
+        <input type="text" formControlName="designation" class="form-control ifield" id="name-field"
+          placeholder="Enter Designation" />
+        <!-- validation messages -->
+        <org-field-validation-message [control]="tForm.controls['designation']"></org-field-validation-message>
+      </div>
+
+      <div class="col-12 mt-4">
+        <button type="submit" class="ibtn ibtn__primary w-100 mb-3" [disabled]="loading">
+          <span *ngIf="!loading; else spinner">Submit</span>
+        </button>
+        <ng-template #spinner>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </ng-template>
+      </div>
+      <!-- <div class="col-12 mt-4 text__grey text-center">
+                  <span class="me-2">For more details visit our website</span><a class="text__action__primary" href="https://www.aayamcareerinstitute.com/">click here</a>
+                </div> -->
+    </form>
+  </div>
+</div>

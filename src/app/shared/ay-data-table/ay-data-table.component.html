@@ -1,0 +1,102 @@
+<div class="">
+  <div class="d-flex">
+    <ng-content select="[tFilter]"></ng-content>
+    <div class="position-relative w-100" *ngIf="searchFilterKeys.length > 0">
+      <input
+        id="table-search-field"
+        *ngIf="list.length > 0"
+        class="form-control"
+        type="text"
+        name="search"
+        [placeholder]="searchPlaceHolder"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchInputChange()"
+      />
+    </div>
+  </div>
+
+  <div class="mt-3 mb-3 existing-instance">
+    <div class="table-responsive card p-2">
+      <table class="table table-hover ay-table">
+        <thead class="table-light">
+          <tr>
+            <th *ngFor="let th of tableHeader; let thIndex = index">
+              {{ th.name }}
+              <a
+                [id]="'table-sort-action-' + thIndex"
+                *ngIf="th.sorting"
+                href="javascript:void(0)"
+                class="ay-table__sort"
+                [ngClass]="
+                  th.sortBy === 'asc'
+                    ? 'ay-table__sort-active-asc'
+                    : th.sortBy === 'desc'
+                    ? 'ay-table__sort-active-desc'
+                    : ''
+                "
+                (click)="sortBy(th.key, thIndex)"
+              >
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-content select="[tBody]"></ng-content>
+        </tbody>
+      </table>
+      <ng-container *ngIf="filteredList.length === 0">
+        <div class="p-4 text-center">
+          <h5>No Search Record Found.</h5>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col col-sm-12 col-md-4 d-flex align-items-center">
+        Showing
+        {{
+          paginate.currentPage * paginate.itemsPerPage -
+            paginate.itemsPerPage +
+            1
+        }}
+        -
+        {{
+          paginate.currentPage * paginate.itemsPerPage > filteredList.length
+            ? filteredList.length
+            : paginate.currentPage * paginate.itemsPerPage
+        }}
+        of
+        {{ filteredList.length }}
+      </div>
+      <div class="col col-sm-12 col-md-4">
+        <pagination
+          class="justify-content-center mb-0"
+          [(ngModel)]="paginate.currentPage"
+          [itemsPerPage]="paginate.itemsPerPage"
+          [boundaryLinks]="true"
+          [totalItems]="filteredList.length"
+          previousText="&lsaquo;"
+          nextText="&rsaquo;"
+          firstText="&laquo;"
+          lastText="&raquo;"
+          (pageChanged)="pageChanged($event)"
+        >
+        </pagination>
+      </div>
+      <div
+        class="col col-sm-12 col-md-4 d-flex align-items-center justify-content-end"
+      >
+        <span class="me-2">Items Per Page</span>
+        <select
+          class="d-inline-block"
+          [(ngModel)]="paginate.itemsPerPage"
+          (change)="onItemsPerPageChange()"
+        >
+          <option [value]="item" *ngFor="let item of itemsPerPageOptions">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

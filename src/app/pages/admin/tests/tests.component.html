@@ -1,75 +1,78 @@
 <div class="">
   <org-content-header title="Tests" [breadcrumbs]="breadcrumbs">
-    <button class="btn btn-primary me-2 ms-auto" [routerLink]="['/admin/add-test']">
+    <button
+      *ngIf="userType === 'admin'"
+      class="btn btn-primary me-2 ms-auto"
+      [routerLink]="['/admin/add-test']"
+    >
       Add Test
     </button>
   </org-content-header>
-  <div class="col col-md-4 col-sm-12 mt-4 mb-2">
-    <div class="d-flex flex-column medium__group mt-2">
-      <!-- <label for="mobile-field" class="mb-2 text__body-dark">Select Subject</label> -->
-      <div class="btn-group btn-secondary" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" [(ngModel)]="isAllTests" id="radio-all-tests" [value]="false"
-          autocomplete="off" />
-        <label class="btn btn-outline-secondary p-1" for="radio-all-tests">All Tests</label>
-        <input type="radio" class="btn-check" [(ngModel)]="isAllTests" id="radio-all-users" [value]="true"
-          autocomplete="off" />
-        <label class="btn btn-outline-secondary p-1" for="radio-all-users">All Users</label>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-4" *ngIf="!isAllTests">
+  <div class="row">
     <div class="col col-12">
-      <div class="card p-2 table-responsive">
-        <table class="table">
-          <thead class="table-light">
-            <tr>
-              <th>Test ID</th>
-              <th>Name</th>
-              <th>Stream</th>
-              <th>Subject</th>
-              <th>Date</th>
-              <th>Action</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of data">
-              <td>{{ item.id }}</td>
-              <td>{{ item.title }}</td>
-              <td>{{ item.stream }}</td>
-              <td>{{ item.subjectName }}</td>
-              <td>{{ item.testDate | date }}</td>
-              <td>
-                <!-- <button
-                  class="btn btn-sm btn-secondary me-2"
-                  (click)="generateRank(item._id)"
-                >
-                  <span *ngIf="!btnLoading; else spinner"> Generate Rank </span>
-                </button> -->
-                <ng-template #spinner>
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                </ng-template>
-                <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/test-result/' + item._id]">
-                  View
-                </button>
-              </td>
-              <td>
-                <button class="btn btn-sm btn-secondary" (click)="deleteTest(item._id)">
-                  <span *ngIf="!item.btnLoading; else spinner">Delete</span>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="d-flex justify-content-center mt-4" *ngIf="loading">
-          <span class="spinner-border" role="status" aria-hidden="true"></span>
-        </div>
+      <div class="pb-4">
+        <ng-container *ngIf="loading; else ifNoData">
+          <ng-container *ngTemplateOutlet="spinner"></ng-container>
+        </ng-container>
+        <ng-template #ifNoData>
+          <ng-container *ngIf="data.length === 0; else showTableList">
+            <div class="p-4 text-center">
+              <h5>No data present.</h5>
+            </div>
+          </ng-container>
+          <ng-template #showTableList>
+            <org-ay-data-table
+              [list]="data"
+              [tableHeader]="thead"
+              (updateData)="changeData($event)"
+              [searchFilterKeys]="searchFilterKeys"
+              [searchPlaceHolder]="searchPlaceHolder"
+            >
+              <tr *ngFor="let item of filteredData" tBody>
+                <td *ngIf="userType === 'admin'">{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.stream }}</td>
+                <td>{{ item.subjectName }}</td>
+                <td>{{ item.testDate | date }}</td>
+                <td>
+                  <div class="d-flex">
+                    <button
+                      class="btn btn-sm btn-secondary"
+                      [routerLink]="['/admin/test-result/' + item._id]"
+                    >
+                      View
+                    </button>
+                    <button
+                      *ngIf="userType === 'admin'"
+                      class="btn btn-sm btn-secondary ms-2"
+                      (click)="deleteTest(item._id)"
+                    >
+                      <span *ngIf="!item.btnLoading; else spinner">Delete</span>
+                    </button>
+                  </div>
+                  <ng-template #spinner>
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                  </ng-template>
+                </td>
+              </tr>
+            </org-ay-data-table>
+          </ng-template>
+        </ng-template>
       </div>
-    </div>
-  </div>
-  <div class="row mt-4" *ngIf="isAllTests">
-    <div class="col col-12">
-      <org-all-user-details />
     </div>
   </div>
 </div>
+
+<ng-template #spinner>
+  <div class="d-flex justify-content-center py-4">
+    <span
+      class="spinner-border spinner-border-lg"
+      role="status"
+      aria-hidden="true"
+    ></span>
+  </div>
+</ng-template>

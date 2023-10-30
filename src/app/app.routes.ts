@@ -68,19 +68,36 @@ export const appRoutes: Route[] = [
     canActivate: [canActivateUser],
   },
   {
+    path: "verify-admin/:mobileNo/:orgCode",
+    // component:  LoginComponent,
+    loadComponent: () =>
+      import('./pages/auth-admin/admin-verify-otp/admin-verify-otp.component').then((x) => x.AdminVerifyOtpComponent),
+  },
+  {
+    path: "admin-details",
+    // component:  LoginComponent,
+    loadComponent: () =>
+      import('./pages/auth-admin/enter-admin-details/enter-admin-details.component').then((x) => x.EnterAdminDetailsComponent),
+  },
+  {
     path: "admin",
     loadComponent: () =>
       import('./pages/admin/admin.component').then((x) => x.AdminComponent),
     children: [
       {
         path: "",
+        redirectTo: "tests",
+        pathMatch: "full",
+      },
+      {
+        path: "tests",
         loadComponent: () =>
           import('./pages/admin/tests/tests.component').then((x) => x.TestsComponent),
       },
       {
-        path: "all-user-details",
+        path: "users",
         loadComponent: () =>
-          import('./pages/admin/all-user-details/all-user-details.component').then((x)=>x.AllUserDetailsComponent),
+          import('./pages/admin/users/users.component').then((x) => x.UsersComponent),
       },
       {
         path: "test-result/:testId",
@@ -96,8 +113,25 @@ export const appRoutes: Route[] = [
         path: "edit-test/:testId",
         loadComponent: () =>
           import('./pages/admin/add-test/add-test.component').then((x) => x.AddTestComponent),
-      }
+      },
+      {
+        path: "organisations",
+        loadComponent: () =>
+          import('./pages/admin/organisations/organisations.component').then((x) => x.OrganisationComponent),
+      },
+      {
+        path: "add-organisation",
+        loadComponent: () =>
+          import('./pages/admin/add-organisation/add-organisation.component').then((x) => x.AddOrganisation),
+      },
+      {
+        path: "edit-organisation/:orgId",
+        loadComponent: () =>
+          import('./pages/admin/add-organisation/add-organisation.component').then((x) => x.AddOrganisation),
+      },
+
     ]
   },
+
 
 ];
