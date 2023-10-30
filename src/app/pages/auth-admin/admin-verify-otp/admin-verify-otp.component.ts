@@ -90,8 +90,8 @@ export class AdminVerifyOtpComponent implements OnInit {
             error: (err) => {
               this.alertService.error(err.error.error)
               this.loading = false;
-              if (err.error.code === 403)
-                this.router.navigate(['/login']);
+              // if (err.error.code === 403)
+              //   this.router.navigate(['/login']);
             }
           })
       }
