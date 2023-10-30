@@ -19,7 +19,7 @@ import { AlertService } from 'src/app/core/services/alert.service';
 export class AdminVerifyOtpComponent implements OnInit {
 
   constructor(private alertService: AlertService, private helperService: HelperService, private apiService: ApiService, private router: Router, private route: ActivatedRoute) {
-    this.helperService.isOtpAvailable(),
+    // this.helperService.isOtpAvailable(),
       this.route.params.subscribe(params => {
         this.mobileNo = params['mobileNo'];
         this.orgCode = params['orgCode']
@@ -90,8 +90,8 @@ export class AdminVerifyOtpComponent implements OnInit {
             error: (err) => {
               this.alertService.error(err.error.error)
               this.loading = false;
-              // if (err.error.code === 403)
-              //   this.router.navigate(['/login']);
+              if (err.error.code === 403)
+                this.router.navigate(['/login']);
             }
           })
       }
@@ -111,10 +111,13 @@ export class AdminVerifyOtpComponent implements OnInit {
       this.apiService.sendOtp(this.mobileNo, newOtp)
         .subscribe(() => {
           this.helperService.setUserContactDetails(this.mobileNo)
+          console.log("=====",this.mobileNo)
+          console.log("----otp", newOtp)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         }, err => {
           this.helperService.setUserContactDetails(this.mobileNo)
+          console.log("error otp;;;;;", newOtp)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         })
