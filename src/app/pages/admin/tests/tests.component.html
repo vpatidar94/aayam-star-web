@@ -1,15 +1,31 @@
 <div class="">
   <org-content-header title="Tests" [breadcrumbs]="breadcrumbs">
-    <button
-      *ngIf="userType === 'admin'"
-      class="btn btn-primary me-2 ms-auto"
-      [routerLink]="['/admin/add-test']"
-    >
+    <button *ngIf="userType === 'admin'" class="btn btn-primary me-2 ms-auto" [routerLink]="['/admin/add-test']">
       Add Test
     </button>
   </org-content-header>
   <div class="row">
     <div class="col col-12">
+       <!-- Filter tabs -->
+       <ul class="nav nav-tabs mb-3">    
+        <li class="nav-item">
+          <a class="nav-link" (click)="filterByStream('9')" [class.active]="selectedStream === '9' || !selectedStream">9th</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="filterByStream('10')" [class.active]="selectedStream === '10'">10th</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="filterByStream('11-PCM' && '11-PCB')"
+            [class.active]="selectedStream === '11-PCM' || selectedStream === '11-PCB'">11th</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="filterByStream('12-PCM' && '12-PCB')"
+            [class.active]="selectedStream === '12-PCM' || selectedStream === '12-PCB'">12th</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="filterByStream(null)" [class.active]="selectedStream ==='null'">All</a>
+        </li>
+      </ul>
       <div class="pb-4">
         <ng-container *ngIf="loading; else ifNoData">
           <ng-container *ngTemplateOutlet="spinner"></ng-container>
@@ -21,13 +37,10 @@
             </div>
           </ng-container>
           <ng-template #showTableList>
-            <org-ay-data-table
-              [list]="data"
-              [tableHeader]="thead"
-              (updateData)="changeData($event)"
-              [searchFilterKeys]="searchFilterKeys"
-              [searchPlaceHolder]="searchPlaceHolder"
-            >
+           
+
+            <org-ay-data-table [list]="data" [tableHeader]="thead" (updateData)="changeData($event)"
+              [searchFilterKeys]="searchFilterKeys" [searchPlaceHolder]="searchPlaceHolder">
               <tr *ngFor="let item of filteredData" tBody>
                 <td *ngIf="userType === 'admin'">{{ item.id }}</td>
                 <td>{{ item.title }}</td>
@@ -36,26 +49,16 @@
                 <td>{{ item.testDate | date }}</td>
                 <td>
                   <div class="d-flex">
-                    <button
-                      class="btn btn-sm btn-secondary"
-                      [routerLink]="['/admin/test-result/' + item._id]"
-                    >
+                    <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/test-result/' + item._id]">
                       View
                     </button>
-                    <button
-                      *ngIf="userType === 'admin'"
-                      class="btn btn-sm btn-secondary ms-2"
-                      (click)="deleteTest(item._id)"
-                    >
+                    <button *ngIf="userType === 'admin'" class="btn btn-sm btn-secondary ms-2"
+                      (click)="deleteTest(item._id)">
                       <span *ngIf="!item.btnLoading; else spinner">Delete</span>
                     </button>
                   </div>
                   <ng-template #spinner>
-                    <span
-                      class="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   </ng-template>
                 </td>
               </tr>
@@ -69,10 +72,6 @@
 
 <ng-template #spinner>
   <div class="d-flex justify-content-center py-4">
-    <span
-      class="spinner-border spinner-border-lg"
-      role="status"
-      aria-hidden="true"
-    ></span>
+    <span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
   </div>
 </ng-template>

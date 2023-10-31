@@ -36,10 +36,10 @@ export class AyDataTableComponent<T> implements OnInit, OnChanges {
   filteredList: T[] = [];
   searchTerm = '' as string;
   searchSubject = new Subject<string>();
-  itemsPerPageOptions = [10, 20, 30, 50];
+  itemsPerPageOptions = [10, 20, 30, 50, 100, 10000];
 
   paginate = {
-    itemsPerPage: 10 as number,
+    itemsPerPage: 100 as number,
     currentPage: 1 as number,
     data: [] as T[],
   };

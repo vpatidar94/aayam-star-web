@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { CONSTANTS, StreamType, UserTypeEnum } from "../constant/constant";
@@ -278,10 +278,14 @@ export class ApiService {
       );
   }
 
-  getAllTests(): Observable<any> {
+  getAllTests(stream: string): Observable<any> {
+    let params = new HttpParams();
+    if (stream) {
+      params = params.set("stream", stream);
+    }
     return this.http
       .get<CustomHttpResponse<any>>(
-        CONSTANTS.API.GET_ALL_TEST
+        CONSTANTS.API.GET_ALL_TEST, { params }
       )
       .pipe(
         map((res) => {
@@ -289,6 +293,7 @@ export class ApiService {
         })
       );
   }
+
 
   deleteTest(testId: string): Observable<any> {
     return this.http

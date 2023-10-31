@@ -9,6 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { HelperService } from "src/app/core/services/helper";
 import { TableHeader } from "src/app/models/table.model";
 import { AyDataTableComponent } from "src/app/shared/ay-data-table/ay-data-table.component";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: "org-tests",
@@ -18,13 +19,18 @@ import { AyDataTableComponent } from "src/app/shared/ay-data-table/ay-data-table
   styleUrls: ["./tests.component.scss"],
 })
 export class TestsComponent {
-  constructor(private apiService: ApiService, private alertService: AlertService, private helper: HelperService) {
+  constructor(private apiService: ApiService, private alertService: AlertService, private helper: HelperService, private route: ActivatedRoute) {
     this.userType = this.helper.getUserType();
     if (this.userType === UserTypeEnum.ORG_ADMIN) {
       this.searchPlaceHolder = "Search by name, stream, subject "
       this.thead = this.thead.filter((x) => x.key !== 'id');
     }
+
+    this.route.queryParams.subscribe(params => {
+      this.stream = params['stream'];
+    });
   }
+  stream = '' as string;
   loading = false;
   testId = '';
   btnLoading = false;
@@ -34,7 +40,8 @@ export class TestsComponent {
   resultData = [] as any;
   userType: string = '';
   searchFilterKeys = ['id', 'name', 'stream', 'subjectName'];
-  searchPlaceHolder = "Search by id, name, stream, subject "
+  searchPlaceHolder = "Search by id, name, stream, subject ";
+  selectedStream: string | null = null;
   breadcrumbs = [
     {
       path: '/admin',
@@ -85,17 +92,18 @@ export class TestsComponent {
   ] as TableHeader<any>[];
 
   ngOnInit(): void {
-    this.getAllTestDetails();
+    this.getAllTestDetails('9');
   }
 
   changeData(e: any[]) {
     this.filteredData = e;
   }
 
-  getAllTestDetails() {
+  getAllTestDetails(stream: string | null) {
+    const queryParams: any = stream;
     this.loading = true;
     this.apiService
-      .getAllTests()
+      .getAllTests(queryParams)
       .subscribe({
         next: (res) => {
           this.data = res;
@@ -124,7 +132,7 @@ export class TestsComponent {
           next: (res) => {
             // this.data = res;
             item.btnLoading = false;
-            this.getAllTestDetails();
+            this.getAllTestDetails(null);
           },
           error: (err) => {
             this.alertService.error(err.message);
@@ -152,5 +160,12 @@ export class TestsComponent {
           this.btnLoading = false;
         }
       });
+  }
+
+
+
+  filterByStream(stream: string | null) {
+    this.selectedStream = stream;
+    this.getAllTestDetails(stream)
   }
 }
