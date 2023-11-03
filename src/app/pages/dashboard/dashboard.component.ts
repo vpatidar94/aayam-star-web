@@ -25,7 +25,8 @@ export class DashboardComponent implements OnInit {
   }
   loading = false as boolean;
   scoreLoading = false as boolean;
-
+  totalPoints = 0 as number;
+  trophyCount= 0 as number;
   isExpandedPoints = false as boolean;
 
   ngOnInit(): void {
@@ -62,6 +63,9 @@ export class DashboardComponent implements OnInit {
             });
           }
           this.scoreReferral.userReferralPoints = res?.userReferralPoints;
+          this.totalPoints =  this.scoreReferral.userReferralPoints + this.scoreReferral.testsPoints;
+          this.trophyCount =  Math.floor(this.totalPoints / 2000);
+          this.totalPoints = this.totalPoints - this.trophyCount*2000;
           this.scoreLoading = false;
         },
         error: (err) => {
@@ -69,6 +73,14 @@ export class DashboardComponent implements OnInit {
           this.scoreLoading = false;
         }
       });
+  }
+ 
+  generateTrophyArray(): number[] {
+    return Array.from({ length: this.trophyCount }, (_, index) => index + 1);
+  }
+
+  updateProfile(userId:string) {
+    this.router.navigate(['/update-user-details/' + userId])
   }
 
   redirectToInstruction(testId: string) {

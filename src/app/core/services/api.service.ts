@@ -320,6 +320,18 @@ export class ApiService {
       );
   }
 
+  getUserById(userId: string): Observable<any> {
+    return this.http
+    .get<CustomHttpResponse<any>>(
+      CONSTANTS.API.GET_USER_BY_ID + '/' + userId
+    )
+    .pipe(
+      map((res) => {
+        return res
+      })
+    );
+  }
+
   getAllUsersResult(): Observable<any> {
     return this.http
       .get<CustomHttpResponse<any>>(

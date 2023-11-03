@@ -35,6 +35,11 @@ export const appRoutes: Route[] = [
       import('./pages/auth/enter-name/enter-name.component').then((x) => x.EnterNameComponent),
   },
   {
+    path: "update-user-details/:userId",
+    loadComponent: () =>
+      import('./pages/auth/enter-name/enter-name.component').then((x) => x.EnterNameComponent),
+  },
+  {
     path: "dashboard",
     // component:  LoginComponent,
     loadComponent: () =>
