@@ -50,7 +50,9 @@ export class AdminVerifyOtpComponent implements OnInit {
       ]),
     });
 
-    this.resendOtp();
+    if (!localStorage.getItem('otp')) {
+      this.resendOtp();
+    }
   }
 
   onDigitInput(event: any) {

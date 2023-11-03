@@ -52,17 +52,17 @@ export class HelperService {
 
   generateOtp() {
     const otp = Math.floor(1000 + Math.random() * 9000) + '';
-    sessionStorage.setItem("otp", atob(otp));
+    localStorage.setItem("otp", atob(otp));
     return otp;
   }
 
   isOtpAvailable() {
-    if (!sessionStorage.getItem("otp"))
+    if (!localStorage.getItem("otp"))
       this.router.navigate(['/login'])
   }
 
   matchOtp(otp: string) {
-    const localOtp = sessionStorage.getItem("otp") ?? '';
+    const localOtp = localStorage.getItem("otp") ?? '';
     return btoa(localOtp) === otp ? true : false
   }
 
