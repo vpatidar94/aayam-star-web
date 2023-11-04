@@ -25,16 +25,16 @@ export class ApiService {
   user: any = {};
 
   getAccessToken(): string {
-    const token: string = localStorage.getItem("token") ?? "";
+    const token: string = sessionStorage.getItem("token") ?? "";
     return token;
   }
 
   setAccessToken(value: string) {
-    localStorage.setItem("token", value);
+    sessionStorage.setItem("token", value);
   }
 
   isLoggedIn(): boolean {
-    const token: string = localStorage.getItem("token") ?? "";
+    const token: string = sessionStorage.getItem("token") ?? "";
     return !!token;
   }
 
@@ -43,7 +43,7 @@ export class ApiService {
   }
 
   logout() {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     this.router.navigate(["/login"]);
   }
 

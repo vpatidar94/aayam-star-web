@@ -20,10 +20,10 @@ export class AdminVerifyOtpComponent implements OnInit {
 
   constructor(private alertService: AlertService, private helperService: HelperService, private apiService: ApiService, private router: Router, private route: ActivatedRoute) {
     // this.helperService.isOtpAvailable(),
-      this.route.params.subscribe(params => {
-        this.mobileNo = params['mobileNo'];
-        this.orgCode = params['orgCode']
-      });
+    this.route.params.subscribe(params => {
+      this.mobileNo = params['mobileNo'];
+      this.orgCode = params['orgCode']
+    });
   }
   tForm!: FormGroup;
   errorMessage = "";
@@ -50,9 +50,9 @@ export class AdminVerifyOtpComponent implements OnInit {
       ]),
     });
 
-    if (!localStorage.getItem('otp')) {
-      this.resendOtp();
-    }
+    // if (!sessionStorage.getItem('otp')) {
+    //   this.resendOtp();
+    // }
   }
 
   onDigitInput(event: any) {
@@ -107,13 +107,13 @@ export class AdminVerifyOtpComponent implements OnInit {
 
   //Resend OTP
   resendOtp() {
-    const newOtp = this.helperService.generateOtp()
+    const newOtp = this.helperService.generateOtp();
 
     if (this.mobileNo) {
       this.apiService.sendOtp(this.mobileNo, newOtp)
         .subscribe(() => {
           this.helperService.setUserContactDetails(this.mobileNo)
-          console.log("=====",this.mobileNo)
+          console.log("=====", this.mobileNo)
           console.log("----otp", newOtp)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
