@@ -1,65 +1,126 @@
 <div class="body__bg">
-  <org-auth-header path="/login"></org-auth-header>
-  <div class="main__card px-4 py-2">
+  <org-dashboard-header
+    *ngIf="isUpdateProfile"
+    title=""
+    subTitle=""
+    [showLogout]="true"
+  >
+  </org-dashboard-header>
+
+  <org-auth-header *ngIf="!isUpdateProfile" path="/login"></org-auth-header>
+
+  <div
+    class="main__card px-4 py-2"
+    [ngClass]="isUpdateProfile ? 'main__card-dashboard' : ''"
+  >
     <h4 class="text-center py-3 mb-1">Enter Your Details</h4>
     <form class="row g-3" [formGroup]="tForm" (ngSubmit)="onSubmit()">
       <div class="col-12 mt-1 mb-2">
-        <label for="mobile-field" class="mb-2 text__body-dark">Enter Full Name</label>
-        <input type="text" formControlName="name" class="form-control ifield" id="name-field"
-          placeholder="Enter name" />
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >Enter Full Name</label
+        >
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control ifield"
+          id="name-field"
+          placeholder="Enter name"
+        />
         <!-- validation messages -->
-        <org-field-validation-message [control]="tForm.controls['name']"></org-field-validation-message>
+        <org-field-validation-message
+          [control]="tForm.controls['name']"
+        ></org-field-validation-message>
       </div>
       <div class="col-12 mt-4 mb-2">
-        <label for="mobile-field" class="mb-2 text__body-dark">Select Class</label>
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >Select Class</label
+        >
         <div class="d-flex">
           <div class="me-4" *ngFor="let option of streamOptions">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="stream" [id]="'radio-' + option"
-                formControlName="stream" [value]="option" (change)="changeStream()" />
+              <input
+                class="form-check-input"
+                type="radio"
+                name="stream"
+                [id]="'radio-' + option"
+                formControlName="stream"
+                [value]="option"
+                (change)="changeStream()"
+              />
               <label class="form-check-label" [for]="'radio-' + option">
                 {{ option }}
               </label>
             </div>
           </div>
         </div>
-        <org-field-validation-message [control]="tForm.controls['stream']"></org-field-validation-message>
+        <org-field-validation-message
+          [control]="tForm.controls['stream']"
+        ></org-field-validation-message>
       </div>
-      <div class="col-12 mt-4 mb-2" *ngIf="
+      <div
+        class="col-12 mt-4 mb-2"
+        *ngIf="
           tForm.value.stream === '11' ||
           tForm.value.stream === '12' ||
           tForm.value.stream === 'DROPPER'
-        ">
-        <label for="mobile-field" class="mb-2 text__body-dark">Select Subject</label>
+        "
+      >
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >Select Subject</label
+        >
         <div class="d-flex">
           <div class="me-4" *ngFor="let option of subjectOptions">
             <div class="form-check">
-              <input class="form-check-input" type="radio" [id]="'radio-' + option" formControlName="subject"
-                [value]="option" />
+              <input
+                class="form-check-input"
+                type="radio"
+                [id]="'radio-' + option"
+                formControlName="subject"
+                [value]="option"
+              />
               <label class="form-check-label" [for]="'radio-' + option">
                 {{ option }}
               </label>
             </div>
           </div>
         </div>
-        <org-field-validation-message [control]="tForm.controls['subject']"></org-field-validation-message>
+        <org-field-validation-message
+          [control]="tForm.controls['subject']"
+        ></org-field-validation-message>
       </div>
 
       <div class="col-12 mt-1 mb-2">
-        <label for="mobile-field" class="mb-2 text__body-dark">Enter Organisation Code <br />(if your institute is
-          registered to Aayam Star)</label>
-        <input type="text" formControlName="orgCode" class="form-control ifield" id="orgCode-field"
-          placeholder="Enter Org Code" />
+        <label for="mobile-field" class="mb-2 text__body-dark"
+          >Enter Organisation Code <br />(if your institute is registered to
+          Aayam Star)</label
+        >
+        <input
+          type="text"
+          formControlName="orgCode"
+          class="form-control ifield"
+          id="orgCode-field"
+          placeholder="Enter Org Code"
+        />
 
         <!-- validation messages -->
-        <org-field-validation-message [control]="tForm.controls['orgCode']"></org-field-validation-message>
+        <org-field-validation-message
+          [control]="tForm.controls['orgCode']"
+        ></org-field-validation-message>
       </div>
       <div class="col-12 mt-4">
-        <button type="submit" class="ibtn ibtn__primary w-100 mb-3" [disabled]="loading">
+        <button
+          type="submit"
+          class="ibtn ibtn__primary w-100 mb-3"
+          [disabled]="loading"
+        >
           <span *ngIf="!loading; else spinner">Submit</span>
         </button>
         <ng-template #spinner>
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
         </ng-template>
       </div>
       <!-- <div class="col-12 mt-4 text__grey text-center">
