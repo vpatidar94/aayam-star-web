@@ -20,7 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<CustomHttpResponse<any>>> {
     const token = this.apiService.getAccessToken();
-
     if (token && request.url !== environment.WHATSAPP_URL) {
       request = request.clone({
         setHeaders: {

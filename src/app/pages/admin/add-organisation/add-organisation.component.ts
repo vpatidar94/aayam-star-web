@@ -30,7 +30,8 @@ export class AddOrganisation implements OnInit {
         private alertService: AlertService,
         private fb: FormBuilder,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private helperService: HelperService
     ) { }
 
     tForm!: FormGroup;
@@ -145,19 +146,17 @@ export class AddOrganisation implements OnInit {
 
         const orgCode = this.tForm.get('orgCode')?.value;
         let mobileNo = this.orgAdmins.at(index)?.value;
-        if (orgCode) {
-            // login link
-            const loginLink = `${mobileNo}/${orgCode}`;
-            // Now you can send the login link to the specific admin
+        const newOtp = this.helperService.generateOtp();
+        if (orgCode) {            // Now you can send the login link to the specific admin
             const payload = {
-                mobileNo, orgCode, loginLink
+                mobileNo, orgCode, otp: atob(newOtp)
             }
 
             this.apiService
                 .sendLoginMessage(payload)
                 .subscribe({
                     next: (res) => {
-                        this.alertService.success("Message send succesfully.");
+                        this.alertService.success("Message send successfully.");
                         this.btnLoading = false;
                     },
                     error: (err) => {
