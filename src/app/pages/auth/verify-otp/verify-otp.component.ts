@@ -114,7 +114,7 @@ export class VerifyOtpComponent implements OnInit {
     const newOtp = this.helperService.generateOtp()
 
     if (userDetail?.mobileNo) {
-      this.apiService.sendOtp(userDetail.mobileNo, newOtp)
+      this.apiService.sendOtp('91' + userDetail.mobileNo, newOtp)
         .subscribe(() => {
           this.helperService.setUserContactDetails(userDetail.mobileNo)
           this.router.navigate(['/verify'])

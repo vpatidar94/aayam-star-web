@@ -27,7 +27,11 @@ export class AdminVerifyOtpComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       const otp = params['validate'];
-      this.helperService.setOtp(otp);
+      if(otp && decodeURI(otp))
+        this.helperService.setOtp(decodeURI(otp));
+      else {
+        this.alertService.error('Incorrect url. Please check the url again.')
+      }
     });
   }
   tForm!: FormGroup;
@@ -115,16 +119,13 @@ export class AdminVerifyOtpComponent implements OnInit {
     const newOtp = this.helperService.generateOtp();
 
     if (this.mobileNo) {
-      this.apiService.sendOtp(this.mobileNo, newOtp)
+      this.apiService.sendOtp('91' + this.mobileNo, newOtp)
         .subscribe(() => {
           this.helperService.setUserContactDetails(this.mobileNo)
-          console.log("=====", this.mobileNo)
-          console.log("----otp", newOtp)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         }, err => {
           this.helperService.setUserContactDetails(this.mobileNo)
-          console.log("error otp;;;;;", newOtp)
           this.alertService.success(CONSTANTS.MESSAGES.OTP_SENT)
           this.loading = false;
         })

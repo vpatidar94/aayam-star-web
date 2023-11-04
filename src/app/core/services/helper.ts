@@ -58,7 +58,7 @@ export class HelperService {
 
   setOtp(otp:string|number){
     if(otp)
-     localStorage.setItem("otp", atob(otp+''));
+     localStorage.setItem("otp", otp+'');
   }
 
   isOtpAvailable() {
