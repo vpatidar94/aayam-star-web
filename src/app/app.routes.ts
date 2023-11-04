@@ -35,13 +35,12 @@ export const appRoutes: Route[] = [
       import('./pages/auth/enter-name/enter-name.component').then((x) => x.EnterNameComponent),
   },
   {
-    path: "update-user-details/:userId",
+    path: "update-user-details",
     loadComponent: () =>
       import('./pages/auth/enter-name/enter-name.component').then((x) => x.EnterNameComponent),
   },
   {
     path: "dashboard",
-    // component:  LoginComponent,
     loadComponent: () =>
       import('./pages/dashboard/dashboard.component').then((x) => x.DashboardComponent),
     canActivate: [canActivateUser]

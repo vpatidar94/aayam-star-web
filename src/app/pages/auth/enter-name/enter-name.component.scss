@@ -1,6 +1,8 @@
 .main__card{
     height: calc(100vh - 350px);
-
+}
+.main__card-dashboard{
+    height: calc(100vh - 150px) !important;
 }
 .form-check-input{
     // width: 1.5em;

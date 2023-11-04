@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   loading = false as boolean;
   scoreLoading = false as boolean;
   totalPoints = 0 as number;
-  trophyCount= 0 as number;
+  trophyCount = 0 as number;
   isExpandedPoints = false as boolean;
 
   ngOnInit(): void {
@@ -56,16 +56,16 @@ export class DashboardComponent implements OnInit {
       .getAllScoreAndPoints()
       .subscribe({
         next: (res) => {
-          if (res?.tests.length > 0) {    
-            this.scoreReferral.tests = res?.tests.reverse() as any; 
+          if (res?.tests.length > 0) {
+            this.scoreReferral.tests = res?.tests.reverse() as any;
             this.scoreReferral.testsPoints = res.tests.reduce((previousVal: any, currentVal: any) => {
               return (isNaN(previousVal) ? (previousVal?.points ?? 0) : (previousVal ?? 0)) + (currentVal.points ?? 0);
             });
           }
           this.scoreReferral.userReferralPoints = res?.userReferralPoints;
-          this.totalPoints =  this.scoreReferral.userReferralPoints + this.scoreReferral.testsPoints;
-          this.trophyCount =  Math.floor(this.totalPoints / 2000);
-          this.totalPoints = this.totalPoints - this.trophyCount*2000;
+          this.totalPoints = this.scoreReferral.userReferralPoints + this.scoreReferral.testsPoints;
+          this.trophyCount = Math.floor(this.totalPoints / 2000);
+          this.totalPoints = this.totalPoints - this.trophyCount * 2000;
           this.scoreLoading = false;
         },
         error: (err) => {
@@ -74,13 +74,13 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
- 
+
   generateTrophyArray(): number[] {
     return Array.from({ length: this.trophyCount }, (_, index) => index + 1);
   }
 
-  updateProfile(userId:string) {
-    this.router.navigate(['/update-user-details/' + userId])
+  updateProfile() {
+    this.router.navigate(['/update-user-details'])
   }
 
   redirectToInstruction(testId: string) {
@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
     const referralLink = this.generateReferralLink();
     const shareUrl = window.location.href;
     const imageUrl = 'https://aayamcareerinstitute.com/images/aayam-star/aayam-star-main.webp';
-    
+
     try {
       // const response = await fetch(imageUrl);
       // const imageBlob = await response.blob();
@@ -138,7 +138,7 @@ export class DashboardComponent implements OnInit {
     return `${window.location.origin}/login?referredBy=${user._id}`;
   }
 
-  OnReview(testId:any){
-    this.router.navigate(["/test/"+ testId +"/review"]);
+  OnReview(testId: any) {
+    this.router.navigate(["/test/" + testId + "/review"]);
   }
 }
