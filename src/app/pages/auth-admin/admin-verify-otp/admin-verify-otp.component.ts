@@ -24,6 +24,11 @@ export class AdminVerifyOtpComponent implements OnInit {
       this.mobileNo = params['mobileNo'];
       this.orgCode = params['orgCode']
     });
+
+    this.route.queryParams.subscribe(params => {
+      const otp = params['validate'];
+      this.helperService.setOtp(otp);
+    });
   }
   tForm!: FormGroup;
   errorMessage = "";

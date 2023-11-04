@@ -56,6 +56,11 @@ export class HelperService {
     return otp;
   }
 
+  setOtp(otp:string|number){
+    if(otp)
+     localStorage.setItem("otp", atob(otp+''));
+  }
+
   isOtpAvailable() {
     if (!localStorage.getItem("otp"))
       this.router.navigate(['/login'])

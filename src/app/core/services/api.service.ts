@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams, } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { CONSTANTS, StreamType, UserTypeEnum } from "../constant/constant";
@@ -25,16 +25,16 @@ export class ApiService {
   user: any = {};
 
   getAccessToken(): string {
-    const token: string = sessionStorage.getItem("token") ?? "";
+    const token: string = localStorage.getItem("token") ?? "";
     return token;
   }
 
   setAccessToken(value: string) {
-    sessionStorage.setItem("token", value);
+    localStorage.setItem("token", value);
   }
 
   isLoggedIn(): boolean {
-    const token: string = sessionStorage.getItem("token") ?? "";
+    const token: string = localStorage.getItem("token") ?? "";
     return !!token;
   }
 
@@ -43,7 +43,7 @@ export class ApiService {
   }
 
   logout() {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     this.router.navigate(["/login"]);
   }
 
@@ -510,5 +510,49 @@ export class ApiService {
         })
       );
   }
+
+  // sendSMS(phoneNumbers:string , otp: string ): Observable<any> {
+  //   const phoneNumber = '8871688429'
+  //   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=91${phoneNumbers}&text= Your OTP is: ${otp}.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`;
+
+  //   return this.http
+  //     .get<CustomHttpResponse<any>>(
+  //       url
+  //     )
+  //     .pipe(
+  //       map((res) => {
+  //       console.log(res)
+  //         return res;
+  //       })
+  //     );
+  // }
+
+  // sendSMS = (OTP: string, phoneNumber: string) => {
+  //   // Replace <number> with the actual phone number
+  //   console.log(phoneNumber)
+  //   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=91${phoneNumber}&text= Your OTP is: ${OTP}.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`;
+  
+  //   return this.http.get(url);
+  // };
+
+  // sendSMS(OTP: string, phoneNumber: string): Observable<any> {
+  //   console.log('PhoneNumber:', phoneNumber);
+  //   console.log('OTP:', OTP);
+  
+  //   // URL encoding for phoneNumber and OTP
+  //   const encodedPhoneNumber = encodeURIComponent(phoneNumber);
+  //   const encodedOTP = encodeURIComponent(OTP);
+  
+  //   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=91${encodedPhoneNumber}&text=Your OTP is: ${encodedOTP}.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`;
+  //   console.log('Constructed URL:', url);
+  //   return this.http.get<CustomHttpResponse<any>>(url);
+  // }
+
+  sendSMS =(OTP: string, phoneNumber: string) =>{
+    this.http.get(`https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=917898118503&text= Your OTP is: 4521.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`)
+      .subscribe((res:any) => {
+        return res;})
+      }
+      
 
 }
