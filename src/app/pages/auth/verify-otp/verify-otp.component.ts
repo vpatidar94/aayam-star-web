@@ -81,7 +81,7 @@ export class VerifyOtpComponent implements OnInit {
           ).subscribe({
             next: (res) => {
               this.helperService.updateUserDetails(res.user)
-              if (res.userType === UserTypeEnum.ADMIN || res.userType === UserTypeEnum.ORG_ADMIN) {
+              if (res.userType === UserTypeEnum.ADMIN || res.userType === UserTypeEnum.ORG_ADMIN || res.userType === UserTypeEnum.SUB_ADMIN) {
                 this.router.navigate(['/admin']);
                 this.alertService.success(CONSTANTS.MESSAGES.LOGIN_SUCCESS);
               }

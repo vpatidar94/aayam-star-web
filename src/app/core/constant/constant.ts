@@ -50,5 +50,6 @@ export type SubjectNameType = "PHYSICS" | "CHEMISTRY" | "BIOLOGY" | "MATHS" | "S
 export enum UserTypeEnum {
   ADMIN = 'admin',
   ORG_ADMIN = 'org-admin',
-  USER = 'user'
+  USER = 'user',
+  SUB_ADMIN = 'sub-admin'
 }

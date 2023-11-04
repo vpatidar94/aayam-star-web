@@ -44,7 +44,7 @@
             >Users</a
           >
         </li>
-        <li class="nav-item" *ngIf="userType === 'admin'">
+        <li class="nav-item" *ngIf="userType === 'admin'|| userType === 'sub-admin'">
           <a
             class="nav-link"
             [routerLink]="['/admin/organisations']"
