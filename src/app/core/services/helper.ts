@@ -26,6 +26,16 @@ export class HelperService {
     return false
   }
 
+  setAllUserDetails(name: string, stream: string, other:any) {
+    const userDetail = this.getUserDetails();
+    if (userDetail) {
+      localStorage.setItem("userDetail", JSON.stringify({...userDetail, ...other, name: name, stream: stream }));
+      return true
+    }
+    this.router.navigate(['/login'])
+    return false
+  }
+
   updateUserDetails(data: any) {
     const userDetail = this.getUserDetails();
     if (userDetail) {

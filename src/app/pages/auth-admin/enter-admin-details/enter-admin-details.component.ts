@@ -43,7 +43,7 @@ export class EnterAdminDetailsComponent implements OnInit {
       ).subscribe({
         next: (res) => {
           if (res.status_code === 'success') {
-            this.helperService.setUserDetails(this.tForm.value.name, this.tForm.value.designation)
+            this.helperService.setAllUserDetails(this.tForm.value.name, this.tForm.value.designation, res.data)
             this.router.navigate(['/admin']);
           }
           this.loading = false;

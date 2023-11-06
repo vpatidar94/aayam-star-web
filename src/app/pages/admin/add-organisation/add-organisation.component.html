@@ -40,11 +40,11 @@
 
       <!-- Organization Admins -->
       <div class="col-12 mt-2 mb-2" formArrayName="orgAdmins">
-        <div class="d-flex align-items-center mb-1">
+        <div class="d-flex align-items-center mb-2">
           <label class="text__body-dark">Admins</label>
           <button
             type="button"
-            class="ibtn ibtn__secondary sm ms-auto mr-2"
+            class="ibtn ibtn__primary sm ms-auto mr-2"
             (click)="addOrgAdmin()"
           >
             Add Admin
@@ -52,16 +52,17 @@
         </div>
         <div
           *ngFor="let orgAdmin of orgAdmins.controls; let i = index"
-          class="col-md-5 d-flex align-item-center"
+          class="col-12 col-md-5 d-flex align-item-center"
         >
           <input
             type="text"
             formControlName="{{ i }}"
-            class="form-control ifield me-2 mb-1"
+            class="form-control ifield me-2 mb-1 "
+            maxlength="10"
             placeholder="Enter Organisation Admin"
           />
           <!-- <button type="button" class="col-3 align-self-center ibtn ibtn__secondary sm ms-auto mr-2" (click)="addOrgAdmin()">Add Admin</button> -->
-          <button
+          <!-- <button
             class="col-2 align-self-center cursor-pointer border-0"
             type="button"
             (click)="removeOrgAdmin(i)"
@@ -79,13 +80,14 @@
                 d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
               />
             </svg>
-        </button>
-          <div class="col-md-5 mt-3">
+        </button> -->
+          <div class="col-4 col-md-5 ">
             <button type="button"
               class="btn btn-sm btn-secondary me-2"
               (click)="sendWpLink(i)"
+              [disabled]="!tForm.controls['orgCode'].value"
             >
-              <span *ngIf="!btnLoading; else spinner"> Send Login Link </span>
+              <span *ngIf="!sendLoginLinkBtnLoading[i]; else spinner" > Send Login Link </span>
             </button>
             <ng-template #spinner>
               <span
@@ -99,7 +101,7 @@
       </div>
 
       <!-- Organization Code -->
-      <div class="col-12 d-flex mb-2">
+      <div class="col-12 d-flex mb-2 align-item-center">
         <div class="col-md-4">
           <label for="code-field" class="mb-2 text__body-dark"
             >Organisation Code</label
@@ -110,6 +112,7 @@
             class="form-control ifield"
             id="code-field"
             placeholder="Organisation Code"
+            readonly
           />
           <!-- Validation messages -->
           <org-field-validation-message
@@ -120,6 +123,7 @@
           type="button"
           class="ibtn ibtn__secondary sm ms-auto mr-2"
           (click)="generateCode()"
+          *ngIf="!tForm.controls['orgCode'].value"
         >
           Generate Code
         </button>

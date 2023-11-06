@@ -9,6 +9,7 @@ import { FieldValidationMessageComponent } from "src/app/shared/field-validation
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HelperService } from 'src/app/core/services/helper';
 import { CONSTANTS } from 'src/app/core/constant/constant';
+import { VALIDATE } from 'src/app/core/constant/validate';
 
 @Component({
     selector: "org-add-organisation",
@@ -52,6 +53,8 @@ export class AddOrganisation implements OnInit {
         },
     ];
     btnLoading = false as boolean;
+    sendLoginLinkBtnLoading: boolean[] = [];
+
     loading = false;
 
     ngOnInit(): void {
@@ -66,7 +69,11 @@ export class AddOrganisation implements OnInit {
             orgCode: new FormControl('', [
                 Validators.required
             ]),
-            orgAdmins: this.fb.array([]),
+            orgAdmins: this.fb.array([ 
+                // Validators.required,
+                // Validators.minLength(VALIDATE.MOBILE_NO_MAX_LENGTH),
+                // Validators.pattern('[0-9]{10}')
+            ]),
         })
 
         this.addOrgAdmin();
@@ -80,6 +87,11 @@ export class AddOrganisation implements OnInit {
                 this.getOrgDetail(this.orgId);
             }
         });
+
+         // Initialize btnLoading array for each orgAdmin
+  for (let i = 0; i < this.orgAdmins.length; i++) {
+    this.sendLoginLinkBtnLoading[i] = false;
+  }
 
     }
 
@@ -141,7 +153,7 @@ export class AddOrganisation implements OnInit {
 
 
     sendWpLink(index: number) {
-        this.btnLoading = true;
+        this.sendLoginLinkBtnLoading[index] = true
         this.loading = true;
 
         const orgCode = this.tForm.get('orgCode')?.value;
@@ -157,16 +169,16 @@ export class AddOrganisation implements OnInit {
                 .subscribe({
                     next: (res) => {
                         this.alertService.success("Message send successfully.");
-                        this.btnLoading = false;
+                        this.sendLoginLinkBtnLoading[index] = false
                     },
                     error: (err) => {
                         this.alertService.error(err.message);
-                        this.btnLoading = false;
+                        this.sendLoginLinkBtnLoading[index] = false
                     }
                 });
         } else {
             this.alertService.error("Organization Code is required.");
-            this.btnLoading = false;
+            this.sendLoginLinkBtnLoading[index] = false
             this.loading = false;
         }
     }
