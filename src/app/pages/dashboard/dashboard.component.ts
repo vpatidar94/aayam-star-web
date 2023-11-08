@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { CONSTANTS } from 'src/app/core/constant/constant';
 import { HelperService } from 'src/app/core/services/helper';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'org-dashboard',
@@ -16,7 +17,11 @@ import { HelperService } from 'src/app/core/services/helper';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router, private apiService: ApiService, private alertService: AlertService, private helperService: HelperService) { }
+  constructor(private router: Router, private apiService: ApiService, private alertService: AlertService, private helperService: HelperService)
+  {
+    this.bucketUrl = environment.BUCKET_URL;
+  }
+  bucketUrl = '';
   data: any = [];
   scoreReferral = {
     testsPoints: 0,
@@ -28,6 +33,7 @@ export class DashboardComponent implements OnInit {
   totalPoints = 0 as number;
   trophyCount = 0 as number;
   isExpandedPoints = false as boolean;
+  isUpdateProfile = false as boolean;
 
   ngOnInit(): void {
     this.getDashboardDetails();

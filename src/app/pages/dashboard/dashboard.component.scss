@@ -3,6 +3,7 @@
 }
 
 .card__test {
+    background-color: transparent!important; // added for gif remove it after gif removed
     box-shadow: 1px 1px 20px 0px #ddd;
     border: none;
 
@@ -42,3 +43,11 @@
     border: none;
     border-radius: 10px;
 }
+
+.body__bg_gif {
+    background-image: url('https://i.gifer.com/4M57.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
