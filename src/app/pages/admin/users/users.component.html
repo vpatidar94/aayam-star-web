@@ -25,6 +25,7 @@
                 <td>{{ i + 1 }}</td>
                 <td class="text-start">{{ userItem.name }}</td>
                 <td *ngIf="userType === 'admin'">{{ userItem.mobileNo }}</td>
+                <td *ngIf="userType === 'admin'">{{ userItem.orgCode }}</td>
                 <td>{{ userItem.stream }}</td>
                 <td>{{ userItem.referralPoints || 0 }}</td>
                 <td>{{ userItem.totalTests }}</td>

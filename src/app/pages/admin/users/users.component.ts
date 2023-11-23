@@ -23,7 +23,7 @@ export class UsersComponent {
     if (this.userType === UserTypeEnum.ORG_ADMIN) {
       this.searchFilterKeys = ['name', 'stream'];
       this.searchPlaceHolder = "Search by name, stream";
-      this.thead = this.thead.filter((x) => x.key !== 'mobileNo');
+      this.thead = this.thead.filter((x) => x.key !== 'mobileNo' && x.key !== 'orgCode');
     }
   }
   loading = false;
@@ -63,6 +63,12 @@ export class UsersComponent {
       name: 'Mobile No',
       sorting: true,
       key: 'mobileNo',
+      sortBy: '',
+    },
+    {
+      name: 'OrgCode',
+      sorting: true,
+      key: 'orgCode',
       sortBy: '',
     },
     {
