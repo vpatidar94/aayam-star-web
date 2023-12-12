@@ -34,7 +34,7 @@ export class UsersComponent {
   userData = [] as any;
   resultData = [] as any;
   userType: string = '';
-  searchFilterKeys = ['name', 'mobileNo', 'stream'];
+  searchFilterKeys = ['name', 'mobileNo', 'stream', 'orgCode'];
   searchPlaceHolder = "Search by name, mobile no., stream"
   breadcrumbs = [
     {

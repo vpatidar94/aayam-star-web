@@ -7,6 +7,8 @@ import { ActivatedRoute } from "@angular/router";
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CONSTANTS } from "src/app/core/constant/constant";
 import { HelperService } from "src/app/core/services/helper";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: "org-test-result",
@@ -116,5 +118,49 @@ export class TestResultComponent {
           this.btnLoading = false;
         }
       });
+  }
+
+  downloadAsPDF() {
+    const doc = new jsPDF();
+    const formattedDate = new Date(this.testDetail.testDate).toLocaleDateString('en-GB');
+    // Add subjectName and testname as a separate table
+    (doc as any).autoTable({
+      head: [['AAYAM STAR' ]],
+      styles: {halign: 'center'}
+    });
+    (doc as any).autoTable({
+      body: [[
+        { content: 'Subject:', styles: { fontStyle: 'bold' } },
+        this.testDetail.subjectName,
+        { content: 'Test Name:', styles: { fontStyle: 'bold' } },
+        this.testDetail.title,
+        { content: 'Date:', styles: { fontStyle: 'bold' } },
+        formattedDate
+      ]],  });
+
+  // Add an empty space between the tables
+  doc.text('', 10, 40);
+    (doc as any).autoTable({
+      head: [['User Name', 'Score','OverAll Rank','Org Rank', 'Points', 'Duration']],
+      body: this.data.map((item:any, index:number) => [
+        { content: item.userId.name, styles: { halign: 'left' } },
+        // this.testDetail?.subjectName,
+        // this.userType === 'admin' ? item.userId.mobileNo : '', // Display only if admin
+        `${item.score!== null ? `${item.score}/${this.testDetail?.questions?.length}` : 'Absent'}`,
+        item.rank,
+        `${item.score!== null? index+1 : '' }` ,
+        item.points,
+        item.duration ? this.showTimeInMMSS(item.duration) : '-',
+        // this.datePipe.transform(item.dateCreated, 'MMM d, y, h:mm a'), // Use Angular date pipe
+        item.score !== null ? 'Present' : 'Absent'
+      ]),
+      styles:{
+        valign: 'middle',
+        halign: 'center',
+      }
+    });
+
+    // Save the PDF
+    doc.save('test_records.pdf');
   }
 }

@@ -66,6 +66,22 @@
         <span
           >Total Students: <strong>{{ data.length }}</strong></span
         >
+         <!-- PDF download button -->
+        <div class="ms-2">
+          <button
+            class="btn btn-sm btn-secondary me-2"
+            (click)="downloadAsPDF()"
+          >
+            <span *ngIf="!btnLoading; else spinner"> Download Result </span>
+          </button>
+          <ng-template #spinner>
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          </ng-template>
+        </div>
         <div class="ms-2" *ngIf="userType === 'admin'">
           <button
             class="btn btn-sm btn-secondary me-2"
