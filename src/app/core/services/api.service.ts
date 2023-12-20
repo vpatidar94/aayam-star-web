@@ -57,6 +57,7 @@ export class ApiService {
     }
   }
 
+  // SEND OTP THROUGH WHATSAPP
   sendOtp(number: string, otp: string): Observable<{ messaging_product: string, contacts: any, messages: any }> {
     const url = environment.WHATSAPP_URL;
     const headers = new HttpHeaders()
@@ -108,6 +109,19 @@ export class ApiService {
         }),
         catchError((error) => {
           return throwError(() => error);
+        })
+      );
+  }
+  // send otp through text message
+  sendSmsOtp(mobileNo: string, otp: string): Observable<any> {
+    return this.http
+      .post<CustomHttpResponse<any>>(
+        CONSTANTS.API.SEND_SMS_OTP,
+        { mobileNo, otp }
+      )
+      .pipe(
+        map((res) => {
+          return res?.data;
         })
       );
   }
@@ -522,49 +536,5 @@ export class ApiService {
         })
       );
   }
-
-  // sendSMS(phoneNumbers:string , otp: string ): Observable<any> {
-  //   const phoneNumber = '8871688429'
-  //   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=91${phoneNumbers}&text= Your OTP is: ${otp}.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`;
-
-  //   return this.http
-  //     .get<CustomHttpResponse<any>>(
-  //       url
-  //     )
-  //     .pipe(
-  //       map((res) => {
-  //       console.log(res)
-  //         return res;
-  //       })
-  //     );
-  // }
-
-  // sendSMS = (OTP: string, phoneNumber: string) => {
-  //   // Replace <number> with the actual phone number
-  //   console.log(phoneNumber)
-  //   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=91${phoneNumber}&text= Your OTP is: ${OTP}.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`;
-  
-  //   return this.http.get(url);
-  // };
-
-  // sendSMS(OTP: string, phoneNumber: string): Observable<any> {
-  //   console.log('PhoneNumber:', phoneNumber);
-  //   console.log('OTP:', OTP);
-  
-  //   // URL encoding for phoneNumber and OTP
-  //   const encodedPhoneNumber = encodeURIComponent(phoneNumber);
-  //   const encodedOTP = encodeURIComponent(OTP);
-  
-  //   const url = `https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=91${encodedPhoneNumber}&text=Your OTP is: ${encodedOTP}.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`;
-  //   console.log('Constructed URL:', url);
-  //   return this.http.get<CustomHttpResponse<any>>(url);
-  // }
-
-  sendSMS =(OTP: string, phoneNumber: string) =>{
-    this.http.get(`https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fc0e7fdc-2766-485b-800d-dcdce1ad6728&senderid=AAYAMC&channel=2&DCS=0&flashsms=0&number=917898118503&text= Your OTP is: 4521.Regards AAYAM&route=31&EntityId=1301159531158036635&dlttemplateid=1307161797225449463`)
-      .subscribe((res:any) => {
-        return res;})
-      }
-      
 
 }

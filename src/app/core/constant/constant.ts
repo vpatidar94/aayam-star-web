@@ -23,6 +23,7 @@ export const CONSTANTS = Object.freeze({
     SIGNUP_ORG_USER_DETAIL: '/users/updateOrgAdminDetails',
     GET_ALL_USERS: '/result/getAllResultsDetails',
     GET_USER_BY_ID: '/users/getUserById',
+    SEND_SMS_OTP : '/users/sendOTP',
   },
   MESSAGES: {
     LOGIN_FAILURE: "Login failed",
@@ -31,6 +32,7 @@ export const CONSTANTS = Object.freeze({
     OTP_MESSAGE: "Here is you one time OTP: ",
     INVALID_OTP: "You have entered the wrong OTP.",
     OTP_SENT: "OTP has been sent to your Whatsapp no.",
+    SMS_OTP_SENT : "OTP has been sent to your Mobile No",
     GENERATED_RANK_SUCCESS: 'Generated rank successfully.',
     ERROR_SENDING_MESSAGE: 'Error in sending otp. Please try again.'
   },
