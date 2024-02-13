@@ -57,6 +57,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
     if (!this.isSubmit) {
       if (confirm('You have not submit the test paper. Are you sure you want to leave?')) {
         $event.preventDefault();
+        await this.submitScore(this.questions)
         return true;
       } else {
         return false;
